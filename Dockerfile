@@ -1,49 +1,22 @@
-# Build stage
-FROM node:20-alpine AS build
+FROM node:20-alpine AS base
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm
-
-# Copy only package files first to leverage cache
-COPY package.json pnpm-lock.yaml ./
-
-# Install dependencies
-RUN pnpm install --frozen-lockfile
-
-# Copy source code
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 COPY . .
 
-# Build the application
+
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
-# Production stage
-FROM node:20-alpine
+FROM gcr.io/distroless/nodejs20-debian12:nonroot
 WORKDIR /app
-
-# Install pnpm
-RUN npm install -g pnpm
-
-# Create non-root user
-RUN addgroup -S appgroup && adduser -S sveltekit -G appgroup
-
-# Copy built assets and package files
-COPY --from=build /app/build ./build
-COPY --from=build /app/package.json /app/pnpm-lock.yaml ./
-
-# Install production dependencies only
-RUN pnpm install --prod --frozen-lockfile && \
-    pnpm store prune && \
-    rm -rf /root/.local/share/pnpm/store && \
-    rm -rf /root/.cache
-
-# Set correct permissions
-RUN chown -R sveltekit:appgroup .
-
-# Switch to non-root user
-USER sveltekit
-
+COPY --from=prod-deps /app/node_modules node_modules/
+COPY --from=build /app/build build/
 EXPOSE 3000
-
-# Assuming your build output includes a server.js file
-CMD ["node", "build/index.js"]
+CMD ["build/index.js"]
