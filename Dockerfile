@@ -5,7 +5,8 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
-COPY package.json pnpm-lock.yaml ./ COPY .npmrc* ./
+COPY package.json pnpm-lock.yaml ./
+COPY .npmrc* ./
 
 FROM base AS prod-deps
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
@@ -19,9 +20,9 @@ RUN pnpm run build
 FROM gcr.io/distroless/nodejs20-debian12:nonroot
 WORKDIR /usr/src/app
 
-COPY --from=prod-deps /app/node_modules node_modules/
-COPY --from=build /app/build build/
-COPY --from=build /app/package.json ./
+COPY --from=prod-deps /usr/src/app/node_modules ./node_modules/
+COPY --from=build /usr/src/app/build ./build/
+COPY --from=build /usr/src/app/package.json ./
 
 EXPOSE 3000
 CMD ["build/index.js"]
