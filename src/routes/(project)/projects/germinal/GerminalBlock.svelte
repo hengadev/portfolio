@@ -1,9 +1,12 @@
+<svelte:options runes />
 <script lang="ts">
+    import { _, locale } from "svelte-i18n";
     import { ArrowUpRight } from "lucide-svelte";
     import ProjectDetail from "$lib/components/ProjectDetail.svelte";
     import ProjectBento from "$lib/components/ProjectBento.svelte";
 </script>
 
+{#key $locale}
 <ProjectDetail
     title="Germinal"
     tagline="Event & talent management platform with bilingual support, media galleries, and automated workflows."
@@ -15,66 +18,36 @@
     logo="/logos/germinal.png"
 >
     <section class="story-section">
-        <h2 class="section-title">Overview</h2>
-        <p>
-            A sophisticated event and talent management platform with bilingual support, media
-            galleries, automated workflows, and production-ready infrastructure.
-        </p>
-        <p>
-            Built from the ground up as a full-stack showcase demonstrating modern web development
-            practices. The platform features a custom middleware system for cross-cutting concerns,
-            an LRU caching layer with tag-based invalidation, and a PostgreSQL-backed job scheduler
-            for asynchronous tasks.
-        </p>
+        <h2 class="section-title">{$_('detail.overview')}</h2>
+        <p>{$_('germinal.overview_1')}</p>
+        <p>{$_('germinal.overview_2')}</p>
     </section>
 
     <ProjectBento gradient="linear-gradient(135deg, hsl(20 80% 40%), hsl(359 70% 50%))" />
 
     <section class="story-section">
-        <h2 class="section-title">Technical highlights</h2>
+        <h2 class="section-title">{$_('detail.highlights')}</h2>
         <ul class="highlight-list">
-            <li>
-                <strong>Middleware architecture:</strong> Decorator pattern for composable request
-                handling — validation, auth, rate limiting, and CSRF in a single chain.
-            </li>
-            <li>
-                <strong>Background jobs:</strong> pg-boss integration with cron-scheduled tasks for
-                email queues, cleanup, and reminders.
-            </li>
-            <li>
-                <strong>Caching strategy:</strong> LRU cache with TTL and tag-based invalidation
-                for optimal performance.
-            </li>
-            <li>
-                <strong>Type safety:</strong> End-to-end TypeScript with Zod schemas for runtime
-                validation.
-            </li>
-            <li>
-                <strong>Production deployment:</strong> Multi-stage Docker builds with security
-                hardening (non-root user, Alpine base).
-            </li>
-            <li>
-                <strong>Observability:</strong> Sentry integration for error tracking and
-                performance monitoring.
-            </li>
-            <li>
-                <strong>Testing:</strong> Vitest for unit tests and Playwright for E2E coverage.
-            </li>
+            <li><strong>{$_('germinal.highlight_1_label')}</strong> {$_('germinal.highlight_1_body')}</li>
+            <li><strong>{$_('germinal.highlight_2_label')}</strong> {$_('germinal.highlight_2_body')}</li>
+            <li><strong>{$_('germinal.highlight_3_label')}</strong> {$_('germinal.highlight_3_body')}</li>
+            <li><strong>{$_('germinal.highlight_4_label')}</strong> {$_('germinal.highlight_4_body')}</li>
+            <li><strong>{$_('germinal.highlight_5_label')}</strong> {$_('germinal.highlight_5_body')}</li>
+            <li><strong>{$_('germinal.highlight_6_label')}</strong> {$_('germinal.highlight_6_body')}</li>
+            <li><strong>{$_('germinal.highlight_7_label')}</strong> {$_('germinal.highlight_7_body')}</li>
         </ul>
     </section>
 
     <section class="story-section">
-        <h2 class="section-title">What I learned</h2>
-        <p class="placeholder">
-            <!-- Write about what building this taught you — architecture decisions, mistakes, surprises. -->
-            This section is coming soon.
-        </p>
+        <h2 class="section-title">{$_('detail.learned')}</h2>
+        <p class="placeholder">{$_('detail.coming_soon')}</p>
     </section>
 
     <button class="cta" onclick={() => {}}>
-        View repository <ArrowUpRight size={14} />
+        {$_('germinal.view_repository')} <ArrowUpRight size={14} />
     </button>
 </ProjectDetail>
+{/key}
 
 <style>
     .story-section {

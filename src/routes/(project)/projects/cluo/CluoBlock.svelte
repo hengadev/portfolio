@@ -1,8 +1,11 @@
+<svelte:options runes />
 <script lang="ts">
+    import { _, locale } from "svelte-i18n";
     import ProjectDetail from "$lib/components/ProjectDetail.svelte";
     import ProjectBento from "$lib/components/ProjectBento.svelte";
 </script>
 
+{#key $locale}
 <ProjectDetail
     title="Cluo"
     tagline="Multi-surface case management ecosystem for private investigators — desktop app, mobile PWA, and client portal."
@@ -14,54 +17,30 @@
     logo="/logos/cluo.png"
 >
     <section class="story-section">
-        <h2 class="section-title">Overview</h2>
-        <p>
-            Built to replace manual investigation workflows. Field agents use a Wails + SvelteKit
-            desktop app for case management, capture evidence on a mobile PWA, and deliver securely
-            to clients through a dedicated portal — all driven by one Go API.
-        </p>
-        <p>
-            The legal document chain (Estimate → Mandate → Contract → Invoice) is automated as a
-            state machine with per-document PDF generation.
-        </p>
+        <h2 class="section-title">{$_('detail.overview')}</h2>
+        <p>{$_('cluo.overview_1')}</p>
+        <p>{$_('cluo.overview_2')}</p>
     </section>
 
     <ProjectBento gradient="linear-gradient(135deg, hsl(220 70% 35%), hsl(260 60% 50%))" />
 
     <section class="story-section">
-        <h2 class="section-title">Technical highlights</h2>
+        <h2 class="section-title">{$_('detail.highlights')}</h2>
         <ul class="highlight-list">
-            <li>
-                <strong>4 apps, one backend:</strong> Go API, Wails desktop, mobile PWA, and client
-                portal all share a single hexagonal backend with port interfaces.
-            </li>
-            <li>
-                <strong>AI pipeline:</strong> transcribes field audio, extracts structured data
-                (people, timelines, facts), and pre-fills the report editor.
-            </li>
-            <li>
-                <strong>Legal chain automation:</strong> Estimate → Mandate → Contract → Invoice
-                modeled as a state machine with per-document PDF generation and delivery.
-            </li>
-            <li>
-                <strong>Magic link auth:</strong> SHA-256 tokens with configurable expiration and
-                investigator-controlled revocation — no client accounts needed.
-            </li>
-            <li>
-                <strong>Infrastructure as code:</strong> Ansible + Terraform for reproducible,
-                version-controlled deployments.
-            </li>
+            <li><strong>{$_('cluo.highlight_1_label')}</strong> {$_('cluo.highlight_1_body')}</li>
+            <li><strong>{$_('cluo.highlight_2_label')}</strong> {$_('cluo.highlight_2_body')}</li>
+            <li><strong>{$_('cluo.highlight_3_label')}</strong> {$_('cluo.highlight_3_body')}</li>
+            <li><strong>{$_('cluo.highlight_4_label')}</strong> {$_('cluo.highlight_4_body')}</li>
+            <li><strong>{$_('cluo.highlight_5_label')}</strong> {$_('cluo.highlight_5_body')}</li>
         </ul>
     </section>
 
     <section class="story-section">
-        <h2 class="section-title">What I learned</h2>
-        <p class="placeholder">
-            <!-- Write about what building this taught you. -->
-            This section is coming soon.
-        </p>
+        <h2 class="section-title">{$_('detail.learned')}</h2>
+        <p class="placeholder">{$_('detail.coming_soon')}</p>
     </section>
 </ProjectDetail>
+{/key}
 
 <style>
     .story-section {

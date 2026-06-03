@@ -1,7 +1,10 @@
+<svelte:options runes />
 <script lang="ts">
+    import { _, locale } from "svelte-i18n";
     import ProjectDetail from "$lib/components/ProjectDetail.svelte";
 </script>
 
+{#key $locale}
 <ProjectDetail
     title="ENCX"
     tagline="Encryption and hashing module powering the secure data pipeline inside Cluo."
@@ -13,15 +16,12 @@
     gradient="linear-gradient(135deg, hsl(240 20% 25%), hsl(260 30% 35%))"
 >
     <section class="story-section">
-        <h2 class="section-title">Overview</h2>
-        <p>
-            A crucial component of the Cluo project that facilitates encryption and hashing of
-            sensitive data. Designed as a standalone module to avoid becoming a bottleneck in the
-            data pipeline.
-        </p>
-        <p class="placeholder">Full write-up coming soon.</p>
+        <h2 class="section-title">{$_('detail.overview')}</h2>
+        <p>{$_('encx.overview_1')}</p>
+        <p class="placeholder">{$_('detail.full_writeup')}</p>
     </section>
 </ProjectDetail>
+{/key}
 
 <style>
     .story-section {
