@@ -1,45 +1,107 @@
+<script lang="ts">
+    import { Github, Twitter, Linkedin } from "lucide-svelte";
+
+    const navLinks = [
+        { name: "Home", href: "/" },
+        { name: "About", href: "/about" },
+        { name: "Projects", href: "/projects" },
+        { name: "Blog", href: "/blog" },
+        { name: "Contact", href: "/contact" },
+    ];
+
+    const socials = [
+        { icon: Github, href: "https://github.com/GaryHY", label: "GitHub" },
+        { icon: Twitter, href: "https://x.com/", label: "X" },
+        { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" },
+    ];
+
+    const year = new Date().getFullYear();
+</script>
+
 <footer>
-    <div class="separator"></div>
-    <div class="footer__content container__small">
-        <div>
-            <p class="designed-by">
-                © Designed by Gary HENRY. All rights reserved
-            </p>
-            <p class="made-with">
-                Made with love and sveltekit (I love that framework)
-            </p>
+    <div class="footer-inner container__small">
+        <p class="copyright">© {year} henga.dev</p>
+
+        <nav>
+            {#each navLinks as { name, href }}
+                <a {href}>{name}</a>
+            {/each}
+        </nav>
+
+        <div class="socials">
+            {#each socials as { icon: Icon, href, label }}
+                <a
+                    {href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    class="social-link"
+                >
+                    <Icon size={18} />
+                </a>
+            {/each}
         </div>
-        <p class="last-update">
-            Last updated by Gary on November 16, 2024, 23:08PM EST
-        </p>
     </div>
 </footer>
 
 <style>
     footer {
-        margin-top: 12rem;
+        background-color: hsl(var(--clr-grey-700));
+        margin-top: 8rem;
     }
-    .footer__content {
-        padding-block: 6rem;
+
+    .footer-inner {
         margin-inline: auto;
+        padding-block: 2rem;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+    }
+
+    .copyright {
+        font-size: 0.85rem;
+        color: hsl(var(--clr-light-primary) / 0.55);
+    }
+
+    nav {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        color: hsl(var(--clr-dark-secondary));
+        gap: 0.25rem;
+        justify-content: center;
     }
-    .separator {
-        width: 100%;
-        height: 1px;
-        border: 1px solid #f7f7f9;
+
+    nav a {
+        font-size: 0.85rem;
+        color: hsl(var(--clr-light-primary) / 0.65);
+        text-decoration: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        transition: color 150ms ease;
     }
-    .designed-by {
-        font-weight: 600;
-        color: hsl(var(--clr-grey-700));
+
+    nav a:hover {
+        color: hsl(var(--clr-light-primary));
     }
-    .made-with {
-        color: hsl(var(--clr-grey-500));
+
+    .socials {
+        display: flex;
+        gap: 0.25rem;
+        justify-content: flex-end;
     }
-    .last-update {
-        color: hsl(var(--clr-grey-400));
+
+    .social-link {
+        display: grid;
+        place-content: center;
+        padding: 0.4rem;
+        border-radius: 0.375rem;
+        color: hsl(var(--clr-light-primary) / 0.6);
+        text-decoration: none;
+        transition:
+            color 150ms ease,
+            background-color 150ms ease;
+    }
+
+    .social-link:hover {
+        color: hsl(var(--clr-light-primary));
+        background-color: hsl(var(--clr-light-primary) / 0.08);
     }
 </style>
