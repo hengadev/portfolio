@@ -2,6 +2,17 @@
     import Cards from "$lib/components/Cards.svelte";
     import Card from "$lib/components/Card.svelte";
     import { ArrowRight } from "lucide-svelte";
+    import type { PageData } from "./$types";
+
+    let { data }: { data: PageData } = $props();
+
+    function formatDate(dateStr: string): string {
+        return new Date(dateStr).toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+        });
+    }
 
     const skills = ["Go", "TypeScript", "Python", "Rust", "SvelteKit", "PostgreSQL", "Docker", "Linux"];
 
@@ -124,6 +135,39 @@
             {/each}
         </div>
     </section>
+
+    {#if data.latestPosts.length > 0}
+    <section class="section articles container__small">
+        <div class="section__header section__header--row">
+            <div class="section__header-top">
+                <h2 class="section__title">Latest Posts</h2>
+                <a href="/blog" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
+                    View all <ArrowRight size={16} />
+                </a>
+            </div>
+            <p class="section__subtitle">Writing on Go, distributed systems, and software craft.</p>
+        </div>
+        <ul class="article-list">
+            {#each data.latestPosts as post}
+                <li class="article-item">
+                    <a href="/blog/{post.slug}" class="article-link">
+                        <time class="article__date" datetime={post.date}>{formatDate(post.date)}</time>
+                        <h3 class="article__title">
+                            {post.title}
+                            <ArrowRight size={16} class="article__arrow" />
+                        </h3>
+                        <p class="article__description">{post.description}</p>
+                        <div class="article__tags">
+                            {#each post.tags as tag}
+                                <span class="tag">{tag}</span>
+                            {/each}
+                        </div>
+                    </a>
+                </li>
+            {/each}
+        </ul>
+    </section>
+    {/if}
 
     <section class="section cta container__small">
         <h2 class="cta__title">Looking to Collaborate?</h2>
@@ -313,6 +357,92 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
+    }
+
+    /* ── Articles ── */
+    .articles {
+        margin-inline: auto;
+    }
+
+    .articles .section__header {
+        margin-bottom: 3rem;
+    }
+
+    .article-list {
+        display: grid;
+        gap: 0;
+    }
+
+    .article-item {
+        border-top: 1px solid hsl(var(--clr-light-fournary));
+    }
+
+    .article-item:last-child {
+        border-bottom: 1px solid hsl(var(--clr-light-fournary));
+    }
+
+    .article-link {
+        display: grid;
+        gap: 0.4rem;
+        padding-block: 1.5rem;
+        text-decoration: none;
+        transition: padding-left 150ms ease;
+    }
+
+    .article-link:hover {
+        padding-left: 0.5rem;
+    }
+
+    .article__date {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-ternary));
+    }
+
+    .article__title {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        font-size: var(--h3);
+        font-weight: 600;
+        color: hsl(var(--clr-dark-primary));
+        line-height: 1.3;
+    }
+
+    :global(.article__arrow) {
+        flex-shrink: 0;
+        opacity: 0;
+        transform: translateX(-4px);
+        transition: opacity 150ms ease, transform 150ms ease;
+        color: hsl(var(--clr-dark-primary));
+    }
+
+    .article-link:hover :global(.article__arrow) {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .article__description {
+        font-size: 0.9rem;
+        color: hsl(var(--clr-dark-ternary));
+        line-height: 1.6;
+    }
+
+    .article__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+        margin-top: 0.125rem;
+    }
+
+    .tag {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-secondary));
+        background-color: hsl(var(--clr-light-secondary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 999px;
+        padding: 0.15rem 0.55rem;
     }
 
     /* ── CTA ── */
