@@ -76,7 +76,7 @@
                 </a>
             {/each}
             <a
-                href="/resume.pdf"
+                href={$locale === 'fr' ? '/resume_fr.pdf' : '/resume_en.pdf'}
                 download
                 aria-label="Download resume"
                 class="icon-link"
