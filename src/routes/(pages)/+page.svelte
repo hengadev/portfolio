@@ -1,7 +1,7 @@
 <script lang="ts">
     import Cards from "$lib/components/Cards.svelte";
     import Card from "$lib/components/Card.svelte";
-    import { ArrowRight, Mail } from "lucide-svelte";
+    import { ArrowRight } from "lucide-svelte";
 
     const skills = ["Go", "TypeScript", "Python", "Rust", "SvelteKit", "PostgreSQL", "Docker", "Linux"];
 
@@ -126,17 +126,12 @@
     </section>
 
     <section class="section cta container__small">
-        <div class="cta__inner grid" style="--gap: 1.25rem;">
-            <h2 class="section__title">Looking to Collaborate?</h2>
-            <p>
-                Open to freelance projects and open-source collaboration.<br />
-                If you have something interesting to build, reach out.
-            </p>
-            <a href="mailto:henry.gary@hotmail.com" class="cta__link flex" style="--gap: 0.5rem; align-items: center; width: fit-content;">
-                <Mail size={18} />
-                henry.gary@hotmail.com
-            </a>
-        </div>
+        <h2 class="cta__title">Looking to Collaborate?</h2>
+        <p class="cta__desc">
+            Open to freelance projects and open-source collaboration.<br />
+            If you have something interesting to build, reach out.
+        </p>
+        <a href="/contact" class="cta__btn">Get in touch</a>
     </section>
 </div>
 
@@ -323,28 +318,36 @@
     /* ── CTA ── */
     .cta {
         margin-inline: auto;
+        display: grid;
+        gap: 1.25rem;
+        text-align: center;
+        justify-items: center;
     }
 
-    .cta__inner {
-        padding: 2.5rem;
-        border-radius: 1.5rem;
-        background-color: hsl(var(--clr-light-secondary));
-        border: 1px solid hsl(var(--clr-light-fournary));
-    }
-
-    .cta__link {
-        font-size: var(--p);
-        font-weight: 500;
+    .cta__title {
+        font-size: var(--h2);
+        font-weight: 600;
         color: hsl(var(--clr-dark-primary));
-        text-decoration: none;
-        padding: 0.6rem 1.25rem;
-        border-radius: 999px;
-        border: 2px solid hsl(var(--clr-light-fournary));
-        transition: border-color 150ms ease, background-color 150ms ease;
     }
 
-    .cta__link:hover {
-        border-color: hsl(var(--clr-dark-primary));
-        background-color: hsl(var(--clr-light-ternary));
+    .cta__desc {
+        color: hsl(var(--clr-dark-secondary));
+        line-height: 1.7;
+    }
+
+    .cta__btn {
+        text-decoration: none;
+        font-weight: 500;
+        font-size: var(--p);
+        color: hsl(var(--clr-light-primary));
+        background-color: hsl(var(--clr-dark-primary));
+        padding: 0.65rem 1.5rem;
+        border-radius: 999px;
+        margin-top: 0.5rem;
+        transition: background-color 150ms ease;
+    }
+
+    .cta__btn:hover {
+        background-color: hsl(var(--clr-dark-secondary));
     }
 </style>
