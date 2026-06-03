@@ -10,7 +10,6 @@
     let tabs: Tab[] = [
         { name: "Professionnal", link: "/" },
         { name: "Personal", link: "/personal" },
-        { name: "About", link: "/about" },
         { name: "Contact", link: "/contact" },
     ];
 

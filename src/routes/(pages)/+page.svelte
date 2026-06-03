@@ -81,9 +81,6 @@
     <section class="section about container__small">
         <div class="section__header about__header">
             <h2 class="section__title">{$_('home.about.title')}</h2>
-            <a href="/about" class="about__link flex" style="--gap: 0.375rem; align-items: center;">
-                {$_('home.about.link')} <ArrowRight size={16} />
-            </a>
         </div>
         <div class="about__content grid" style="--gap: 1.25rem;">
             <p class="about__bio">
@@ -295,18 +292,6 @@
     .about__bio {
         color: hsl(var(--clr-dark-secondary));
         line-height: 1.7;
-    }
-
-    .about__link {
-        font-size: var(--p);
-        font-weight: 500;
-        color: hsl(var(--clr-dark-primary));
-        text-decoration: none;
-        transition: gap 150ms ease;
-    }
-
-    .about__link:hover {
-        gap: 0.625rem;
     }
 
     /* ── Section header with title + link row ── */
