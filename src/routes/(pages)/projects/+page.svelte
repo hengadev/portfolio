@@ -1,42 +1,39 @@
 <script lang="ts">
-    import ProjectCard from "$lib/components/ProjectCard.svelte";
+    import Cards from "$lib/components/Cards.svelte";
 
     const projects = [
         {
-            title: "Germinal",
-            tagline: "Event & talent management platform with bilingual support, media galleries, and automated workflows.",
-            year: "2025",
-            tags: ["SvelteKit", "PostgreSQL", "Docker", "AWS S3"],
-            href: "/projects/germinal",
-            image: "/projects/germinal.jpg",
-            gradient: "linear-gradient(135deg, hsl(20 80% 40%), hsl(359 70% 50%))",
-            logo: "/logos/germinal.png",
-            featured: true,
-        },
-        {
             title: "Cluo",
-            tagline: "Multi-surface case management ecosystem for private investigators — desktop, mobile PWA, and client portal.",
-            year: "2026",
-            tags: ["Go", "SvelteKit", "Wails", "PostgreSQL"],
+            description: "Case management ecosystem for a private investigator — Go API, Wails desktop, mobile PWA, and client portal with AI transcription and legal document automation.",
+            tags: ["Go", "SvelteKit", "PostgreSQL", "Wails"],
+            type: "Freelance",
             href: "/projects/cluo",
-            image: "/projects/cluo.jpg",
-            gradient: "linear-gradient(135deg, hsl(220 70% 35%), hsl(260 60% 50%))",
             logo: "/logos/cluo.png",
         },
         {
             title: "Leviosa",
-            tagline: "Encryption and hashing library built to handle sensitive data without becoming a bottleneck.",
-            year: "2024",
-            tags: ["Go", "SvelteKit"],
+            description: "Wellness booking platform connecting clients with professionals. Go modular monolith with Stripe, Vault encryption, and RabbitMQ.",
+            tags: ["Go", "SvelteKit", "PostgreSQL", "Stripe"],
+            type: "Freelance",
             href: "/projects/leviosa",
-            image: "/projects/leviosa.jpg",
-            gradient: "linear-gradient(135deg, hsl(160 60% 30%), hsl(200 70% 40%))",
             logo: "/logos/leviosa.png",
         },
+        {
+            title: "Germinal",
+            description: "Event and talent management platform for a creative studio. SvelteKit 5 with background job scheduling, bilingual support, and production infrastructure.",
+            tags: ["SvelteKit", "PostgreSQL", "Docker"],
+            type: "Freelance",
+            href: "/projects/germinal",
+            logo: "/logos/germinal.png",
+        },
+        {
+            title: "ENCX",
+            description: "Encryption and hashing module powering the secure data pipeline inside Cluo. Designed as a standalone module to avoid becoming a bottleneck.",
+            tags: ["Go"],
+            type: "Library",
+            href: "/projects/encx",
+        },
     ] as const;
-
-    const featured = projects[0];
-    const rest = projects.slice(1);
 </script>
 
 <div class="page container__small">
@@ -46,15 +43,7 @@
         <p class="subtitle">A collection of things I've built — from platforms to libraries.</p>
     </header>
 
-    <div class="projects">
-        <ProjectCard {...featured} featured />
-
-        <div class="projects__grid">
-            {#each rest as project}
-                <ProjectCard {...project} />
-            {/each}
-        </div>
-    </div>
+    <Cards cards={projects} />
 </div>
 
 <style>
@@ -88,22 +77,5 @@
         color: hsl(var(--clr-dark-ternary));
         line-height: 1.7;
         max-width: 52ch;
-    }
-
-    .projects {
-        display: grid;
-        gap: 1.25rem;
-    }
-
-    .projects__grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-    }
-
-    @media (max-width: 640px) {
-        .projects__grid {
-            grid-template-columns: 1fr;
-        }
     }
 </style>
