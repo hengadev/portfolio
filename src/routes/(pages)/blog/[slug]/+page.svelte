@@ -1,5 +1,6 @@
 <script lang="ts">
     import { ArrowLeft } from "lucide-svelte";
+    import { _, locale } from "svelte-i18n";
     import type { PageData } from "./$types";
 
     let { data }: { data: PageData } = $props();
@@ -7,7 +8,7 @@
     let PostContent = $derived(data.component);
 
     function formatDate(dateStr: string): string {
-        return new Date(dateStr).toLocaleDateString("en-US", {
+        return new Date(dateStr).toLocaleDateString($locale === 'fr' ? 'fr-FR' : 'en-US', {
             month: "long",
             day: "numeric",
             year: "numeric",
@@ -17,7 +18,7 @@
 
 <div class="page container__small">
     <a href="/blog" class="back-link flex" style="--gap: 0.375rem; align-items: center;">
-        <ArrowLeft size={16} /> Back to blog
+        <ArrowLeft size={16} /> {$_('blog.back')}
     </a>
 
     <article>

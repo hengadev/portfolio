@@ -1,46 +1,50 @@
 <script lang="ts">
     import Cards from "$lib/components/Cards.svelte";
+    import { _, locale } from "svelte-i18n";
 
-    const projects = [
+    const projects = $derived.by(() => {
+        void $locale;
+        return [
         {
             title: "Cluo",
-            description: "Case management ecosystem for a private investigator — Go API, Wails desktop, mobile PWA, and client portal with AI transcription and legal document automation.",
+            description: $_("projects.cluo"),
             tags: ["Go", "SvelteKit", "PostgreSQL", "Wails"],
-            type: "Freelance",
+            type: $_("projects.type_freelance"),
             href: "/projects/cluo",
             logo: "/logos/cluo.png",
         },
         {
             title: "Leviosa",
-            description: "Wellness booking platform connecting clients with professionals. Go modular monolith with Stripe, Vault encryption, and RabbitMQ.",
+            description: $_("projects.leviosa"),
             tags: ["Go", "SvelteKit", "PostgreSQL", "Stripe"],
-            type: "Freelance",
+            type: $_("projects.type_freelance"),
             href: "/projects/leviosa",
             logo: "/logos/leviosa.png",
         },
         {
             title: "Germinal",
-            description: "Event and talent management platform for a creative studio. SvelteKit 5 with background job scheduling, bilingual support, and production infrastructure.",
+            description: $_("projects.germinal"),
             tags: ["SvelteKit", "PostgreSQL", "Docker"],
-            type: "Freelance",
+            type: $_("projects.type_freelance"),
             href: "/projects/germinal",
             logo: "/logos/germinal.png",
         },
         {
             title: "ENCX",
-            description: "Encryption and hashing module powering the secure data pipeline inside Cluo. Designed as a standalone module to avoid becoming a bottleneck.",
+            description: $_("projects.encx"),
             tags: ["Go"],
-            type: "Library",
+            type: $_("projects.type_library"),
             href: "/projects/encx",
         },
-    ] as const;
+        ];
+    });
 </script>
 
 <div class="page container__small">
     <header class="page__header">
-        <span class="label">Selected work</span>
-        <h1 class="title">Projects</h1>
-        <p class="subtitle">A collection of things I've built — from platforms to libraries.</p>
+        <span class="label">{$_('projects.label')}</span>
+        <h1 class="title">{$_('projects.title')}</h1>
+        <p class="subtitle">{$_('projects.subtitle')}</p>
     </header>
 
     <Cards cards={projects} />

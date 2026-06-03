@@ -1,11 +1,12 @@
 <script lang="ts">
+    import { _, locale } from "svelte-i18n";
     import { ArrowRight } from "lucide-svelte";
     import type { PageData } from "./$types";
 
     let { data }: { data: PageData } = $props();
 
     function formatDate(dateStr: string): string {
-        return new Date(dateStr).toLocaleDateString("en-US", {
+        return new Date(dateStr).toLocaleDateString($locale === 'fr' ? 'fr-FR' : 'en-US', {
             month: "short",
             day: "numeric",
             year: "numeric",
@@ -15,12 +16,12 @@
 
 <div class="page container__small">
     <header class="page__header">
-        <h1 class="page__title">Blog</h1>
-        <p class="page__subtitle">Writing on Go, distributed systems, and software craft.</p>
+        <h1 class="page__title">{$_('blog.title')}</h1>
+        <p class="page__subtitle">{$_('blog.subtitle')}</p>
     </header>
 
     {#if data.posts.length === 0}
-        <p class="empty">No posts yet. Check back soon.</p>
+        <p class="empty">{$_('blog.empty')}</p>
     {:else}
         <ul class="post-list">
             {#each data.posts as post}

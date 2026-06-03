@@ -1,10 +1,13 @@
+<script lang="ts">
+    import { _ } from "svelte-i18n";
+</script>
+
 <div class="page container__small">
     <div class="coming-soon">
-        <p class="label">Coming soon</p>
-        <h1 class="title">Contact</h1>
+        <p class="label">{$_('contact.label')}</p>
+        <h1 class="title">{$_('contact.title')}</h1>
         <p class="body">
-            Working on setting up the best ways to reach me. In the meantime, find me on the
-            socials in the nav.
+            {$_('contact.body')}
         </p>
     </div>
 </div>

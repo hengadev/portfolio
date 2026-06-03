@@ -1,13 +1,14 @@
 <script lang="ts">
     import Cards from "$lib/components/Cards.svelte";
     import Card from "$lib/components/Card.svelte";
+    import { _, locale } from "svelte-i18n";
     import { ArrowRight } from "lucide-svelte";
     import type { PageData } from "./$types";
 
     let { data }: { data: PageData } = $props();
 
     function formatDate(dateStr: string): string {
-        return new Date(dateStr).toLocaleDateString("en-US", {
+        return new Date(dateStr).toLocaleDateString($locale === 'fr' ? 'fr-FR' : 'en-US', {
             month: "short",
             day: "numeric",
             year: "numeric",
@@ -16,49 +17,55 @@
 
     const skills = ["Go", "TypeScript", "Python", "Rust", "SvelteKit", "PostgreSQL", "Docker", "Linux"];
 
-    const projects = [
+    const projects = $derived.by(() => {
+        void $locale;
+        return [
         {
             title: "Cluo",
-            description: "Case management ecosystem for a private investigator — Go API, Wails desktop, mobile PWA, and client portal with AI transcription and legal document automation.",
+            description: $_("projects.cluo"),
             tags: ["Go", "SvelteKit", "PostgreSQL", "Wails"],
-            type: "Freelance",
+            type: $_("projects.type_freelance"),
             href: "/projects/cluo",
             logo: "/logos/cluo.png",
         },
         {
             title: "Leviosa",
-            description: "Wellness booking platform connecting clients with professionals. Go modular monolith with Stripe, Vault encryption, and RabbitMQ.",
+            description: $_("projects.leviosa"),
             tags: ["Go", "SvelteKit", "PostgreSQL", "Stripe"],
-            type: "Freelance",
+            type: $_("projects.type_freelance"),
             href: "/projects/leviosa",
             logo: "/logos/leviosa.png",
         },
         {
             title: "Germinal",
-            description: "Event and talent management platform for a creative studio. SvelteKit 5 with background job scheduling, bilingual support, and production infrastructure.",
+            description: $_("projects.germinal"),
             tags: ["SvelteKit", "PostgreSQL", "Docker"],
-            type: "Freelance",
+            type: $_("projects.type_freelance"),
             href: "/projects/germinal",
             logo: "/logos/germinal.png",
         },
-    ];
+        ];
+    });
 
-    const experiments = [
+    const experiments = $derived.by(() => {
+        void $locale;
+        return [
         {
             title: "VizRaft",
-            description: "Implementing the Raft consensus algorithm from scratch in Go — watch leader elections, log replication, and network partitions unfold in real time.",
+            description: $_("experiments.vizraft"),
             tags: ["Go", "Raft"],
-            type: "Coming soon",
+            type: $_("experiments.type_coming_soon"),
             href: "/experiments",
         },
-    ];
+        ];
+    });
 </script>
 
 <div class="page">
     <section class="section hero container__small">
-        <h1 class="hero__title">Freelance full-stack developer.</h1>
+        <h1 class="hero__title">{$_('home.hero.title')}</h1>
         <p class="hero__subtitle">
-            Backend-leaning, with a taste for mathematics, electronics, and the occasional riff.
+            {$_('home.hero.subtitle')}
         </p>
         <div class="badges">
             {#each skills as skill}
@@ -66,36 +73,27 @@
             {/each}
         </div>
         <div class="hero__ctas flex" style="--gap: 1rem; justify-content: center;">
-            <a href="/contact" class="cta-primary">Let's collaborate</a>
-            <a href="/projects" class="cta-secondary">View Projects</a>
+            <a href="/contact" class="cta-primary">{$_('home.hero.cta_primary')}</a>
+            <a href="/projects" class="cta-secondary">{$_('home.hero.cta_secondary')}</a>
         </div>
     </section>
 
     <section class="section about container__small">
         <div class="section__header about__header">
-            <h2 class="section__title">About me</h2>
+            <h2 class="section__title">{$_('home.about.title')}</h2>
             <a href="/about" class="about__link flex" style="--gap: 0.375rem; align-items: center;">
-                More about me <ArrowRight size={16} />
+                {$_('home.about.link')} <ArrowRight size={16} />
             </a>
         </div>
         <div class="about__content grid" style="--gap: 1.25rem;">
             <p class="about__bio">
-                I'm a freelance full-stack developer with a strong backend focus. I build web
-                applications and tools — mostly with <span class="tech">Go</span> on the server and
-                <span class="tech">SvelteKit</span> on the frontend — and I care about systems that
-                are fast, simple, and correct.
+                {$_('home.about.bio1')}
             </p>
             <p class="about__bio">
-                My main stack is <span class="tech">Go</span>, <span class="tech">TypeScript</span>,
-                <span class="tech">PostgreSQL</span>, and <span class="tech">Docker</span>, with some
-                <span class="tech">Python</span> and <span class="tech">Rust</span> for the right
-                problems. I tend to go deep before going wide: I'd rather understand why something
-                works than reach for the nearest abstraction.
+                {$_('home.about.bio2')}
             </p>
             <p class="about__bio">
-                I studied mathematics up through graduate coursework, which probably explains why I'm
-                drawn to things like consensus algorithms and encryption. Outside of code, I tinker
-                with electronics and play electric guitar.
+                {$_('home.about.bio3')}
             </p>
         </div>
     </section>
@@ -103,12 +101,12 @@
     <section class="section projects">
         <div class="section__header section__header--row container__small">
             <div class="section__header-top">
-                <h2 class="section__title">Projects</h2>
+                <h2 class="section__title">{$_('home.projects.title')}</h2>
                 <a href="/projects" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
-                    View all <ArrowRight size={16} />
+                    {$_('home.projects.link')} <ArrowRight size={16} />
                 </a>
             </div>
-            <p class="section__subtitle">A selection of freelance work.</p>
+            <p class="section__subtitle">{$_('home.projects.subtitle')}</p>
         </div>
         <Cards cards={projects} />
     </section>
@@ -116,12 +114,12 @@
     <section class="section experiments container__small">
         <div class="section__header section__header--row">
             <div class="section__header-top">
-                <h2 class="section__title">Experiments</h2>
+                <h2 class="section__title">{$_('home.experiments.title')}</h2>
                 <a href="/experiments" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
-                    View all <ArrowRight size={16} />
+                    {$_('home.experiments.link')} <ArrowRight size={16} />
                 </a>
             </div>
-            <p class="section__subtitle">Side projects, algorithms, and computer science explorations.</p>
+            <p class="section__subtitle">{$_('home.experiments.subtitle')}</p>
         </div>
         <div class="experiments__grid">
             {#each experiments as experiment}
@@ -140,12 +138,12 @@
     <section class="section articles container__small">
         <div class="section__header section__header--row">
             <div class="section__header-top">
-                <h2 class="section__title">Latest Posts</h2>
+                <h2 class="section__title">{$_('home.posts.title')}</h2>
                 <a href="/blog" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
-                    View all <ArrowRight size={16} />
+                    {$_('home.posts.link')} <ArrowRight size={16} />
                 </a>
             </div>
-            <p class="section__subtitle">Writing on Go, distributed systems, and software craft.</p>
+            <p class="section__subtitle">{$_('home.posts.subtitle')}</p>
         </div>
         <ul class="article-list">
             {#each data.latestPosts as post}
@@ -170,12 +168,12 @@
     {/if}
 
     <section class="section cta container__small">
-        <h2 class="cta__title">Looking to Collaborate?</h2>
+        <h2 class="cta__title">{$_('home.cta.title')}</h2>
         <p class="cta__desc">
-            Open to freelance projects and open-source collaboration.<br />
-            If you have something interesting to build, reach out.
+            {$_('home.cta.desc').split('\n')[0]}<br />
+            {$_('home.cta.desc').split('\n')[1]}
         </p>
-        <a href="/contact" class="cta__btn">Get in touch</a>
+        <a href="/contact" class="cta__btn">{$_('home.cta.btn')}</a>
     </section>
 </div>
 
@@ -297,18 +295,6 @@
     .about__bio {
         color: hsl(var(--clr-dark-secondary));
         line-height: 1.7;
-    }
-
-    .tech {
-        display: inline-block;
-        font-family: "Courier New", Courier, monospace;
-        font-size: 0.85em;
-        font-weight: 600;
-        color: hsl(var(--clr-dark-primary));
-        background-color: hsl(var(--clr-light-secondary));
-        border: 1px solid hsl(var(--clr-light-fournary));
-        border-radius: 0.3rem;
-        padding: 0.05em 0.4em;
     }
 
     .about__link {

@@ -1,24 +1,27 @@
 <script lang="ts">
     import Cards from "$lib/components/Cards.svelte";
+    import { _, locale } from "svelte-i18n";
 
-    const experiments = [
+    const experiments = $derived.by(() => {
+        void $locale;
+        return [
         {
             title: "VizRaft",
-            description: "Implementing the Raft consensus algorithm from scratch in Go — watch leader elections, log replication, and network partitions unfold in real time.",
+            description: $_("experiments.vizraft"),
             tags: ["Go", "Raft"],
-            type: "Active",
+            type: $_("experiments.type_active"),
             href: "/experiments/vizraft",
         },
-    ] as const;
+        ];
+    });
 </script>
 
 <div class="page container__small">
     <header class="page__header">
-        <span class="label">Personal work</span>
-        <h1 class="title">Experiments</h1>
+        <span class="label">{$_('experiments.label')}</span>
+        <h1 class="title">{$_('experiments.title')}</h1>
         <p class="subtitle">
-            Side projects, algorithms, and computer science explorations. Less polished than client
-            work — more interesting.
+            {$_('experiments.subtitle')}
         </p>
     </header>
 
