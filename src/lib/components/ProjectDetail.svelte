@@ -12,18 +12,20 @@
         team: string[];
         stack: string[];
         logo?: string;
+        backHref?: string;
+        backLabel?: string;
         children: Snippet;
     };
 
-    let { title, tagline, year, status, role, team, stack, logo, children }: Props = $props();
+    let { title, tagline, year, status, role, team, stack, logo, backHref = "/projects", backLabel = "All projects", children }: Props = $props();
 </script>
 
 <div class="project-detail">
     <!-- Header row -->
     <div class="project-header container__small">
-        <button class="back-btn" onclick={() => goto("/projects")}>
+        <button class="back-btn" onclick={() => goto(backHref)}>
             <ArrowLeft size={14} />
-            <span>All projects</span>
+            <span>{backLabel}</span>
         </button>
 
         <div class="title-row">
