@@ -1,5 +1,6 @@
 <script lang="ts">
     import Cards from "$lib/components/Cards.svelte";
+    import Card from "$lib/components/Card.svelte";
     import { ArrowRight, Mail } from "lucide-svelte";
 
     const skills = ["Go", "TypeScript", "Python", "Rust", "SvelteKit", "PostgreSQL", "Docker", "Linux"];
@@ -28,6 +29,16 @@
             type: "Freelance",
             href: "/projects/germinal",
             logo: "/logos/germinal.png",
+        },
+    ];
+
+    const experiments = [
+        {
+            title: "VizRaft",
+            description: "Implementing the Raft consensus algorithm from scratch in Go — watch leader elections, log replication, and network partitions unfold in real time.",
+            tags: ["Go", "Raft"],
+            type: "Coming soon",
+            href: "/experiments",
         },
     ];
 </script>
@@ -101,28 +112,16 @@
             </div>
             <p class="section__subtitle">Side projects, algorithms, and computer science explorations.</p>
         </div>
-        <div class="experiment-card grid" style="--gap: 1.5rem;">
-            <div class="flex" style="--gap: 0.75rem; align-items: center;">
-                <h3 class="experiment-card__name">VizRaft</h3>
-                <span class="coming-soon">Coming soon</span>
-            </div>
-            <p class="experiment-card__tagline">
-                A distributed key-value store with real-time interactive visualization.
-            </p>
-            <p>
-                A real distributed system implementing the Raft consensus algorithm from scratch in
-                Go, paired with a live visualization: watch leader elections, log replication, and
-                network partitions unfold in real time — and trigger them yourself.
-            </p>
-            <p>
-                Starting from the Raft paper (Ongaro & Ousterhout, 2014) before writing a line of
-                code. The goal is to understand the correctness proofs — quorum safety, election
-                timeout randomization, state machine replication — then build something that makes
-                those abstractions visible and interactive.
-            </p>
-            <a href="/experiments" class="experiment-card__link flex" style="--gap: 0.375rem; align-items: center; width: fit-content;">
-                See all experiments <ArrowRight size={16} />
-            </a>
+        <div class="experiments__grid">
+            {#each experiments as experiment}
+                <Card
+                    title={experiment.title}
+                    description={experiment.description}
+                    tags={experiment.tags}
+                    type={experiment.type}
+                    href={experiment.href}
+                />
+            {/each}
         </div>
     </section>
 
@@ -304,8 +303,9 @@
         gap: 0.625rem;
     }
 
-    /* ── Projects section header ── */
-    .projects .section__header {
+    /* ── Projects / Experiments section header ── */
+    .projects .section__header,
+    .experiments .section__header {
         margin-bottom: 3rem;
     }
 
@@ -314,46 +314,10 @@
         margin-inline: auto;
     }
 
-    .experiment-card {
-        padding: 2rem;
-        border-radius: 1.5rem;
-        background-color: hsl(var(--clr-light-secondary));
-        border: 1px solid hsl(var(--clr-light-fournary));
-        color: hsl(var(--clr-dark-secondary));
-        line-height: 1.7;
-    }
-
-    .experiment-card__name {
-        font-size: var(--h3);
-        font-weight: 600;
-        color: hsl(var(--clr-dark-primary));
-    }
-
-    .coming-soon {
-        font-size: var(--label);
-        font-weight: 500;
-        color: hsl(var(--clr-dark-ternary));
-        background-color: hsl(var(--clr-light-ternary));
-        border: 1px solid hsl(var(--clr-light-fournary));
-        border-radius: 999px;
-        padding: 0.2rem 0.65rem;
-    }
-
-    .experiment-card__tagline {
-        font-weight: 500;
-        color: hsl(var(--clr-dark-secondary));
-    }
-
-    .experiment-card__link {
-        font-size: var(--p);
-        font-weight: 500;
-        color: hsl(var(--clr-dark-primary));
-        text-decoration: none;
-        transition: gap 150ms ease;
-    }
-
-    .experiment-card__link:hover {
-        gap: 0.625rem;
+    .experiments__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
     }
 
     /* ── CTA ── */
