@@ -1,64 +1,166 @@
-<script>
-    import Tabs from "$lib/components/Tabs.svelte";
-    import { ArrowUpRight } from "lucide-svelte";
-    import logo from "$lib/assets/logo.svelte";
-    // TODO: add links to the linkedin and the resume button
+<script lang="ts">
+    import { page } from "$app/stores";
+    import { Github, Twitter, Linkedin, FileDown } from "lucide-svelte";
+
+    const navLinks = [
+        { name: "Home", href: "/" },
+        { name: "About", href: "/about" },
+        { name: "Projects", href: "/projects" },
+        { name: "Blog", href: "/blog" },
+        { name: "Contact", href: "/contact" },
+    ];
+
+    const socials = [
+        { icon: Github, href: "https://github.com/GaryHY", label: "GitHub" },
+        { icon: Twitter, href: "https://x.com/", label: "X" },
+        { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" },
+    ];
+
+    let pathSlug = $derived(`~${$page.url.pathname}`);
+
+    let currentPath = $derived($page.url.pathname);
+
+    function isActive(href: string): boolean {
+        if (href === "/") return currentPath === "/";
+        return currentPath.startsWith(href);
+    }
 </script>
 
-<nav>
-    <ul class="grid nav__list container">
-        <li>
-            <div class="logo">
-                <svelte:component this={logo} />
-            </div>
-        </li>
-        <li>
-            <Tabs />
-        </li>
-        <li>
-            <div class="flex ctas" style="--gap: 0.5rem;">
-                <button class="extralink flex" style="--gap: 0rem;">
-                    <p>LinkedIn</p>
-                    <ArrowUpRight />
-                </button>
-                <button class="extralink flex" style="--gap: 0rem;">
-                    <p>Resume</p>
-                    <ArrowUpRight />
-                </button>
-            </div>
-        </li>
-    </ul>
-</nav>
+<header>
+    <div class="nav-inner container">
+        <div class="terminal-path">
+            <span>{pathSlug}</span><span class="cursor"></span>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                {#each navLinks as { name, href }}
+                    <li>
+                        <a {href} class:active={isActive(href)}>{name}</a>
+                    </li>
+                {/each}
+            </ul>
+        </nav>
+
+        <div class="social-links">
+            {#each socials as { icon: Icon, href, label }}
+                <a
+                    {href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    class="icon-link"
+                >
+                    <Icon size={20} />
+                </a>
+            {/each}
+            <a href="/resume.pdf" download aria-label="Download resume" class="icon-link">
+                <FileDown size={20} />
+            </a>
+        </div>
+    </div>
+</header>
 
 <style>
-    .nav__list {
-        margin-inline: auto;
-        padding-block: 2rem;
-        grid-template-columns: repeat(3, 1fr);
-        font-size: 1rem;
+    header {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         z-index: 9999;
+        padding-block: 1.25rem;
+        background-color: hsl(var(--clr-light-primary) / 0.85);
+        backdrop-filter: blur(12px);
     }
-    .ctas {
+
+    .nav-inner {
+        margin-inline: auto;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        width: fit-content;
-        margin-left: auto;
     }
-    .logo {
-        --logo-dimension: 3rem;
-        width: var(--logo-dimension);
-        height: var(--logo-dimension);
+
+    /* Terminal path */
+    .terminal-path {
+        display: flex;
+        align-items: center;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        color: hsl(var(--clr-dark-secondary));
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 0.55em;
+        height: 1.1em;
+        background-color: hsl(var(--clr-dark-secondary));
+        vertical-align: text-bottom;
+        animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+
+    /* Navigation links */
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .nav-links a {
+        display: block;
+        font-size: 1rem;
+        font-weight: 500;
+        color: hsl(var(--clr-grey-400));
+        text-decoration: none;
+        padding: 0.4rem 0.75rem;
+        border-radius: 0.375rem;
+        transition:
+            color 150ms ease,
+            background-color 150ms ease;
+    }
+
+    .nav-links a:hover {
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-secondary));
+    }
+
+    .nav-links a.active {
+        color: hsl(var(--clr-dark-primary));
+        font-weight: 600;
+    }
+
+    /* Social icons */
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 0.125rem;
+        margin-left: auto;
+        width: fit-content;
+    }
+
+    .icon-link {
         display: grid;
         place-content: center;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        color: hsl(var(--clr-grey-400));
+        text-decoration: none;
+        transition:
+            color 150ms ease,
+            background-color 150ms ease;
     }
-    .extralink {
-        padding: 0.5rem 1rem;
-        border-radius: 1rem;
-    }
-    .extralink:is(:hover, :focus) {
+
+    .icon-link:hover {
+        color: hsl(var(--clr-dark-primary));
         background-color: hsl(var(--clr-light-secondary));
     }
 </style>
