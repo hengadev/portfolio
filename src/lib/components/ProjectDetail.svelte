@@ -11,25 +11,14 @@
         role: string[];
         team: string[];
         stack: string[];
-        image?: string;
-        gradient: string;
         logo?: string;
         children: Snippet;
     };
 
-    let { title, tagline, year, status, role, team, stack, image, gradient, logo, children }: Props = $props();
+    let { title, tagline, year, status, role, team, stack, logo, children }: Props = $props();
 </script>
 
 <div class="project-detail">
-    <!-- Hero -->
-    <div
-        class="hero"
-        style={`background: ${gradient};` + (image ? ` background-image: url(${image}); background-size: cover; background-position: center top;` : "")}
-        role="img"
-        aria-label="{title} project preview"
-    >
-    </div>
-
     <!-- Header row -->
     <div class="project-header container__small">
         <button class="back-btn" onclick={() => goto("/projects")}>
@@ -98,19 +87,10 @@
     .project-detail {
         display: grid;
         gap: 2.5rem;
+        padding-top: 3rem;
         padding-bottom: 6rem;
     }
 
-    /* Hero */
-    .hero {
-        width: 100%;
-        height: 420px;
-        display: grid;
-        place-content: center;
-        position: relative;
-    }
-
-/* Header */
     .project-header {
         margin-inline: auto;
         display: grid;
@@ -192,14 +172,12 @@
         max-width: 60ch;
     }
 
-    /* Separator */
     .separator {
         margin-inline: auto;
         height: 1px;
         background-color: hsl(var(--clr-light-fournary));
     }
 
-    /* Body */
     .project-body {
         margin-inline: auto;
         display: grid;
@@ -208,12 +186,11 @@
         align-items: start;
     }
 
-    /* Sidebar */
     .sidebar {
         display: grid;
         gap: 2rem;
         position: sticky;
-        top: 8rem;
+        top: 3rem;
     }
 
     .sidebar__section {
@@ -241,17 +218,12 @@
         line-height: 1.5;
     }
 
-    /* Main content */
     .main-content {
         display: grid;
         gap: 3rem;
     }
 
     @media (max-width: 768px) {
-        .hero {
-            height: 260px;
-        }
-
         .project-body {
             grid-template-columns: 1fr;
             gap: 2rem;
