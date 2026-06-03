@@ -1,6 +1,7 @@
 <script lang="ts">
     import { ArrowUpRight } from "lucide-svelte";
     import { goto } from "$app/navigation";
+    import { _ } from "svelte-i18n";
 
     type Props = {
         title: string;
@@ -37,7 +38,7 @@
             {/each}
         </div>
         <span class="card__link">
-            View project <ArrowUpRight size={14} />
+            {$_('card.view_project')} <ArrowUpRight size={14} />
         </span>
     </div>
 </article>

@@ -2,6 +2,7 @@
     import type { Snippet } from "svelte";
     import { ArrowLeft } from "lucide-svelte";
     import { goto } from "$app/navigation";
+    import { _ } from "svelte-i18n";
 
     type Props = {
         title: string;
@@ -13,11 +14,13 @@
         stack: string[];
         logo?: string;
         backHref?: string;
-        backLabel?: string;
+        backLabel?: string | undefined;
         children: Snippet;
     };
 
-    let { title, tagline, year, status, role, team, stack, logo, backHref = "/projects", backLabel = "All projects", children }: Props = $props();
+    let { title, tagline, year, status, role, team, stack, logo, backHref = "/projects", backLabel = undefined, children }: Props = $props();
+
+    const resolvedBackLabel = $derived(backLabel ?? $_('detail.back_projects'));
 </script>
 
 <div class="project-detail">
@@ -25,7 +28,7 @@
     <div class="project-header container__small">
         <button class="back-btn" onclick={() => goto(backHref)}>
             <ArrowLeft size={14} />
-            <span>{backLabel}</span>
+            <span>{resolvedBackLabel}</span>
         </button>
 
         <div class="title-row">
@@ -50,7 +53,7 @@
     <div class="project-body container__small">
         <aside class="sidebar">
             <div class="sidebar__section">
-                <p class="sidebar__label">Role</p>
+                <p class="sidebar__label">{$_('detail.role')}</p>
                 <ul>
                     {#each role as r}
                         <li>{r}</li>
@@ -58,7 +61,7 @@
                 </ul>
             </div>
             <div class="sidebar__section">
-                <p class="sidebar__label">Team</p>
+                <p class="sidebar__label">{$_('detail.team')}</p>
                 <ul>
                     {#each team as t}
                         <li>{t}</li>
@@ -66,7 +69,7 @@
                 </ul>
             </div>
             <div class="sidebar__section">
-                <p class="sidebar__label">Stack</p>
+                <p class="sidebar__label">{$_('detail.stack')}</p>
                 <ul>
                     {#each stack as s}
                         <li>{s}</li>
@@ -74,7 +77,7 @@
                 </ul>
             </div>
             <div class="sidebar__section">
-                <p class="sidebar__label">Timeline</p>
+                <p class="sidebar__label">{$_('detail.timeline')}</p>
                 <p>{year} — {status}</p>
             </div>
         </aside>
