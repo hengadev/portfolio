@@ -6,6 +6,7 @@
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
         { name: "Projects", href: "/projects" },
+        { name: "Experiments", href: "/experiments" },
         { name: "Blog", href: "/blog" },
         { name: "Contact", href: "/contact" },
     ];
