@@ -1,13 +1,14 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n";
     import { Github, Twitter, Linkedin, Instagram } from "lucide-svelte";
 
     const navLinks = [
-        { name: "Home", href: "/" },
-        { name: "About", href: "/about" },
-        { name: "Projects", href: "/projects" },
-        { name: "Experiments", href: "/experiments" },
-        { name: "Blog", href: "/blog" },
-        { name: "Contact", href: "/contact" },
+        { key: "nav.home", href: "/" },
+        { key: "nav.about", href: "/about" },
+        { key: "nav.projects", href: "/projects" },
+        { key: "nav.experiments", href: "/experiments" },
+        { key: "nav.blog", href: "/blog" },
+        { key: "nav.contact", href: "/contact" },
     ];
 
     const socials = [
@@ -33,8 +34,8 @@
         <p class="copyright">© {year} henga.dev</p>
 
         <nav>
-            {#each navLinks as { name, href }}
-                <a {href}>{name}</a>
+            {#each navLinks as { key, href }}
+                <a {href}>{$_(key)}</a>
             {/each}
         </nav>
 
