@@ -32,4 +32,16 @@
         gap: 1rem;
         margin-inline: auto;
     }
+
+    @media (max-width: 900px) {
+        .cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 560px) {
+        .cards {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
