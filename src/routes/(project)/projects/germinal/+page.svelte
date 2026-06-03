@@ -1,11 +1,5 @@
 <script lang="ts">
-	import { page } from "$app/stores";
-	import SideNavigation from "../SideNavigation.svelte";
-	import GerminalBlock from "./GerminalBlock.svelte";
-	let tabs = ["Overview", "Architecture", "Technical Stack"];
+    import GerminalBlock from "./GerminalBlock.svelte";
 </script>
 
-<div class="grid" style="--gap: 3rem;">
-	<SideNavigation project="Germinal" {tabs} />
-	<GerminalBlock />
-</div>
+<GerminalBlock />

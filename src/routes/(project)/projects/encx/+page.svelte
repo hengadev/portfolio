@@ -1,17 +1,48 @@
 <script lang="ts">
+    import ProjectDetail from "$lib/components/ProjectDetail.svelte";
 </script>
 
-<div>
-    Un point crucial du project Leviosa (link vers le project) qui me permet de
-    faciliter les etapes d'encryption, hashing de donnees.
-</div>
+<ProjectDetail
+    title="ENCX"
+    tagline="Encryption and hashing module powering the secure data pipeline inside Cluo."
+    year="2026"
+    status="Active"
+    role={["Backend Developer"]}
+    team={["Gary HENRY"]}
+    stack={["Go"]}
+    gradient="linear-gradient(135deg, hsl(240 20% 25%), hsl(260 30% 35%))"
+>
+    <section class="story-section">
+        <h2 class="section-title">Overview</h2>
+        <p>
+            A crucial component of the Cluo project that facilitates encryption and hashing of
+            sensitive data. Designed as a standalone module to avoid becoming a bottleneck in the
+            data pipeline.
+        </p>
+        <p class="placeholder">Full write-up coming soon.</p>
+    </section>
+</ProjectDetail>
 
-<div>
-    Etant une fonctionnalite qui sera utilise regulierement, la difficulte etant
-    de developper une API qui ne soit pas un bottleneck.
-</div>
+<style>
+    .story-section {
+        display: grid;
+        gap: 1rem;
+    }
 
-<div>
-    Beaucoup appris, en computer science, sur le language de programmation go
-    (reflection, concurrency, memory model, the garbage collector)
-</div>
+    .section-title {
+        font-size: var(--h3);
+        font-weight: 600;
+        color: hsl(var(--clr-dark-primary));
+    }
+
+    p {
+        color: hsl(var(--clr-dark-secondary));
+        line-height: 1.75;
+        font-size: 0.975rem;
+    }
+
+    .placeholder {
+        color: hsl(var(--clr-dark-ternary));
+        font-style: italic;
+    }
+</style>
