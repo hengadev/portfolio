@@ -62,9 +62,21 @@
     "type_active": "Active"
   },
   "contact": {
-    "label": "Coming soon",
+    "label": "Get in touch",
     "title": "Contact",
-    "body": "Working on setting up the best ways to reach me. In the meantime, find me on the socials in the nav."
+    "body": "Have a project in mind or want to collaborate? Send me a message.",
+    "name": "Name",
+    "name_placeholder": "Your name",
+    "email": "Email",
+    "email_placeholder": "you@example.com",
+    "message": "Message",
+    "message_placeholder": "Tell me about your project...",
+    "submit": "Send message",
+    "sending": "Sending...",
+    "success_label": "Message sent",
+    "success_title": "Got it.",
+    "success_body": "Thanks for reaching out. I'll get back to you shortly.",
+    "error_body": "Something went wrong — your message couldn't be sent. Try again or reach out directly."
   },
   "blog": {
     "title": "Blog",

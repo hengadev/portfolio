@@ -62,9 +62,21 @@
     "type_active": "Actif"
   },
   "contact": {
-    "label": "Bientôt disponible",
+    "label": "Me contacter",
     "title": "Contact",
-    "body": "En cours de configuration des meilleures façons de me contacter. En attendant, retrouvez-moi sur les réseaux dans la barre de navigation."
+    "body": "Vous avez un projet en tête ou souhaitez collaborer ? Envoyez-moi un message.",
+    "name": "Nom",
+    "name_placeholder": "Votre nom",
+    "email": "Email",
+    "email_placeholder": "vous@exemple.com",
+    "message": "Message",
+    "message_placeholder": "Parlez-moi de votre projet...",
+    "submit": "Envoyer",
+    "sending": "Envoi en cours...",
+    "success_label": "Message envoyé",
+    "success_title": "Reçu.",
+    "success_body": "Merci de m'avoir contacté. Je vous répondrai prochainement.",
+    "error_body": "Une erreur est survenue — votre message n'a pas pu être envoyé. Réessayez ou contactez-moi directement."
   },
   "blog": {
     "title": "Blog",
