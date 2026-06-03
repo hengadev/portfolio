@@ -8,6 +8,6 @@
 
 <style>
     .content {
-        margin-top: 8rem;
+        margin-top: 0;
     }
 </style>
