@@ -50,30 +50,55 @@
     </section>
 
     <section class="section about container__small">
-        <div class="grid" style="--gap: 1.25rem;">
-            <p class="about__bio">
-                Freelance full-stack developer with a backend focus, building web applications and
-                tools with Go, TypeScript, and Rust. I care about systems that are fast, simple, and
-                correct — probably a side effect of studying mathematics. When I'm not coding, I'm
-                tinkering with electronics or making noise on an electric guitar.
-            </p>
-            <a href="/about" class="about__link flex" style="--gap: 0.375rem; align-items: center; width: fit-content;">
+        <div class="section__header about__header">
+            <h2 class="section__title">About me</h2>
+            <a href="/about" class="about__link flex" style="--gap: 0.375rem; align-items: center;">
                 More about me <ArrowRight size={16} />
             </a>
+        </div>
+        <div class="about__content grid" style="--gap: 1.25rem;">
+            <p class="about__bio">
+                I'm a freelance full-stack developer with a strong backend focus. I build web
+                applications and tools — mostly with <span class="tech">Go</span> on the server and
+                <span class="tech">SvelteKit</span> on the frontend — and I care about systems that
+                are fast, simple, and correct.
+            </p>
+            <p class="about__bio">
+                My main stack is <span class="tech">Go</span>, <span class="tech">TypeScript</span>,
+                <span class="tech">PostgreSQL</span>, and <span class="tech">Docker</span>, with some
+                <span class="tech">Python</span> and <span class="tech">Rust</span> for the right
+                problems. I tend to go deep before going wide: I'd rather understand why something
+                works than reach for the nearest abstraction.
+            </p>
+            <p class="about__bio">
+                I studied mathematics up through graduate coursework, which probably explains why I'm
+                drawn to things like consensus algorithms and encryption. Outside of code, I tinker
+                with electronics and play electric guitar.
+            </p>
         </div>
     </section>
 
     <section class="section projects">
-        <div class="section__header container__small">
-            <h2 class="section__title">Projects</h2>
+        <div class="section__header section__header--row container__small">
+            <div class="section__header-top">
+                <h2 class="section__title">Projects</h2>
+                <a href="/projects" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
+                    View all <ArrowRight size={16} />
+                </a>
+            </div>
             <p class="section__subtitle">A selection of freelance work.</p>
         </div>
         <Cards cards={projects} />
     </section>
 
     <section class="section experiments container__small">
-        <div class="section__header">
-            <h2 class="section__title">Experiments</h2>
+        <div class="section__header section__header--row">
+            <div class="section__header-top">
+                <h2 class="section__title">Experiments</h2>
+                <a href="/experiments" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
+                    View all <ArrowRight size={16} />
+                </a>
+            </div>
             <p class="section__subtitle">Side projects, algorithms, and computer science explorations.</p>
         </div>
         <div class="experiment-card grid" style="--gap: 1.5rem;">
@@ -223,10 +248,29 @@
         gap: 1.5rem;
     }
 
+    .about__header {
+        margin-inline: 0;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     .about__bio {
         color: hsl(var(--clr-dark-secondary));
         line-height: 1.7;
-        max-width: 60ch;
+    }
+
+    .tech {
+        display: inline-block;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.85em;
+        font-weight: 600;
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-secondary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.3rem;
+        padding: 0.05em 0.4em;
     }
 
     .about__link {
@@ -238,6 +282,25 @@
     }
 
     .about__link:hover {
+        gap: 0.625rem;
+    }
+
+    /* ── Section header with title + link row ── */
+    .section__header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .section__link {
+        font-size: var(--p);
+        font-weight: 500;
+        color: hsl(var(--clr-dark-primary));
+        text-decoration: none;
+        transition: gap 150ms ease;
+    }
+
+    .section__link:hover {
         gap: 0.625rem;
     }
 
