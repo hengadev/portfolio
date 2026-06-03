@@ -13,7 +13,7 @@
         if (history.length > 0) {
             history.back();
         } else {
-            goto(`/project/${project}`);
+            goto(`/projects/${project}`);
         }
     }
 

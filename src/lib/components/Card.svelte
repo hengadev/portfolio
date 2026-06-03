@@ -23,7 +23,7 @@
     }
     import { goto } from "$app/navigation";
     function getProjectPage() {
-        return `/project/${title.toLowerCase()}`;
+        return `/projects/${title.toLowerCase()}`;
     }
 </script>
 
