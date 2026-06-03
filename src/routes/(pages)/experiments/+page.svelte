@@ -6,8 +6,8 @@
             title: "VizRaft",
             description: "Implementing the Raft consensus algorithm from scratch in Go — watch leader elections, log replication, and network partitions unfold in real time.",
             tags: ["Go", "Raft"],
-            type: "Coming soon",
-            href: "/experiments",
+            type: "Active",
+            href: "/experiments/vizraft",
         },
     ] as const;
 </script>
