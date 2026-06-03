@@ -30,9 +30,9 @@
 
 <header>
     <div class="nav-inner container">
-        <div class="terminal-path">
+        <a href="/" class="terminal-path">
             <span>{pathSlug}</span><span class="cursor"></span>
-        </div>
+        </a>
 
         <nav>
             <ul class="nav-links">
@@ -84,6 +84,11 @@
     }
 
     /* Terminal path */
+    a.terminal-path {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
     .terminal-path {
         display: flex;
         align-items: center;
