@@ -1,5 +1,4 @@
 <script>
-    import "$lib/styles/style.css";
     // TODO: add the back button
 </script>
 

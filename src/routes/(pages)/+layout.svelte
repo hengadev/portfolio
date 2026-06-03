@@ -1,7 +1,6 @@
 <script>
     import Nav from "$lib/sections/Nav.svelte";
     import Footer from "$lib/sections/Footer.svelte";
-    import "$lib/styles/style.css";
 </script>
 
 <div>

@@ -1,6 +1,3 @@
-<script>
-    import "$lib/styles/style.css";
-</script>
 
 <div class="container center">
     <p class="text capitalize">coming soon.</p>
