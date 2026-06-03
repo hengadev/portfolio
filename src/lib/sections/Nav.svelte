@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { Github, Twitter, Linkedin, FileDown } from "lucide-svelte";
+    import { Github, Twitter, Linkedin, Instagram, FileDown } from "lucide-svelte";
 
     const navLinks = [
         { name: "Home", href: "/" },
@@ -14,6 +14,7 @@
         { icon: Github, href: "https://github.com/GaryHY", label: "GitHub" },
         { icon: Twitter, href: "https://x.com/", label: "X" },
         { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" },
+        { icon: Instagram, href: "https://www.instagram.com/itshenga/", label: "Instagram" },
     ];
 
     let pathSlug = $derived(`~${$page.url.pathname}`);
