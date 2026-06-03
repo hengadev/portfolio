@@ -33,8 +33,5 @@
   },
   "dependencies": {
     "lucide-svelte": "^0.460.1"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": ["@sveltejs/kit", "esbuild"]
   }
 }
