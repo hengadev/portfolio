@@ -249,7 +249,7 @@
         color: hsl(var(--clr-light-primary));
         background-color: hsl(var(--clr-dark-primary));
         padding: 0.65rem 1.5rem;
-        border-radius: 999px;
+        border-radius: 0.375rem;
         transition: background-color 150ms ease;
     }
 
@@ -264,7 +264,7 @@
         color: hsl(var(--clr-dark-primary));
         background-color: hsl(var(--clr-light-primary));
         padding: 0.65rem 1.5rem;
-        border-radius: 999px;
+        border-radius: 0.375rem;
         border: 2px solid hsl(var(--clr-light-fournary));
         transition: border-color 150ms ease, background-color 150ms ease;
     }
@@ -447,7 +447,7 @@
         color: hsl(var(--clr-light-primary));
         background-color: hsl(var(--clr-dark-primary));
         padding: 0.65rem 1.5rem;
-        border-radius: 999px;
+        border-radius: 0.375rem;
         margin-top: 0.5rem;
         transition: background-color 150ms ease;
     }
