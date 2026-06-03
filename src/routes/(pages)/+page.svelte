@@ -370,27 +370,31 @@
 
     .article-list {
         display: grid;
-        gap: 0;
+        gap: 0.75rem;
     }
 
     .article-item {
-        border-top: 1px solid hsl(var(--clr-light-fournary));
+        background-color: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.75rem;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
     }
 
-    .article-item:last-child {
-        border-bottom: 1px solid hsl(var(--clr-light-fournary));
+    .article-item:hover {
+        border-color: hsl(var(--clr-dark-ternary));
+        box-shadow: 0 4px 16px hsl(0 0% 0% / 0.06);
     }
 
     .article-link {
         display: grid;
         gap: 0.4rem;
-        padding-block: 1.5rem;
+        padding: 1.5rem;
         text-decoration: none;
         transition: padding-left 150ms ease;
     }
 
     .article-link:hover {
-        padding-left: 0.5rem;
+        padding-left: 2rem;
     }
 
     .article__date {
