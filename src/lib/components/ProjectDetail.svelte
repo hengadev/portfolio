@@ -28,9 +28,6 @@
         role="img"
         aria-label="{title} project preview"
     >
-        {#if !image && logo}
-            <img src={logo} alt="" aria-hidden="true" class="hero__logo" />
-        {/if}
     </div>
 
     <!-- Header row -->
@@ -113,15 +110,7 @@
         position: relative;
     }
 
-    .hero__logo {
-        width: 5rem;
-        height: 5rem;
-        object-fit: contain;
-        opacity: 0.6;
-        filter: brightness(0) invert(1);
-    }
-
-    /* Header */
+/* Header */
     .project-header {
         margin-inline: auto;
         display: grid;
