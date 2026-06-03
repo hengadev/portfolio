@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 WORKDIR /usr/src/app
 
 ENV PNPM_HOME="/pnpm"
@@ -17,7 +17,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm run build
 
-FROM gcr.io/distroless/nodejs20-debian12:nonroot
+FROM gcr.io/distroless/nodejs22-debian12:nonroot
 WORKDIR /usr/src/app
 
 COPY --from=prod-deps /usr/src/app/node_modules ./node_modules/
