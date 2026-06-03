@@ -8,7 +8,10 @@
         Linkedin,
         Instagram,
         FileDown,
+        Sun,
+        Moon,
     } from "lucide-svelte";
+    import { theme, toggleTheme } from "$lib/theme/store";
 
     const navLinks = [
         { key: "nav.home", href: "/" },
@@ -83,6 +86,18 @@
                 <FileDown size={20} />
             </a>
             <div class="lang-separator" aria-hidden="true"></div>
+            <button
+                class="lang-toggle"
+                onclick={toggleTheme}
+                aria-label={$theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                data-tooltip={$theme === 'dark' ? 'Light' : 'Dark'}
+            >
+                {#if $theme === 'dark'}
+                    <Sun size={16} />
+                {:else}
+                    <Moon size={16} />
+                {/if}
+            </button>
             <button
                 class="lang-toggle"
                 onclick={toggleLocale}
@@ -196,6 +211,10 @@
 
     .lang-toggle {
         position: relative;
+        display: grid;
+        place-content: center;
+        width: 2rem;
+        height: 2rem;
         font-size: 0.8rem;
         font-weight: 600;
         letter-spacing: 0.05em;
@@ -203,7 +222,6 @@
         background: none;
         border: 1px solid hsl(var(--clr-light-fournary));
         border-radius: 0.375rem;
-        padding: 0.3rem 0.55rem;
         cursor: pointer;
         transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
     }
