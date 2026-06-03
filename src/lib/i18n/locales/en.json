@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "experiments": "Experiments",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Freelance full-stack developer.",
+      "subtitle": "Backend-leaning, with a taste for mathematics, electronics, and the occasional riff.",
+      "cta_primary": "Let's collaborate",
+      "cta_secondary": "View Projects"
+    },
+    "about": {
+      "title": "About me",
+      "link": "More about me",
+      "bio1": "I'm a freelance full-stack developer with a strong backend focus. I build web applications and tools — mostly with Go on the server and SvelteKit on the frontend — and I care about systems that are fast, simple, and correct.",
+      "bio2": "My main stack is Go, TypeScript, PostgreSQL, and Docker, with some Python and Rust for the right problems. I tend to go deep before going wide: I'd rather understand why something works than reach for the nearest abstraction.",
+      "bio3": "I studied mathematics up through graduate coursework, which probably explains why I'm drawn to things like consensus algorithms and encryption. Outside of code, I tinker with electronics and play electric guitar."
+    },
+    "projects": {
+      "title": "Projects",
+      "link": "View all",
+      "subtitle": "A selection of freelance work."
+    },
+    "experiments": {
+      "title": "Experiments",
+      "link": "View all",
+      "subtitle": "Side projects, algorithms, and computer science explorations."
+    },
+    "posts": {
+      "title": "Latest Posts",
+      "link": "View all",
+      "subtitle": "Writing on Go, distributed systems, and software craft."
+    },
+    "cta": {
+      "title": "Looking to Collaborate?",
+      "desc": "Open to freelance projects and open-source collaboration.\nIf you have something interesting to build, reach out.",
+      "btn": "Get in touch"
+    }
+  },
+  "projects": {
+    "label": "Selected work",
+    "title": "Projects",
+    "subtitle": "A collection of things I've built — from platforms to libraries.",
+    "cluo": "Case management ecosystem for a private investigator — Go API, Wails desktop, mobile PWA, and client portal with AI transcription and legal document automation.",
+    "leviosa": "Wellness booking platform connecting clients with professionals. Go modular monolith with Stripe, Vault encryption, and RabbitMQ.",
+    "germinal": "Event and talent management platform for a creative studio. SvelteKit 5 with background job scheduling, bilingual support, and production infrastructure.",
+    "encx": "Encryption and hashing module powering the secure data pipeline inside Cluo. Designed as a standalone module to avoid becoming a bottleneck.",
+    "type_freelance": "Freelance",
+    "type_library": "Library"
+  },
+  "experiments": {
+    "label": "Personal work",
+    "title": "Experiments",
+    "subtitle": "Side projects, algorithms, and computer science explorations. Less polished than client work — more interesting.",
+    "vizraft": "Implementing the Raft consensus algorithm from scratch in Go — watch leader elections, log replication, and network partitions unfold in real time.",
+    "type_coming_soon": "Coming soon",
+    "type_active": "Active"
+  },
+  "contact": {
+    "label": "Coming soon",
+    "title": "Contact",
+    "body": "Working on setting up the best ways to reach me. In the meantime, find me on the socials in the nav."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Writing on Go, distributed systems, and software craft.",
+    "empty": "No posts yet. Check back soon.",
+    "back": "Back to blog"
+  },
+  "card": {
+    "view_project": "View project"
+  },
+  "detail": {
+    "role": "Role",
+    "team": "Team",
+    "stack": "Stack",
+    "timeline": "Timeline",
+    "back_projects": "All projects",
+    "back_experiments": "All experiments",
+    "overview": "Overview",
+    "highlights": "Technical highlights",
+    "learned": "What I learned",
+    "coming_soon": "This section is coming soon.",
+    "full_writeup": "Full write-up coming soon."
+  },
+  "cluo": {
+    "overview_1": "Built to replace manual investigation workflows. Field agents use a Wails + SvelteKit desktop app for case management, capture evidence on a mobile PWA, and deliver securely to clients through a dedicated portal — all driven by one Go API.",
+    "overview_2": "The legal document chain (Estimate → Mandate → Contract → Invoice) is automated as a state machine with per-document PDF generation.",
+    "highlight_1_label": "4 apps, one backend:",
+    "highlight_1_body": "Go API, Wails desktop, mobile PWA, and client portal all share a single hexagonal backend with port interfaces.",
+    "highlight_2_label": "AI pipeline:",
+    "highlight_2_body": "transcribes field audio, extracts structured data (people, timelines, facts), and pre-fills the report editor.",
+    "highlight_3_label": "Legal chain automation:",
+    "highlight_3_body": "Estimate → Mandate → Contract → Invoice modeled as a state machine with per-document PDF generation and delivery.",
+    "highlight_4_label": "Magic link auth:",
+    "highlight_4_body": "SHA-256 tokens with configurable expiration and investigator-controlled revocation — no client accounts needed.",
+    "highlight_5_label": "Infrastructure as code:",
+    "highlight_5_body": "Ansible + Terraform for reproducible, version-controlled deployments."
+  },
+  "leviosa": {
+    "overview_1": "A crucial component originally built for another project, extracted as a standalone library to facilitate encryption and hashing of sensitive data. The main challenge was designing an API that stays out of the way while remaining correct and fast."
+  },
+  "germinal": {
+    "overview_1": "A sophisticated event and talent management platform with bilingual support, media galleries, automated workflows, and production-ready infrastructure.",
+    "overview_2": "Built from the ground up as a full-stack showcase demonstrating modern web development practices. The platform features a custom middleware system for cross-cutting concerns, an LRU caching layer with tag-based invalidation, and a PostgreSQL-backed job scheduler for asynchronous tasks.",
+    "highlight_1_label": "Middleware architecture:",
+    "highlight_1_body": "Decorator pattern for composable request handling — validation, auth, rate limiting, and CSRF in a single chain.",
+    "highlight_2_label": "Background jobs:",
+    "highlight_2_body": "pg-boss integration with cron-scheduled tasks for email queues, cleanup, and reminders.",
+    "highlight_3_label": "Caching strategy:",
+    "highlight_3_body": "LRU cache with TTL and tag-based invalidation for optimal performance.",
+    "highlight_4_label": "Type safety:",
+    "highlight_4_body": "End-to-end TypeScript with Zod schemas for runtime validation.",
+    "highlight_5_label": "Production deployment:",
+    "highlight_5_body": "Multi-stage Docker builds with security hardening (non-root user, Alpine base).",
+    "highlight_6_label": "Observability:",
+    "highlight_6_body": "Sentry integration for error tracking and performance monitoring.",
+    "highlight_7_label": "Testing:",
+    "highlight_7_body": "Vitest for unit tests and Playwright for E2E coverage.",
+    "view_repository": "View repository"
+  },
+  "encx": {
+    "overview_1": "A crucial component of the Cluo project that facilitates encryption and hashing of sensitive data. Designed as a standalone module to avoid becoming a bottleneck in the data pipeline."
+  },
+  "vizraft": {
+    "overview_1": "VizRaft is a from-scratch implementation of the Raft distributed consensus algorithm in Go, paired with a real-time visualizer that makes the protocol's behavior tangible. Leader elections, log replication, and network partition recovery all play out visually as you interact with the cluster.",
+    "overview_2": "The goal is to turn a paper into running code, then make that code explainable — both to myself and to anyone trying to understand how distributed systems stay consistent under failure."
+  }
+}

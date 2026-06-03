@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "experiments": "Expériences",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Développeur full-stack freelance.",
+      "subtitle": "Orienté backend, avec un goût pour les mathématiques, l'électronique et la guitare.",
+      "cta_primary": "Travaillons ensemble",
+      "cta_secondary": "Voir les projets"
+    },
+    "about": {
+      "title": "À propos",
+      "link": "En savoir plus",
+      "bio1": "Je suis développeur full-stack freelance avec une forte orientation backend. Je construis des applications web et des outils — principalement avec Go côté serveur et SvelteKit côté frontend — en privilégiant des systèmes rapides, simples et fiables.",
+      "bio2": "Ma stack principale est Go, TypeScript, PostgreSQL et Docker, avec un peu de Python et Rust selon les besoins. Je préfère aller en profondeur avant de m'étendre : je cherche à comprendre pourquoi quelque chose fonctionne plutôt que de saisir la première abstraction venue.",
+      "bio3": "J'ai étudié les mathématiques jusqu'au niveau master, ce qui explique probablement mon attrait pour les algorithmes de consensus et le chiffrement. En dehors du code, je bricole de l'électronique et joue de la guitare électrique."
+    },
+    "projects": {
+      "title": "Projets",
+      "link": "Voir tout",
+      "subtitle": "Une sélection de travaux freelance."
+    },
+    "experiments": {
+      "title": "Expériences",
+      "link": "Voir tout",
+      "subtitle": "Projets personnels, algorithmes et explorations en informatique."
+    },
+    "posts": {
+      "title": "Derniers articles",
+      "link": "Voir tout",
+      "subtitle": "Articles sur Go, les systèmes distribués et l'artisanat logiciel."
+    },
+    "cta": {
+      "title": "Envie de collaborer ?",
+      "desc": "Ouvert aux projets freelance et à la collaboration open-source.\nSi vous avez quelque chose d'intéressant à construire, contactez-moi.",
+      "btn": "Me contacter"
+    }
+  },
+  "projects": {
+    "label": "Travaux sélectionnés",
+    "title": "Projets",
+    "subtitle": "Une collection de choses que j'ai construites — des plateformes aux bibliothèques.",
+    "cluo": "Écosystème de gestion de dossiers pour un détective privé — API Go, application desktop Wails, PWA mobile et portail client avec transcription IA et automatisation de documents juridiques.",
+    "leviosa": "Plateforme de réservation bien-être mettant en relation clients et professionnels. Monolithe modulaire Go avec Stripe, chiffrement Vault et RabbitMQ.",
+    "germinal": "Plateforme de gestion d'événements et de talents pour un studio créatif. SvelteKit 5 avec planification de tâches en arrière-plan, support bilingue et infrastructure de production.",
+    "encx": "Module de chiffrement et de hachage alimentant le pipeline de données sécurisé de Cluo. Conçu comme module autonome pour éviter de devenir un goulot d'étranglement.",
+    "type_freelance": "Freelance",
+    "type_library": "Bibliothèque"
+  },
+  "experiments": {
+    "label": "Travail personnel",
+    "title": "Expériences",
+    "subtitle": "Projets personnels, algorithmes et explorations en informatique. Moins abouti que le travail client — plus intéressant.",
+    "vizraft": "Implémentation de l'algorithme de consensus Raft from scratch en Go — observez les élections de leader, la réplication des logs et les partitions réseau en temps réel.",
+    "type_coming_soon": "Bientôt disponible",
+    "type_active": "Actif"
+  },
+  "contact": {
+    "label": "Bientôt disponible",
+    "title": "Contact",
+    "body": "En cours de configuration des meilleures façons de me contacter. En attendant, retrouvez-moi sur les réseaux dans la barre de navigation."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Articles sur Go, les systèmes distribués et l'artisanat logiciel.",
+    "empty": "Aucun article pour l'instant. Revenez bientôt.",
+    "back": "Retour au blog"
+  },
+  "card": {
+    "view_project": "Voir le projet"
+  },
+  "detail": {
+    "role": "Rôle",
+    "team": "Équipe",
+    "stack": "Stack",
+    "timeline": "Calendrier",
+    "back_projects": "Tous les projets",
+    "back_experiments": "Toutes les expériences",
+    "overview": "Aperçu",
+    "highlights": "Points techniques clés",
+    "learned": "Ce que j'ai appris",
+    "coming_soon": "Cette section arrive bientôt.",
+    "full_writeup": "Article complet à venir."
+  },
+  "cluo": {
+    "overview_1": "Conçu pour remplacer les flux de travail d'investigation manuelle. Les agents de terrain utilisent une application desktop Wails + SvelteKit pour la gestion des dossiers, capturent des preuves sur une PWA mobile et les transmettent en toute sécurité aux clients via un portail dédié — le tout piloté par une seule API Go.",
+    "overview_2": "La chaîne documentaire légale (Devis → Mandat → Contrat → Facture) est automatisée sous forme de machine à états avec génération de PDF par document.",
+    "highlight_1_label": "4 applications, un seul backend :",
+    "highlight_1_body": "API Go, desktop Wails, PWA mobile et portail client partagent un seul backend hexagonal avec interfaces de port.",
+    "highlight_2_label": "Pipeline IA :",
+    "highlight_2_body": "transcrit les enregistrements audio terrain, extrait des données structurées (personnes, chronologies, faits) et pré-remplit l'éditeur de rapport.",
+    "highlight_3_label": "Automatisation de la chaîne légale :",
+    "highlight_3_body": "Devis → Mandat → Contrat → Facture modélisé en machine à états avec génération et envoi de PDF par document.",
+    "highlight_4_label": "Authentification par lien magique :",
+    "highlight_4_body": "Jetons SHA-256 avec expiration configurable et révocation contrôlée par l'enquêteur — aucun compte client requis.",
+    "highlight_5_label": "Infrastructure as code :",
+    "highlight_5_body": "Ansible + Terraform pour des déploiements reproductibles et versionnés."
+  },
+  "leviosa": {
+    "overview_1": "Un composant essentiel initialement développé pour un autre projet, extrait en tant que bibliothèque autonome pour faciliter le chiffrement et le hachage de données sensibles. Le principal défi était de concevoir une API qui s'efface tout en restant correcte et rapide."
+  },
+  "germinal": {
+    "overview_1": "Une plateforme sophistiquée de gestion d'événements et de talents avec support bilingue, galeries médias, flux de travail automatisés et infrastructure prête pour la production.",
+    "overview_2": "Construit de zéro comme vitrine full-stack des pratiques modernes de développement web. La plateforme intègre un système de middleware personnalisé pour les préoccupations transversales, une couche de cache LRU avec invalidation par tags, et un planificateur de tâches PostgreSQL pour les opérations asynchrones.",
+    "highlight_1_label": "Architecture middleware :",
+    "highlight_1_body": "Pattern décorateur pour une gestion composable des requêtes — validation, authentification, limitation de débit et CSRF dans une seule chaîne.",
+    "highlight_2_label": "Tâches en arrière-plan :",
+    "highlight_2_body": "Intégration pg-boss avec tâches planifiées (cron) pour les files d'emails, le nettoyage et les rappels.",
+    "highlight_3_label": "Stratégie de cache :",
+    "highlight_3_body": "Cache LRU avec TTL et invalidation par tags pour des performances optimales.",
+    "highlight_4_label": "Typage strict :",
+    "highlight_4_body": "TypeScript de bout en bout avec schémas Zod pour la validation à l'exécution.",
+    "highlight_5_label": "Déploiement en production :",
+    "highlight_5_body": "Builds Docker multi-étapes avec durcissement sécurité (utilisateur non-root, base Alpine).",
+    "highlight_6_label": "Observabilité :",
+    "highlight_6_body": "Intégration Sentry pour le suivi des erreurs et la surveillance des performances.",
+    "highlight_7_label": "Tests :",
+    "highlight_7_body": "Vitest pour les tests unitaires et Playwright pour la couverture E2E.",
+    "view_repository": "Voir le dépôt"
+  },
+  "encx": {
+    "overview_1": "Un composant essentiel du projet Cluo qui facilite le chiffrement et le hachage de données sensibles. Conçu comme module autonome pour éviter de devenir un goulot d'étranglement dans le pipeline de données."
+  },
+  "vizraft": {
+    "overview_1": "VizRaft est une implémentation from scratch de l'algorithme de consensus distribué Raft en Go, associée à un visualiseur en temps réel qui rend le comportement du protocole tangible. Les élections de leader, la réplication des logs et la récupération après partition réseau se déroulent visuellement au fur et à mesure de vos interactions avec le cluster.",
+    "overview_2": "L'objectif est de transformer un article de recherche en code fonctionnel, puis de rendre ce code explicable — tant pour moi-même que pour quiconque tente de comprendre comment les systèmes distribués maintiennent leur cohérence face aux pannes."
+  }
+}
