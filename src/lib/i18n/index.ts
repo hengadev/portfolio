@@ -7,8 +7,8 @@ addMessages('en', en);
 addMessages('fr', fr);
 
 init({
-    fallbackLocale: 'en',
+    fallbackLocale: 'fr',
     initialLocale: browser
-        ? (localStorage.getItem('lang') ?? getLocaleFromNavigator() ?? 'en').slice(0, 2)
-        : 'en',
+        ? (localStorage.getItem('lang') ?? getLocaleFromNavigator() ?? 'fr').slice(0, 2)
+        : 'fr',
 });
