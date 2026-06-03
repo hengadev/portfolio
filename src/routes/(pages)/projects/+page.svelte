@@ -1,10 +1,10 @@
 <div class="page container__small">
     <div class="coming-soon">
         <p class="label">Coming soon</p>
-        <h1 class="title">Contact</h1>
+        <h1 class="title">Projects</h1>
         <p class="body">
-            Working on setting up the best ways to reach me. In the meantime, find me on the
-            socials in the nav.
+            A curated collection of the things I've built — currently being put together.
+            Check back soon.
         </p>
     </div>
 </div>
