@@ -36,12 +36,6 @@
 	--bg-dot: 0 0% 80%;
 }
 
-[data-theme="dark"] footer {
-	--clr-grey-700: 0 1% 11%;
-	--clr-light-primary: 0 0% 100%;
-	--clr-dark-primary: 0 0% 18%;
-}
-
 [data-theme="dark"] {
 	color-scheme: dark;
 

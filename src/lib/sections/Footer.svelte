@@ -57,7 +57,8 @@
 
 <style>
     footer {
-        background-color: hsl(var(--clr-grey-700));
+        background-color: hsl(var(--clr-light-secondary));
+        border-top: 1px solid hsl(var(--clr-stroke));
         margin-top: 8rem;
     }
 
@@ -71,7 +72,7 @@
 
     .copyright {
         font-size: 0.85rem;
-        color: hsl(var(--clr-light-primary) / 0.55);
+        color: hsl(var(--clr-dark-ternary));
     }
 
     nav {
@@ -82,7 +83,7 @@
 
     nav a {
         font-size: 0.85rem;
-        color: hsl(var(--clr-light-primary) / 0.65);
+        color: hsl(var(--clr-dark-ternary));
         text-decoration: none;
         padding: 0.25rem 0.5rem;
         border-radius: 0.25rem;
@@ -90,7 +91,7 @@
     }
 
     nav a:hover {
-        color: hsl(var(--clr-light-primary));
+        color: hsl(var(--clr-dark-primary));
     }
 
     .socials {
@@ -105,7 +106,7 @@
         place-content: center;
         padding: 0.4rem;
         border-radius: 0.375rem;
-        color: hsl(var(--clr-light-primary) / 0.6);
+        color: hsl(var(--clr-dark-ternary));
         text-decoration: none;
         transition:
             color 150ms ease,
@@ -113,8 +114,8 @@
     }
 
     .social-link:hover {
-        color: hsl(var(--clr-light-primary));
-        background-color: hsl(var(--clr-light-primary) / 0.08);
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-ternary));
     }
 
     .social-link::after {
@@ -127,7 +128,7 @@
         font-size: 0.75rem;
         font-weight: 500;
         color: hsl(var(--clr-dark-primary));
-        background-color: hsl(var(--clr-light-primary));
+        background-color: hsl(var(--clr-light-ternary));
         padding: 0.25rem 0.5rem;
         border-radius: 0.25rem;
         pointer-events: none;
