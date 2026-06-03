@@ -223,7 +223,7 @@
         font-weight: 500;
         font-size: var(--p);
         color: hsl(var(--clr-dark-primary));
-        background-color: transparent;
+        background-color: hsl(var(--clr-light-primary));
         padding: 0.65rem 1.5rem;
         border-radius: 999px;
         border: 2px solid hsl(var(--clr-light-fournary));
