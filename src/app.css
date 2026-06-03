@@ -76,7 +76,9 @@
 		line-height: 1.5;
 		-webkit-font-smoothing: antialiased;
 		font-family: var(--font-sans);
-		background-color: hsl(var(--clr-light-primary));
+		background-color: hsl(240 14% 98%);
+		background-image: radial-gradient(circle, hsl(0 0% 80%) 1px, transparent 1px);
+		background-size: 24px 24px;
 		color: hsl(var(--clr-dark-secondary));
 		font-size: var(--p);
 	}
