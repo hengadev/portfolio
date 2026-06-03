@@ -1,116 +1,166 @@
 <script lang="ts">
     import { ArrowUpRight } from "lucide-svelte";
-    let color: string = $state("hsl(var(--clr-dark-ternary))");
+    import { goto } from "$app/navigation";
 
     type Props = {
         title: string;
         description: string;
-        isActive: boolean;
-        activeFn: () => void;
-        inactiveFn: () => void;
+        tags: string[];
+        type: string;
+        href: string;
+        logo?: string;
     };
-    let { title, description, isActive, activeFn, inactiveFn }: Props =
-        $props();
-
-    function enterButton() {
-        color = "hsl(var(--clr-dark-primary))";
-        activeFn();
-    }
-
-    function leaveButton() {
-        color = "hsl(var(--clr-dark-ternary))";
-        inactiveFn();
-    }
-    import { goto } from "$app/navigation";
-    function getProjectPage() {
-        return `/projects/${title.toLowerCase()}`;
-    }
+    let { title, description, tags, type, href, logo }: Props = $props();
 </script>
 
-<div class="card grid" style="--gap: 2rem">
-    <div class="flex card__header">
-        <div class="grid" style="--gap: 0.5rem;">
+<article class="card" role="button" tabindex="0" onclick={() => goto(href)} onkeydown={(e) => e.key === "Enter" && goto(href)}>
+    <div class="card__top">
+        <div class="card__title-row">
+            {#if logo}
+                <img src={logo} alt="{title} logo" class="card__logo" />
+            {:else}
+                <div class="card__icon" aria-hidden="true">{title[0]}</div>
+            {/if}
             <h3 class="card__title">{title}</h3>
-            <p class="card__description">{description}</p>
         </div>
-        <div class="overlay" class:active-overlay={isActive}></div>
-        <button
-            class="cta"
-            onmouseenter={enterButton}
-            onmouseleave={leaveButton}
-            onclick={() => goto(getProjectPage())}
-        >
-            <ArrowUpRight {color} size={32} />
-        </button>
+        <span class="card__type">{type}</span>
     </div>
-    <div class="separator_custom"></div>
-    <div class="img"></div>
-</div>
+
+    <div class="card__body">
+        <p class="card__description">{description}</p>
+    </div>
+
+    <div class="card__footer">
+        <div class="card__tags">
+            {#each tags as tag}
+                <span class="tag">{tag}</span>
+            {/each}
+        </div>
+        <span class="card__link">
+            View project <ArrowUpRight size={14} />
+        </span>
+    </div>
+</article>
 
 <style>
     .card {
-        --card-padding: 2rem;
-        --card-border-radius: 2rem;
-        padding: var(--card-padding);
-        border-radius: var(--card-border-radius);
-        background-color: hsl(var(--clr-light-secondary));
-        min-height: 42rem;
-        color: hsl(var(--clr-dark-ternary));
-        font-size: 1.4rem;
-        position: relative;
-    }
-    .overlay {
-        position: absolute;
-        border-radius: var(--card-border-radius);
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 1.5rem;
+        padding: 1.75rem;
+        min-height: 240px;
+        border-radius: 0.75rem;
         background-color: hsl(var(--clr-light-primary));
-        opacity: 0;
-        z-index: 2;
-        --transition-duration: 0.25s;
-        transition: opacity var(--transition-duration) ease-in-out;
-        pointer-events: none;
-    }
-    .active-overlay {
-        opacity: 0.8;
-        pointer-events: auto;
+        border: 1px solid hsl(var(--clr-light-fournary));
+        cursor: pointer;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+        text-align: left;
     }
 
-    .card__header {
-        align-items: flex-start;
+    .card:hover {
+        border-color: hsl(var(--clr-dark-ternary));
+        box-shadow: 0 4px 16px hsl(0 0% 0% / 0.06);
+    }
+
+    /* Top row: icon+title + type badge */
+    .card__top {
+        display: flex;
+        align-items: center;
         justify-content: space-between;
+        gap: 0.75rem;
     }
-    .card__title {
-        font-size: 2rem;
-        font-weight: 600;
-        color: hsl(var(--clr-dark-primary));
+
+    .card__title-row {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
     }
-    .cta {
-        background-color: hsl(var(--clr-light-primary));
-        border-radius: 100%;
-        padding: 1rem;
-        height: fit-content;
-        border: 4px solid hsl(var(--clr-light-fournary));
+
+    .card__logo {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 0.4rem;
+        border: 1px solid hsl(var(--clr-light-fournary));
+        object-fit: contain;
         flex-shrink: 0;
     }
-    .cta:is(:hover, :focus) {
-        background-color: hsl(var(--clr-light-primary));
-        border: 4px solid hsl(var(--clr-light-primary));
-    }
-    .img {
-        width: 40rem;
-        height: 36rem;
+
+    .card__icon {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 0.4rem;
         background-color: hsl(var(--clr-light-ternary));
-        border-radius: calc(
-            var(--card-padding) - 0.5 * var(--card-border-radius)
-        );
+        border: 1px solid hsl(var(--clr-light-fournary));
+        display: grid;
+        place-content: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: hsl(var(--clr-dark-primary));
+        flex-shrink: 0;
     }
-    .separator_custom {
-        width: 100%;
-        height: 1px;
-        background-color: hsl(var(--clr-light-fournary));
-        opacity: 0.5;
+
+    .card__type {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-ternary));
+        background-color: hsl(var(--clr-light-secondary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 999px;
+        padding: 0.15rem 0.6rem;
+    }
+
+    /* Body */
+    .card__body {
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .card__title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: hsl(var(--clr-dark-primary));
+        line-height: 1.2;
+    }
+
+    .card__description {
+        font-size: 0.9rem;
+        color: hsl(var(--clr-dark-ternary));
+        line-height: 1.6;
+    }
+
+    /* Footer: tags + link */
+    .card__footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .card__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+    }
+
+    .tag {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-secondary));
+        background-color: hsl(var(--clr-light-secondary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 999px;
+        padding: 0.15rem 0.55rem;
+    }
+
+    .card__link {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-primary));
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 </style>
