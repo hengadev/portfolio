@@ -1,6 +1,7 @@
 <script lang="ts">
     import { ArrowUpRight } from "lucide-svelte";
     import ProjectDetail from "$lib/components/ProjectDetail.svelte";
+    import ProjectBento from "$lib/components/ProjectBento.svelte";
 </script>
 
 <ProjectDetail
@@ -11,7 +12,6 @@
     role={["Full-Stack Developer", "System Designer", "DevOps Engineer"]}
     team={["Gary HENRY"]}
     stack={["SvelteKit 2.x", "Svelte 5 (Runes)", "PostgreSQL + Drizzle", "AWS S3 + SES", "Docker", "pg-boss", "Sentry"]}
-    gradient="linear-gradient(135deg, hsl(20 80% 40%), hsl(359 70% 50%))"
     logo="/logos/germinal.png"
 >
     <section class="story-section">
@@ -27,6 +27,8 @@
             for asynchronous tasks.
         </p>
     </section>
+
+    <ProjectBento gradient="linear-gradient(135deg, hsl(20 80% 40%), hsl(359 70% 50%))" />
 
     <section class="story-section">
         <h2 class="section-title">Technical highlights</h2>

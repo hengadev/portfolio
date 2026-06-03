@@ -1,5 +1,6 @@
 <script lang="ts">
     import ProjectDetail from "$lib/components/ProjectDetail.svelte";
+    import ProjectBento from "$lib/components/ProjectBento.svelte";
 </script>
 
 <ProjectDetail
@@ -10,7 +11,6 @@
     role={["Full-Stack Developer", "System Designer", "DevOps Engineer"]}
     team={["Gary HENRY"]}
     stack={["Go", "SvelteKit + Wails", "PostgreSQL + Redis", "AWS S3", "Ansible + Terraform"]}
-    gradient="linear-gradient(135deg, hsl(220 70% 35%), hsl(260 60% 50%))"
     logo="/logos/cluo.png"
 >
     <section class="story-section">
@@ -25,6 +25,8 @@
             state machine with per-document PDF generation.
         </p>
     </section>
+
+    <ProjectBento gradient="linear-gradient(135deg, hsl(220 70% 35%), hsl(260 60% 50%))" />
 
     <section class="story-section">
         <h2 class="section-title">Technical highlights</h2>

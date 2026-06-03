@@ -1,5 +1,6 @@
 <script lang="ts">
     import ProjectDetail from "$lib/components/ProjectDetail.svelte";
+    import ProjectBento from "$lib/components/ProjectBento.svelte";
 </script>
 
 <ProjectDetail
@@ -10,7 +11,6 @@
     role={["Backend Developer"]}
     team={["Gary HENRY"]}
     stack={["Go", "SvelteKit"]}
-    gradient="linear-gradient(135deg, hsl(160 60% 30%), hsl(200 70% 40%))"
     logo="/logos/leviosa.png"
 >
     <section class="story-section">
@@ -21,6 +21,8 @@
             designing an API that stays out of the way while remaining correct and fast.
         </p>
     </section>
+
+    <ProjectBento gradient="linear-gradient(135deg, hsl(160 60% 30%), hsl(200 70% 40%))" />
 
     <section class="story-section">
         <h2 class="section-title">What I learned</h2>
