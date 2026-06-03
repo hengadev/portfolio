@@ -37,6 +37,7 @@
                     rel="noopener noreferrer"
                     aria-label={label}
                     class="social-link"
+                    data-tooltip={label}
                 >
                     <Icon size={18} />
                 </a>
@@ -90,6 +91,7 @@
     }
 
     .social-link {
+        position: relative;
         display: grid;
         place-content: center;
         padding: 0.4rem;
@@ -104,5 +106,30 @@
     .social-link:hover {
         color: hsl(var(--clr-light-primary));
         background-color: hsl(var(--clr-light-primary) / 0.08);
+    }
+
+    .social-link::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: calc(100% + 0.5rem);
+        left: 50%;
+        translate: -50% 4px;
+        white-space: nowrap;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-primary));
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        pointer-events: none;
+        opacity: 0;
+        transition:
+            opacity 150ms ease,
+            translate 150ms ease;
+    }
+
+    .social-link:hover::after {
+        opacity: 1;
+        translate: -50% 0;
     }
 </style>
