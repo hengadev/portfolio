@@ -1,6 +1,12 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { Github, Twitter, Linkedin, Instagram, FileDown } from "lucide-svelte";
+    import {
+        Github,
+        Twitter,
+        Linkedin,
+        Instagram,
+        FileDown,
+    } from "lucide-svelte";
 
     const navLinks = [
         { name: "Home", href: "/" },
@@ -12,10 +18,18 @@
     ];
 
     const socials = [
-        { icon: Github, href: "https://github.com/GaryHY", label: "GitHub" },
-        { icon: Twitter, href: "https://x.com/", label: "X" },
-        { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" },
-        { icon: Instagram, href: "https://www.instagram.com/itshenga/", label: "Instagram" },
+        { icon: Github, href: "https://github.com/hengadev", label: "GitHub" },
+        { icon: Twitter, href: "https://x.com/0xH3N64", label: "X" },
+        {
+            icon: Linkedin,
+            href: "https://linkedin.com/in/garyhenryml",
+            label: "LinkedIn",
+        },
+        {
+            icon: Instagram,
+            href: "https://www.instagram.com/itshenga/",
+            label: "Instagram",
+        },
     ];
 
     let pathSlug = $derived(`~${$page.url.pathname}`);
@@ -57,7 +71,13 @@
                     <Icon size={20} />
                 </a>
             {/each}
-            <a href="/resume.pdf" download aria-label="Download resume" class="icon-link" data-tooltip="Resume">
+            <a
+                href="/resume.pdf"
+                download
+                aria-label="Download resume"
+                class="icon-link"
+                data-tooltip="Resume"
+            >
                 <FileDown size={20} />
             </a>
         </div>
