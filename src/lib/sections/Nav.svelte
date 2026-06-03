@@ -80,7 +80,7 @@
                 download
                 aria-label="Download resume"
                 class="icon-link"
-                data-tooltip="Resume"
+                data-tooltip={$locale === 'fr' ? 'CV' : 'Resume'}
             >
                 <FileDown size={20} />
             </a>
