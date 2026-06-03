@@ -1,5 +1,7 @@
 <script lang="ts">
     import { page } from "$app/stores";
+    import { _, locale } from "svelte-i18n";
+    import { toggleLocale } from "$lib/i18n/toggle";
     import {
         Github,
         Twitter,
@@ -9,12 +11,12 @@
     } from "lucide-svelte";
 
     const navLinks = [
-        { name: "Home", href: "/" },
-        { name: "About", href: "/about" },
-        { name: "Projects", href: "/projects" },
-        { name: "Experiments", href: "/experiments" },
-        { name: "Blog", href: "/blog" },
-        { name: "Contact", href: "/contact" },
+        { key: "nav.home", href: "/" },
+        { key: "nav.about", href: "/about" },
+        { key: "nav.projects", href: "/projects" },
+        { key: "nav.experiments", href: "/experiments" },
+        { key: "nav.blog", href: "/blog" },
+        { key: "nav.contact", href: "/contact" },
     ];
 
     const socials = [
@@ -50,9 +52,9 @@
 
         <nav>
             <ul class="nav-links">
-                {#each navLinks as { name, href }}
+                {#each navLinks as { key, href }}
                     <li>
-                        <a {href} class:active={isActive(href)}>{name}</a>
+                        <a {href} class:active={isActive(href)}>{$_(key)}</a>
                     </li>
                 {/each}
             </ul>
@@ -80,6 +82,15 @@
             >
                 <FileDown size={20} />
             </a>
+            <div class="lang-separator" aria-hidden="true"></div>
+            <button
+                class="lang-toggle"
+                onclick={toggleLocale}
+                aria-label={$locale === 'fr' ? 'Switch to English' : 'Passer en français'}
+                data-tooltip={$locale === 'fr' ? 'English' : 'Français'}
+            >
+                {$locale === 'fr' ? 'EN' : 'FR'}
+            </button>
         </div>
     </div>
 </header>
@@ -173,6 +184,54 @@
         gap: 0.125rem;
         margin-left: auto;
         width: fit-content;
+    }
+
+    .lang-separator {
+        width: 1px;
+        height: 1.25rem;
+        background-color: hsl(var(--clr-light-fournary));
+        margin-inline: 0.375rem;
+        flex-shrink: 0;
+    }
+
+    .lang-toggle {
+        position: relative;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: hsl(var(--clr-grey-400));
+        background: none;
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.375rem;
+        padding: 0.3rem 0.55rem;
+        cursor: pointer;
+        transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+    }
+    .lang-toggle:hover {
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-secondary));
+        border-color: hsl(var(--clr-dark-ternary));
+    }
+    .lang-toggle::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 50%;
+        translate: -50% -4px;
+        white-space: nowrap;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: hsl(var(--clr-light-primary));
+        background-color: hsl(var(--clr-dark-primary));
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 150ms ease, translate 150ms ease;
+    }
+    .lang-toggle:hover::after {
+        opacity: 1;
+        translate: -50% 0;
     }
 
     .icon-link {
