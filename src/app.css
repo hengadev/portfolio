@@ -3,6 +3,8 @@
 @import "tailwindcss";
 
 :root {
+	color-scheme: light;
+
 	/* font sizes */
 	--label: clamp(0.625rem, 1.2vw, 1rem);
 	--p: clamp(1rem, 1.5vw, 1.25rem);
@@ -29,6 +31,41 @@
 	--clr-grey-500: 0 1% 24%;
 	--clr-grey-600: 0 0% 13%;
 	--clr-grey-700: 0 1% 11%;
+
+	--bg-body: 240 14% 98%;
+	--bg-dot: 0 0% 80%;
+}
+
+[data-theme="dark"] footer {
+	--clr-grey-700: 0 1% 11%;
+	--clr-light-primary: 0 0% 100%;
+	--clr-dark-primary: 0 0% 18%;
+}
+
+[data-theme="dark"] {
+	color-scheme: dark;
+
+	--bg-body: 222 18% 10%;
+	--bg-dot: 222 15% 18%;
+
+	--clr-light-primary: 222 18% 12%;
+	--clr-light-secondary: 222 15% 17%;
+	--clr-light-ternary: 222 12% 22%;
+	--clr-light-fournary: 220 10% 32%;
+
+	--clr-dark-primary: 0 0% 92%;
+	--clr-dark-secondary: 0 0% 78%;
+	--clr-dark-ternary: 0 0% 60%;
+
+	--clr-stroke: 0 0% 60% / 0.3;
+
+	--clr-grey-100: 222 15% 17%;
+	--clr-grey-200: 0 0% 30%;
+	--clr-grey-300: 0 0% 45%;
+	--clr-grey-400: 0 0% 62%;
+	--clr-grey-500: 0 0% 78%;
+	--clr-grey-600: 0 0% 88%;
+	--clr-grey-700: 0 0% 94%;
 }
 
 @theme inline {
@@ -76,8 +113,8 @@
 		line-height: 1.5;
 		-webkit-font-smoothing: antialiased;
 		font-family: var(--font-sans);
-		background-color: hsl(240 14% 98%);
-		background-image: radial-gradient(circle, hsl(0 0% 80%) 1px, transparent 1px);
+		background-color: hsl(var(--bg-body));
+		background-image: radial-gradient(circle, hsl(var(--bg-dot)) 1px, transparent 1px);
 		background-size: 24px 24px;
 		color: hsl(var(--clr-dark-secondary));
 		font-size: var(--p);
