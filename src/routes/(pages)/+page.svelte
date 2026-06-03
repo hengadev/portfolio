@@ -143,7 +143,7 @@
 <style>
     .page {
         display: grid;
-        gap: 6rem;
+        gap: 9rem;
         padding-bottom: 6rem;
     }
 
