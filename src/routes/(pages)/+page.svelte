@@ -16,7 +16,7 @@
         });
     }
 
-    const skills = ["Go", "TypeScript", "Python", "Rust", "SvelteKit", "PostgreSQL", "Docker", "Linux"];
+    const skills = ["Go", "TypeScript", "Python", "Rust", "SvelteKit", "PostgreSQL", "Docker", "Linux", "AI-augmented"];
 
     const projects = $derived.by(() => {
         void $locale;

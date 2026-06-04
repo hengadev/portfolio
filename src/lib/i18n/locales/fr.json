@@ -18,7 +18,7 @@
       "title": "À propos",
       "link": "En savoir plus",
       "bio1": "Je suis développeur full-stack freelance avec une forte orientation backend. Je construis des applications web et des outils — principalement avec Go côté serveur et SvelteKit côté frontend — en privilégiant des systèmes rapides, simples et fiables.",
-      "bio2": "Ma stack principale est Go, TypeScript, PostgreSQL et Docker, avec un peu de Python et Rust selon les besoins. Je préfère aller en profondeur avant de m'étendre : je cherche à comprendre pourquoi quelque chose fonctionne plutôt que de saisir la première abstraction venue.",
+      "bio2": "Ma stack principale est Go, TypeScript, PostgreSQL et Docker, avec un peu de Python et Rust selon les besoins. Je préfère aller en profondeur avant de m'étendre : je cherche à comprendre pourquoi quelque chose fonctionne plutôt que de saisir la première abstraction venue. Le développement augmenté par l'IA fait partie de ma façon de travailler — je l'utilise pour aller plus vite sur des problèmes bien délimités, pas pour remplacer le jugement qui les sous-tend.",
       "bio3": "J'ai étudié les mathématiques jusqu'au niveau master, ce qui explique probablement mon attrait pour les algorithmes de consensus et le chiffrement. En dehors du code, je bricole de l'électronique et joue de la guitare électrique."
     },
     "projects": {
