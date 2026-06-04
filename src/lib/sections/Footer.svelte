@@ -10,6 +10,11 @@
         { key: "nav.contact", href: "/contact" },
     ];
 
+    const legalLinks = [
+        { key: "footer.mentions", href: "/mentions-legales" },
+        { key: "footer.privacy", href: "/politique-de-confidentialite" },
+    ];
+
     const socials = [
         { icon: Github, href: "https://github.com/hengadev", label: "GitHub" },
         { icon: Twitter, href: "https://x.com/0xH3N64", label: "X" },
@@ -25,44 +30,59 @@
         },
     ];
 
-    const legalLinks = [
-        { key: "footer.mentions", href: "/mentions-legales" },
-        { key: "footer.privacy", href: "/politique-de-confidentialite" },
-    ];
-
     const year = new Date().getFullYear();
 </script>
 
 <footer>
     <div class="footer-inner container__small">
-        <p class="copyright">© {year} henga.dev</p>
+        <div class="footer-grid">
+            <div class="brand">
+                <a href="/" class="brand-name">henga.dev</a>
+                <p class="brand-tagline">{$_("footer.tagline")}</p>
+                <div class="brand-contact">
+                    <p class="col-label">{$_("footer.contact_label")}</p>
+                    <a href="mailto:henry.gary@hotmail.com" class="contact-link">
+                        henry.gary@hotmail.com
+                    </a>
+                </div>
+                <div class="brand-socials">
+                    {#each socials as { icon: Icon, href, label }}
+                        <a
+                            {href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={label}
+                            class="social-link"
+                            data-tooltip={label}
+                        >
+                            <Icon size={16} />
+                        </a>
+                    {/each}
+                </div>
+            </div>
 
-        <nav>
-            {#each navLinks as { key, href }}
-                <a {href}>{$_(key)}</a>
-            {/each}
-        </nav>
+            <div class="footer-col">
+                <p class="col-label">{$_("footer.nav_label")}</p>
+                <nav>
+                    {#each navLinks as { key, href }}
+                        <a {href}>{$_(key)}</a>
+                    {/each}
+                </nav>
+            </div>
 
-        <div class="socials">
-            {#each socials as { icon: Icon, href, label }}
-                <a
-                    {href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    class="social-link"
-                    data-tooltip={label}
-                >
-                    <Icon size={18} />
-                </a>
-            {/each}
+            <div class="footer-col">
+                <p class="col-label">{$_("footer.legal_label")}</p>
+                <nav>
+                    {#each legalLinks as { key, href }}
+                        <a {href}>{$_(key)}</a>
+                    {/each}
+                </nav>
+            </div>
         </div>
-    </div>
 
-    <div class="footer-legal container__small">
-        {#each legalLinks as { key, href }}
-            <a {href}>{$_(key)}</a>
-        {/each}
+        <div class="footer-bottom">
+            <p class="copyright">© {year} henga.dev</p>
+        </div>
     </div>
 </footer>
 
@@ -75,29 +95,94 @@
 
     .footer-inner {
         margin-inline: auto;
-        padding-block: 2rem;
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
+        padding-block: 3rem 1.75rem;
     }
 
-    .copyright {
-        font-size: 0.85rem;
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid hsl(var(--clr-stroke));
+    }
+
+    .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .brand-name {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: hsl(var(--clr-dark-primary));
+        text-decoration: none;
+        width: fit-content;
+        transition: opacity 150ms ease;
+    }
+
+    .brand-name:hover {
+        opacity: 0.75;
+    }
+
+    .brand-tagline {
+        font-size: 0.8125rem;
         color: hsl(var(--clr-dark-ternary));
+        line-height: 1.6;
+        max-width: 28ch;
+    }
+
+    .brand-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-top: 0.25rem;
+    }
+
+    .contact-link {
+        font-size: 0.8125rem;
+        color: hsl(var(--clr-dark-secondary));
+        text-decoration: none;
+        width: fit-content;
+        transition: color 150ms ease;
+    }
+
+    .contact-link:hover {
+        color: hsl(var(--clr-dark-primary));
+    }
+
+    .brand-socials {
+        display: flex;
+        gap: 0.25rem;
+        margin-top: 0.25rem;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .col-label {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: hsl(var(--clr-dark-ternary));
+        opacity: 0.55;
     }
 
     nav {
         display: flex;
-        gap: 0.25rem;
-        justify-content: center;
+        flex-direction: column;
+        gap: 0.65rem;
     }
 
     nav a {
-        font-size: 0.85rem;
-        color: hsl(var(--clr-dark-ternary));
+        font-size: 0.8125rem;
+        color: hsl(var(--clr-dark-secondary));
         text-decoration: none;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
+        width: fit-content;
         transition: color 150ms ease;
     }
 
@@ -105,17 +190,11 @@
         color: hsl(var(--clr-dark-primary));
     }
 
-    .socials {
-        display: flex;
-        gap: 0.25rem;
-        justify-content: flex-end;
-    }
-
     .social-link {
         position: relative;
         display: grid;
         place-content: center;
-        padding: 0.4rem;
+        padding: 0.35rem;
         border-radius: 0.375rem;
         color: hsl(var(--clr-dark-ternary));
         text-decoration: none;
@@ -154,23 +233,20 @@
         translate: -50% 0;
     }
 
-    .footer-legal {
-        margin-inline: auto;
-        padding-bottom: 1.25rem;
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
+    .footer-bottom {
+        padding-top: 1.5rem;
     }
 
-    .footer-legal a {
+    .copyright {
         font-size: 0.75rem;
         color: hsl(var(--clr-dark-ternary));
-        text-decoration: none;
-        opacity: 0.7;
-        transition: opacity 150ms ease;
+        opacity: 0.55;
     }
 
-    .footer-legal a:hover {
-        opacity: 1;
+    @media (max-width: 640px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
     }
 </style>

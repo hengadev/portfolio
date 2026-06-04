@@ -172,6 +172,10 @@
     "s5_body": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-moi à :"
   },
   "footer": {
+    "tagline": "Développeur freelance orienté backend.",
+    "contact_label": "Contact",
+    "nav_label": "Navigation",
+    "legal_label": "Légal",
     "mentions": "Mentions légales",
     "privacy": "Politique de confidentialité"
   }
