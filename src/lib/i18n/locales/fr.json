@@ -142,5 +142,37 @@
   "vizraft": {
     "overview_1": "VizRaft est une implémentation from scratch de l'algorithme de consensus distribué Raft en Go, associée à un visualiseur en temps réel qui rend le comportement du protocole tangible. Les élections de leader, la réplication des logs et la récupération après partition réseau se déroulent visuellement au fur et à mesure de vos interactions avec le cluster.",
     "overview_2": "L'objectif est de transformer un article de recherche en code fonctionnel, puis de rendre ce code explicable — tant pour moi-même que pour quiconque tente de comprendre comment les systèmes distribués maintiennent leur cohérence face aux pannes."
+  },
+  "mentions_legales": {
+    "label": "Informations légales",
+    "title": "Mentions légales",
+    "editor_section": "Éditeur du site",
+    "editor_name": "Gary Henry",
+    "editor_location": "Paris, France",
+    "editor_email": "henry.gary@hotmail.com",
+    "host_section": "Hébergeur",
+    "host_name": "Hetzner Online GmbH",
+    "host_address": "Industriestr. 25 — 91710 Gunzenhausen, Allemagne",
+    "host_website": "www.hetzner.com"
+  },
+  "privacy_policy": {
+    "label": "Données personnelles",
+    "title": "Politique de confidentialité",
+    "updated": "Dernière mise à jour : juin 2026",
+    "intro": "henga.dev est un portfolio personnel. Cette page décrit les données collectées via le formulaire de contact et la manière dont elles sont traitées.",
+    "s1_title": "Données collectées",
+    "s1_body": "Lorsque vous utilisez le formulaire de contact, les données suivantes sont collectées : nom, adresse email et message.",
+    "s2_title": "Finalité du traitement",
+    "s2_body": "Ces données sont utilisées uniquement pour vous répondre. Elles sont transmises par email et ne sont pas stockées dans une base de données.",
+    "s3_title": "Sous-traitant",
+    "s3_body": "L'envoi d'emails est assuré par Resend (Resend Inc., 2261 Market Street #4008, San Francisco, CA 94114, États-Unis), qui agit en qualité de sous-traitant au sens du RGPD.",
+    "s4_title": "Cookies et traceurs",
+    "s4_body": "Ce site n'utilise aucun cookie, aucun outil d'analyse d'audience ni aucun traceur tiers.",
+    "s5_title": "Vos droits",
+    "s5_body": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-moi à :"
+  },
+  "footer": {
+    "mentions": "Mentions légales",
+    "privacy": "Politique de confidentialité"
   }
 }

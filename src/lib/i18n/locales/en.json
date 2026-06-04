@@ -142,5 +142,37 @@
   "vizraft": {
     "overview_1": "VizRaft is a from-scratch implementation of the Raft distributed consensus algorithm in Go, paired with a real-time visualizer that makes the protocol's behavior tangible. Leader elections, log replication, and network partition recovery all play out visually as you interact with the cluster.",
     "overview_2": "The goal is to turn a paper into running code, then make that code explainable — both to myself and to anyone trying to understand how distributed systems stay consistent under failure."
+  },
+  "mentions_legales": {
+    "label": "Legal information",
+    "title": "Legal Notice",
+    "editor_section": "Site publisher",
+    "editor_name": "Gary Henry",
+    "editor_location": "Paris, France",
+    "editor_email": "henry.gary@hotmail.com",
+    "host_section": "Hosting provider",
+    "host_name": "Hetzner Online GmbH",
+    "host_address": "Industriestr. 25 — 91710 Gunzenhausen, Germany",
+    "host_website": "www.hetzner.com"
+  },
+  "privacy_policy": {
+    "label": "Personal data",
+    "title": "Privacy Policy",
+    "updated": "Last updated: June 2026",
+    "intro": "henga.dev is a personal portfolio. This page describes the data collected via the contact form and how it is processed.",
+    "s1_title": "Data collected",
+    "s1_body": "When you use the contact form, the following data is collected: your name, email address, and message.",
+    "s2_title": "Purpose",
+    "s2_body": "This data is used solely to reply to your message. It is sent by email and is not stored in any database.",
+    "s3_title": "Data processor",
+    "s3_body": "Emails are sent via Resend (Resend Inc., 2261 Market Street #4008, San Francisco, CA 94114, USA), acting as a data processor under GDPR.",
+    "s4_title": "Cookies and trackers",
+    "s4_body": "This site uses no cookies, analytics tools, or third-party trackers.",
+    "s5_title": "Your rights",
+    "s5_body": "Under GDPR, you have the right to access, rectify, and delete your data. To exercise these rights, contact me at:"
+  },
+  "footer": {
+    "mentions": "Legal notice",
+    "privacy": "Privacy policy"
   }
 }
