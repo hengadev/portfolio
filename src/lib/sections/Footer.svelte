@@ -25,6 +25,11 @@
         },
     ];
 
+    const legalLinks = [
+        { key: "footer.mentions", href: "/mentions-legales" },
+        { key: "footer.privacy", href: "/politique-de-confidentialite" },
+    ];
+
     const year = new Date().getFullYear();
 </script>
 
@@ -52,6 +57,12 @@
                 </a>
             {/each}
         </div>
+    </div>
+
+    <div class="footer-legal container__small">
+        {#each legalLinks as { key, href }}
+            <a {href}>{$_(key)}</a>
+        {/each}
     </div>
 </footer>
 
@@ -141,5 +152,25 @@
     .social-link:hover::after {
         opacity: 1;
         translate: -50% 0;
+    }
+
+    .footer-legal {
+        margin-inline: auto;
+        padding-bottom: 1.25rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .footer-legal a {
+        font-size: 0.75rem;
+        color: hsl(var(--clr-dark-ternary));
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 150ms ease;
+    }
+
+    .footer-legal a:hover {
+        opacity: 1;
     }
 </style>
