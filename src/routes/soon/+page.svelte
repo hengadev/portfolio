@@ -13,7 +13,6 @@
     }
     .text {
         font-size: 4rem;
-        color: black;
     }
     .name {
         font-size: 2rem;
