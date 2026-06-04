@@ -10,7 +10,14 @@ dev: ## Start the development server
 	pnpm dev
 
 build: ## Build the Docker image
-	docker build -t $(IMAGE):$(TAG) .
+	cp static/resume_en.pdf /tmp/_portfolio_resume_en.pdf; \
+	cp static/resume_fr.pdf /tmp/_portfolio_resume_fr.pdf; \
+	rm static/resume_en.pdf && cp /tmp/_portfolio_resume_en.pdf static/resume_en.pdf; \
+	rm static/resume_fr.pdf && cp /tmp/_portfolio_resume_fr.pdf static/resume_fr.pdf; \
+	docker build -t $(IMAGE):$(TAG) .; \
+	STATUS=$$?; \
+	git checkout static/resume_en.pdf static/resume_fr.pdf; \
+	exit $$STATUS
 
 push: ## Push the image to the registry
 	docker push $(IMAGE):$(TAG)
