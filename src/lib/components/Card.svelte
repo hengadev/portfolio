@@ -2,6 +2,7 @@
     import { ArrowUpRight } from "lucide-svelte";
     import { goto } from "$app/navigation";
     import { _ } from "svelte-i18n";
+    import { reveal } from "$lib/actions/reveal";
 
     type Props = {
         title: string;
@@ -10,11 +11,12 @@
         type: string;
         href: string;
         logo?: string;
+        delay?: number;
     };
-    let { title, description, tags, type, href, logo }: Props = $props();
+    let { title, description, tags, type, href, logo, delay = 0 }: Props = $props();
 </script>
 
-<article class="card" role="button" tabindex="0" onclick={() => goto(href)} onkeydown={(e) => e.key === "Enter" && goto(href)}>
+<article class="card" role="button" tabindex="0" use:reveal={{ delay }} onclick={() => goto(href)} onkeydown={(e) => e.key === "Enter" && goto(href)}>
     <div class="card__top">
         <div class="card__title-row">
             {#if logo}

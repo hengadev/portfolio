@@ -13,7 +13,7 @@
 </script>
 
 <div class="cards container__small">
-    {#each cards as card}
+    {#each cards as card, i}
         <Card
             title={card.title}
             description={card.description}
@@ -21,6 +21,7 @@
             type={card.type}
             href={card.href}
             logo={card.logo}
+            delay={i * 100}
         />
     {/each}
 </div>
