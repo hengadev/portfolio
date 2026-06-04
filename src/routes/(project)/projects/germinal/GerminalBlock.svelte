@@ -40,7 +40,11 @@
 
     <section class="story-section">
         <h2 class="section-title">{$_('detail.learned')}</h2>
-        <p class="placeholder">{$_('detail.coming_soon')}</p>
+        <p>{$_('germinal.learned_1')}</p>
+        <p>{$_('germinal.learned_2')}</p>
+        <p>{$_('germinal.learned_3')}</p>
+        <p>{$_('germinal.learned_4')}</p>
+        <p>{$_('germinal.learned_5')}</p>
     </section>
 
     <button class="cta" onclick={() => {}}>

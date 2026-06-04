@@ -18,7 +18,13 @@
     <section class="story-section">
         <h2 class="section-title">{$_('detail.overview')}</h2>
         <p>{$_('encx.overview_1')}</p>
-        <p class="placeholder">{$_('detail.full_writeup')}</p>
+    </section>
+
+    <section class="story-section">
+        <h2 class="section-title">{$_('detail.learned')}</h2>
+        <p>{$_('encx.learned_1')}</p>
+        <p>{$_('encx.learned_2')}</p>
+        <p>{$_('encx.learned_3')}</p>
     </section>
 </ProjectDetail>
 {/key}

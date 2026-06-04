@@ -25,7 +25,10 @@
 
     <section class="story-section">
         <h2 class="section-title">{$_('detail.learned')}</h2>
-        <p class="placeholder">{$_('detail.coming_soon')}</p>
+        <p>{$_('leviosa.learned_1')}</p>
+        <p>{$_('leviosa.learned_2')}</p>
+        <p>{$_('leviosa.learned_3')}</p>
+        <p>{$_('leviosa.learned_4')}</p>
     </section>
 </ProjectDetail>
 {/key}
