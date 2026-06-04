@@ -3,6 +3,7 @@
     import Card from "$lib/components/Card.svelte";
     import { _, locale } from "svelte-i18n";
     import { ArrowRight } from "lucide-svelte";
+    import { reveal } from "$lib/actions/reveal";
     import type { PageData } from "./$types";
 
     let { data }: { data: PageData } = $props();
@@ -79,24 +80,24 @@
     </section>
 
     <section class="section about container__small">
-        <div class="section__header about__header">
+        <div class="section__header about__header" use:reveal>
             <h2 class="section__title">{$_('home.about.title')}</h2>
         </div>
         <div class="about__content grid" style="--gap: 1.25rem;">
-            <p class="about__bio">
+            <p class="about__bio" use:reveal={{ delay: 0 }}>
                 {$_('home.about.bio1')}
             </p>
-            <p class="about__bio">
+            <p class="about__bio" use:reveal={{ delay: 100 }}>
                 {$_('home.about.bio2')}
             </p>
-            <p class="about__bio">
+            <p class="about__bio" use:reveal={{ delay: 200 }}>
                 {$_('home.about.bio3')}
             </p>
         </div>
     </section>
 
     <section class="section projects">
-        <div class="section__header section__header--row container__small">
+        <div class="section__header section__header--row container__small" use:reveal>
             <div class="section__header-top">
                 <h2 class="section__title">{$_('home.projects.title')}</h2>
                 <a href="/projects" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
@@ -109,7 +110,7 @@
     </section>
 
     <section class="section experiments container__small">
-        <div class="section__header section__header--row">
+        <div class="section__header section__header--row" use:reveal>
             <div class="section__header-top">
                 <h2 class="section__title">{$_('home.experiments.title')}</h2>
                 <a href="/experiments" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
@@ -119,13 +120,14 @@
             <p class="section__subtitle">{$_('home.experiments.subtitle')}</p>
         </div>
         <div class="experiments__grid">
-            {#each experiments as experiment}
+            {#each experiments as experiment, i}
                 <Card
                     title={experiment.title}
                     description={experiment.description}
                     tags={experiment.tags}
                     type={experiment.type}
                     href={experiment.href}
+                    delay={i * 100}
                 />
             {/each}
         </div>
@@ -133,7 +135,7 @@
 
     {#if data.latestPosts.length > 0}
     <section class="section articles container__small">
-        <div class="section__header section__header--row">
+        <div class="section__header section__header--row" use:reveal>
             <div class="section__header-top">
                 <h2 class="section__title">{$_('home.posts.title')}</h2>
                 <a href="/blog" class="section__link flex" style="--gap: 0.375rem; align-items: center;">
@@ -143,8 +145,8 @@
             <p class="section__subtitle">{$_('home.posts.subtitle')}</p>
         </div>
         <ul class="article-list">
-            {#each data.latestPosts as post}
-                <li class="article-item">
+            {#each data.latestPosts as post, i}
+                <li class="article-item" use:reveal={{ delay: i * 80 }}>
                     <a href="/blog/{post.slug}" class="article-link">
                         <time class="article__date" datetime={post.date}>{formatDate(post.date)}</time>
                         <h3 class="article__title">
@@ -164,7 +166,7 @@
     </section>
     {/if}
 
-    <section class="section cta container__small">
+    <section class="section cta container__small" use:reveal>
         <h2 class="cta__title">{$_('home.cta.title')}</h2>
         <p class="cta__desc">
             {$_('home.cta.desc').split('\n')[0]}<br />
@@ -179,6 +181,27 @@
         display: grid;
         gap: 9rem;
         padding-bottom: 6rem;
+    }
+
+    /* ── Hero entrance ── */
+    @keyframes fade-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .hero__title {
+            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .hero__subtitle {
+            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+        }
+        .badges {
+            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+        }
+        .hero__ctas {
+            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+        }
     }
 
     /* ── Shared ── */
