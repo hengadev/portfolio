@@ -181,7 +181,8 @@
     "s4_title": "Cookies et traceurs",
     "s4_body": "Ce site n'utilise aucun cookie, aucun outil d'analyse d'audience ni aucun traceur tiers.",
     "s5_title": "Vos droits",
-    "s5_body": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-moi à :"
+    "s5_body": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, utilisez le",
+    "contact_form": "formulaire de contact"
   },
   "footer": {
     "tagline": "Développeur freelance orienté backend.",

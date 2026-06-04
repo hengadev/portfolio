@@ -41,8 +41,8 @@
                 <p class="brand-tagline">{$_("footer.tagline")}</p>
                 <div class="brand-contact">
                     <p class="col-label">{$_("footer.contact_label")}</p>
-                    <a href="mailto:henry.gary@hotmail.com" class="contact-link">
-                        henry.gary@hotmail.com
+                    <a href="/contact" class="contact-link">
+                        {$_("nav.contact")}
                     </a>
                 </div>
                 <div class="brand-socials">

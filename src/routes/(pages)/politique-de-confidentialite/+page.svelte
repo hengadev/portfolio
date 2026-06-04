@@ -37,7 +37,7 @@
                 <h2 class="section-title">{$_("privacy_policy.s5_title")}</h2>
                 <p class="section-body">
                     {$_("privacy_policy.s5_body")}
-                    <a href="mailto:henry.gary@hotmail.com">henry.gary@hotmail.com</a>
+                    <a href="/contact">{$_("privacy_policy.contact_form")}</a>.
                 </p>
             </section>
         </div>

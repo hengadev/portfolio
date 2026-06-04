@@ -181,7 +181,8 @@
     "s4_title": "Cookies and trackers",
     "s4_body": "This site uses no cookies, analytics tools, or third-party trackers.",
     "s5_title": "Your rights",
-    "s5_body": "Under GDPR, you have the right to access, rectify, and delete your data. To exercise these rights, contact me at:"
+    "s5_body": "Under GDPR, you have the right to access, rectify, and delete your data. To exercise these rights, use the",
+    "contact_form": "contact form"
   },
   "footer": {
     "tagline": "Backend-first freelance developer.",

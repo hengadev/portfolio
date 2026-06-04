@@ -16,9 +16,7 @@
                     <li>{$_("mentions_legales.editor_name")}</li>
                     <li>{$_("mentions_legales.editor_location")}</li>
                     <li>
-                        <a href="mailto:{$_('mentions_legales.editor_email')}">
-                            {$_("mentions_legales.editor_email")}
-                        </a>
+                        <a href="/contact">{$_("nav.contact")}</a>
                     </li>
                 </ul>
             </section>
