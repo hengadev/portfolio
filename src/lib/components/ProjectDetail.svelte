@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
-    import { ArrowLeft } from "lucide-svelte";
+    import { ArrowLeft, ArrowUpRight } from "lucide-svelte";
     import { goto } from "$app/navigation";
     import { _ } from "svelte-i18n";
 
@@ -15,10 +15,12 @@
         logo?: string;
         backHref?: string;
         backLabel?: string | undefined;
+        demoUrl?: string;
+        githubUrl?: string;
         children: Snippet;
     };
 
-    let { title, tagline, year, status, role, team, stack, logo, backHref = "/projects", backLabel = undefined, children }: Props = $props();
+    let { title, tagline, year, status, role, team, stack, logo, backHref = "/projects", backLabel = undefined, demoUrl, githubUrl, children }: Props = $props();
 
     const resolvedBackLabel = $derived(backLabel ?? $_('detail.back_projects'));
 </script>
@@ -80,6 +82,28 @@
                 <p class="sidebar__label">{$_('detail.timeline')}</p>
                 <p>{year} — {status}</p>
             </div>
+            {#if demoUrl || githubUrl}
+            <div class="sidebar__section">
+                <p class="sidebar__label">{$_('detail.links')}</p>
+                <ul class="links-list">
+                    {#if demoUrl}
+                    <li>
+                        <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                            {$_('detail.live_demo')} <ArrowUpRight size={12} />
+                        </a>
+                        <span class="demo-note">{$_('detail.demo_note')}</span>
+                    </li>
+                    {/if}
+                    {#if githubUrl}
+                    <li>
+                        <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                            GitHub <ArrowUpRight size={12} />
+                        </a>
+                    </li>
+                    {/if}
+                </ul>
+            </div>
+            {/if}
         </aside>
 
         <main class="main-content">
@@ -221,6 +245,41 @@
         font-size: 0.9rem;
         color: hsl(var(--clr-dark-secondary));
         line-height: 1.5;
+    }
+
+    .links-list {
+        display: grid;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+    }
+
+    .links-list li {
+        display: grid;
+        gap: 0.15rem;
+    }
+
+    .sidebar-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.2rem;
+        font-size: 0.9rem;
+        color: hsl(var(--clr-dark-secondary));
+        text-decoration: underline;
+        text-decoration-color: hsl(var(--clr-light-fournary));
+        text-underline-offset: 3px;
+        transition: color 120ms ease;
+        width: fit-content;
+    }
+
+    .sidebar-link:hover {
+        color: hsl(var(--clr-dark-primary));
+    }
+
+    .demo-note {
+        font-size: 0.75rem;
+        color: hsl(var(--clr-dark-ternary));
+        font-style: italic;
     }
 
     .main-content {

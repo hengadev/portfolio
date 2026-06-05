@@ -15,6 +15,8 @@
     team={["Gary HENRY"]}
     stack={["Go", "SvelteKit"]}
     logo="/logos/leviosa.png"
+    demoUrl="https://leviosa.henga.dev"
+    githubUrl="https://github.com/Leviosa-care/leviosa"
 >
     <section class="story-section">
         <h2 class="section-title">{$_('detail.overview')}</h2>
