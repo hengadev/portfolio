@@ -114,7 +114,6 @@
 
     .role-grid {
         display: grid;
-        /* grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); */
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
         margin-top: 0.25rem;
