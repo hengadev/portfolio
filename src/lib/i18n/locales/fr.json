@@ -3,7 +3,7 @@
     "home": "Accueil",
     "about": "À propos",
     "projects": "Projets",
-    "experiments": "Expériences",
+    "experiments": "Explorations",
     "blog": "Blog",
     "contact": "Contact"
   },
@@ -27,7 +27,7 @@
       "subtitle": "Une sélection de travaux freelance."
     },
     "experiments": {
-      "title": "Expériences",
+      "title": "Explorations",
       "link": "Voir tout",
       "subtitle": "Projets personnels, algorithmes et explorations en informatique."
     },
@@ -55,7 +55,7 @@
   },
   "experiments": {
     "label": "Travail personnel",
-    "title": "Expériences",
+    "title": "Explorations",
     "subtitle": "Projets personnels, algorithmes et explorations en informatique. Moins abouti que le travail client — plus intéressant.",
     "vizraft": "Implémentation de l'algorithme de consensus Raft from scratch en Go — observez les élections de leader, la réplication des logs et les partitions réseau en temps réel.",
     "type_coming_soon": "Bientôt disponible",
@@ -96,7 +96,7 @@
     "live_demo": "Démo en ligne",
     "demo_note": "Interface seule · données fictives",
     "back_projects": "Tous les projets",
-    "back_experiments": "Toutes les expériences",
+    "back_experiments": "Toutes les explorations",
     "overview": "Aperçu",
     "highlights": "Points techniques clés",
     "learned": "Ce que j'ai appris",
