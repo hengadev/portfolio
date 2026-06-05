@@ -16,11 +16,12 @@
         backHref?: string;
         backLabel?: string | undefined;
         demoUrl?: string;
+        demoAnchor?: string;
         githubUrl?: string;
         children: Snippet;
     };
 
-    let { title, tagline, year, status, role, team, stack, logo, backHref = "/projects", backLabel = undefined, demoUrl, githubUrl, children }: Props = $props();
+    let { title, tagline, year, status, role, team, stack, logo, backHref = "/projects", backLabel = undefined, demoUrl, demoAnchor, githubUrl, children }: Props = $props();
 
     const resolvedBackLabel = $derived(backLabel ?? $_('detail.back_projects'));
 
@@ -62,10 +63,14 @@
                     <span class="badge">{year}</span>
                     <span class="badge badge--status">{status}</span>
                 </div>
-                {#if demoUrl || githubUrl}
+                {#if demoUrl || demoAnchor || githubUrl}
                 <div class="project-links">
                     <div class="links-row">
-                        {#if demoUrl}
+                        {#if demoAnchor}
+                        <a href="#{demoAnchor}" class="link-btn link-btn--primary">
+                            {$_('detail.explore_demo')} <ArrowUpRight size={13} />
+                        </a>
+                        {:else if demoUrl}
                         <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="link-btn link-btn--primary">
                             {$_('detail.live_demo')} <ArrowUpRight size={13} />
                         </a>
@@ -76,7 +81,7 @@
                         </a>
                         {/if}
                     </div>
-                    {#if demoUrl}
+                    {#if demoAnchor || demoUrl}
                     <span class="demo-note">{$_('detail.demo_note')}</span>
                     {/if}
                 </div>
