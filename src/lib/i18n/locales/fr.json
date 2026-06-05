@@ -100,7 +100,12 @@
     "highlights": "Points techniques clés",
     "learned": "Ce que j'ai appris",
     "coming_soon": "Cette section arrive bientôt.",
-    "full_writeup": "Article complet à venir."
+    "full_writeup": "Article complet à venir.",
+    "explore_demo": "Explorer la démo",
+    "explore_demo_title": "Explorer la démo",
+    "explore_demo_subtitle": "L'application tourne en mode simulé avec des données fictives. Choisissez un rôle et connectez-vous avec les identifiants ci-dessous.",
+    "open_role": "Ouvrir",
+    "no_login_required": "Aucune connexion requise"
   },
   "cluo": {
     "overview_1": "Conçu pour remplacer les flux de travail d'investigation manuelle. Les agents de terrain utilisent une application desktop Wails + SvelteKit pour la gestion des dossiers, capturent des preuves sur une PWA mobile et les transmettent en toute sécurité aux clients via un portail dédié — le tout piloté par une seule API Go.",
@@ -117,6 +122,12 @@
     "highlight_5_body": "Ansible + Terraform pour des déploiements reproductibles et versionnés."
   },
   "leviosa": {
+    "demo_admin_label": "Administrateur",
+    "demo_admin_desc": "Accès complet — utilisateurs, partenaires, catalogue, analytics et paramètres.",
+    "demo_partner_label": "Partenaire",
+    "demo_partner_desc": "Gérez vos disponibilités, services et réservations clients.",
+    "demo_client_label": "Client",
+    "demo_client_desc": "Parcourez les services et réservez une séance bien-être.",
     "overview_1": "Un composant essentiel initialement développé pour un autre projet, extrait en tant que bibliothèque autonome pour faciliter le chiffrement et le hachage de données sensibles. Le principal défi était de concevoir une API qui s'efface tout en restant correcte et rapide.",
     "learned_1": "Leviosa a été mon premier vrai projet backend, construit dans un langage que j'apprenais en même temps. Je venais du HTML, CSS et JavaScript — sans serveurs, sans bases de données, sans système de types. Go était un choix délibéré : je voulais comprendre comment un logiciel fonctionne vraiment. Le livre Learn Go with Tests a été mon point d'entrée, et c'est la première fois que j'ai réellement pensé à la correction du code, pas seulement à le faire fonctionner.",
     "learned_2": "L'une des premières percées conceptuelles a été de comprendre vraiment le modèle client-serveur. J'avais un frontend SvelteKit, un backend SvelteKit et une API Go qui tournaient en parallèle, et je n'arrivais pas à raisonner sur leur communication. Ce qui a tout débloqué : client et serveur ne sont pas des rôles fixes et physiques — ils sont contextuels. La même machine peut être serveur pour un navigateur et client pour un autre service, selon qui initie la requête. Ce changement de perspective a transformé la façon dont je modélise tout système distribué depuis.",
@@ -124,6 +135,12 @@
     "learned_4": "Déboguer sans IA signifiait lire les stack traces Go manuellement — apprendre à trouver la goroutine qui a paniqué, lire l'ordre des frames, formuler une hypothèse à la fois. J'ai aussi appris à lâcher prise. Les bugs qui résistaient à des heures de pression cédaient souvent en quelques minutes avec un regard neuf. Sur le plan architectural, le monolithe modulaire n'était pas une décision initiale : j'ai commencé par une structure plate, envisagé les microservices, trouvé le coût opérationnel trop élevé pour un développeur solo, et suis arrivé aux modules bornés comme le bon compromis. La plupart de mes meilleures décisions architecturales sont venues d'avoir d'abord ressenti le coût des mauvaises."
   },
   "germinal": {
+    "demo_public_label": "Public",
+    "demo_public_desc": "Parcourez les événements, explorez les talents et effectuez une réservation.",
+    "demo_admin_label": "Admin",
+    "demo_admin_desc": "Back-office complet — événements, réservations, talents, équipe et analytics.",
+    "demo_staff_label": "Staff",
+    "demo_staff_desc": "Consultez et complétez les tâches qui vous sont assignées pour un événement.",
     "tagline": "Plateforme de gestion d'événements et de talents avec support bilingue, galeries médias et workflows automatisés.",
     "overview_1": "Une plateforme sophistiquée de gestion d'événements et de talents avec support bilingue, galeries médias, flux de travail automatisés et infrastructure prête pour la production.",
     "overview_2": "Construit de zéro comme vitrine full-stack des pratiques modernes de développement web. La plateforme intègre un système de middleware personnalisé pour les préoccupations transversales, une couche de cache LRU avec invalidation par tags, et un planificateur de tâches PostgreSQL pour les opérations asynchrones.",

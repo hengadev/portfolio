@@ -100,7 +100,12 @@
     "highlights": "Technical highlights",
     "learned": "What I learned",
     "coming_soon": "This section is coming soon.",
-    "full_writeup": "Full write-up coming soon."
+    "full_writeup": "Full write-up coming soon.",
+    "explore_demo": "Explore demo",
+    "explore_demo_title": "Explore the demo",
+    "explore_demo_subtitle": "Running in mock mode with seeded data. Choose a role and log in with the credentials below.",
+    "open_role": "Open",
+    "no_login_required": "No login required"
   },
   "cluo": {
     "overview_1": "Built to replace manual investigation workflows. Field agents use a Wails + SvelteKit desktop app for case management, capture evidence on a mobile PWA, and deliver securely to clients through a dedicated portal — all driven by one Go API.",
@@ -117,6 +122,12 @@
     "highlight_5_body": "Ansible + Terraform for reproducible, version-controlled deployments."
   },
   "leviosa": {
+    "demo_admin_label": "Administrator",
+    "demo_admin_desc": "Full platform access — users, partners, catalog, analytics, and settings.",
+    "demo_partner_label": "Partner",
+    "demo_partner_desc": "Manage your schedule, services, and client bookings.",
+    "demo_client_label": "Client",
+    "demo_client_desc": "Browse services and book a wellness session.",
     "overview_1": "A crucial component originally built for another project, extracted as a standalone library to facilitate encryption and hashing of sensitive data. The main challenge was designing an API that stays out of the way while remaining correct and fast.",
     "learned_1": "Leviosa was my first real backend project, built in a language I was learning at the same time. I came from HTML, CSS, and JavaScript — no servers, no databases, no type systems. Go was a deliberate choice: I wanted to understand how software actually runs. The Learn Go with Tests book was my entry point, and it was the first time I thought seriously about correctness, not just about making something work.",
     "learned_2": "One of the earliest conceptual breakthroughs was understanding the client-server model properly. I had a SvelteKit frontend, a SvelteKit backend, and a Go API running in parallel, and I couldn't reason about how they communicated. The insight that unlocked it: client and server are not fixed, physical roles — they're contextual. The same machine can be a server to a browser and a client to another service depending on who initiates the request. That shift changed how I model every distributed system I've built since.",
@@ -124,6 +135,12 @@
     "learned_4": "Debugging without AI meant reading Go stack traces manually — learning to find the panicking goroutine, read frame order, and form one hypothesis at a time. I also learned to step away. The bugs that resisted hours of pressure often yielded in minutes with fresh eyes. Architecturally, the modular monolith was not an upfront design decision: I started with a flat structure, considered microservices, found the operational overhead too costly for a solo developer, and arrived at bounded modules as the right tradeoff. Most of my best architectural decisions came from feeling the cost of the wrong one first."
   },
   "germinal": {
+    "demo_public_label": "Public",
+    "demo_public_desc": "Browse events, explore the talent roster, and make a reservation.",
+    "demo_admin_label": "Admin",
+    "demo_admin_desc": "Full back-office — events, reservations, talent, team, and analytics.",
+    "demo_staff_label": "Staff",
+    "demo_staff_desc": "View and complete the tasks assigned to you for an event.",
     "tagline": "Event & talent management platform with bilingual support, media galleries, and automated workflows.",
     "overview_1": "A sophisticated event and talent management platform with bilingual support, media galleries, automated workflows, and production-ready infrastructure.",
     "overview_2": "Built from the ground up as a full-stack showcase demonstrating modern web development practices. The platform features a custom middleware system for cross-cutting concerns, an LRU caching layer with tag-based invalidation, and a PostgreSQL-backed job scheduler for asynchronous tasks.",
