@@ -122,6 +122,7 @@
     "learned_4": "Debugging without AI meant reading Go stack traces manually — learning to find the panicking goroutine, read frame order, and form one hypothesis at a time. I also learned to step away. The bugs that resisted hours of pressure often yielded in minutes with fresh eyes. Architecturally, the modular monolith was not an upfront design decision: I started with a flat structure, considered microservices, found the operational overhead too costly for a solo developer, and arrived at bounded modules as the right tradeoff. Most of my best architectural decisions came from feeling the cost of the wrong one first."
   },
   "germinal": {
+    "tagline": "Event & talent management platform with bilingual support, media galleries, and automated workflows.",
     "overview_1": "A sophisticated event and talent management platform with bilingual support, media galleries, automated workflows, and production-ready infrastructure.",
     "overview_2": "Built from the ground up as a full-stack showcase demonstrating modern web development practices. The platform features a custom middleware system for cross-cutting concerns, an LRU caching layer with tag-based invalidation, and a PostgreSQL-backed job scheduler for asynchronous tasks.",
     "highlight_1_label": "Middleware architecture:",

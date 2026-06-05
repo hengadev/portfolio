@@ -9,7 +9,7 @@
 {#key $locale}
 <ProjectDetail
     title="Germinal"
-    tagline="Event & talent management platform with bilingual support, media galleries, and automated workflows."
+    tagline={$_('germinal.tagline')}
     year="2025"
     status="Active"
     role={["Full-Stack Developer", "System Designer", "DevOps Engineer"]}

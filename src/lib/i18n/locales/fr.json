@@ -122,6 +122,7 @@
     "learned_4": "Déboguer sans IA signifiait lire les stack traces Go manuellement — apprendre à trouver la goroutine qui a paniqué, lire l'ordre des frames, formuler une hypothèse à la fois. J'ai aussi appris à lâcher prise. Les bugs qui résistaient à des heures de pression cédaient souvent en quelques minutes avec un regard neuf. Sur le plan architectural, le monolithe modulaire n'était pas une décision initiale : j'ai commencé par une structure plate, envisagé les microservices, trouvé le coût opérationnel trop élevé pour un développeur solo, et suis arrivé aux modules bornés comme le bon compromis. La plupart de mes meilleures décisions architecturales sont venues d'avoir d'abord ressenti le coût des mauvaises."
   },
   "germinal": {
+    "tagline": "Plateforme de gestion d'événements et de talents avec support bilingue, galeries médias et workflows automatisés.",
     "overview_1": "Une plateforme sophistiquée de gestion d'événements et de talents avec support bilingue, galeries médias, flux de travail automatisés et infrastructure prête pour la production.",
     "overview_2": "Construit de zéro comme vitrine full-stack des pratiques modernes de développement web. La plateforme intègre un système de middleware personnalisé pour les préoccupations transversales, une couche de cache LRU avec invalidation par tags, et un planificateur de tâches PostgreSQL pour les opérations asynchrones.",
     "highlight_1_label": "Architecture middleware :",
