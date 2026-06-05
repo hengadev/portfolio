@@ -116,7 +116,6 @@
     .project-detail {
         display: grid;
         gap: 2.5rem;
-        padding-top: 3rem;
         padding-bottom: 6rem;
     }
 
@@ -219,7 +218,7 @@
         display: grid;
         gap: 2rem;
         position: sticky;
-        top: 3rem;
+        top: 5rem;
     }
 
     .sidebar__section {
