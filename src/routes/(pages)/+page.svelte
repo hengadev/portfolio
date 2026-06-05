@@ -83,16 +83,19 @@
         <div class="section__header about__header" use:reveal>
             <h2 class="section__title">{$_('home.about.title')}</h2>
         </div>
-        <div class="about__content grid" style="--gap: 1.25rem;">
-            <p class="about__bio" use:reveal={{ delay: 0 }}>
-                {$_('home.about.bio1')}
-            </p>
-            <p class="about__bio" use:reveal={{ delay: 100 }}>
-                {$_('home.about.bio2')}
-            </p>
-            <p class="about__bio" use:reveal={{ delay: 200 }}>
-                {$_('home.about.bio3')}
-            </p>
+        <div class="about__body">
+            <div class="about__photo" use:reveal></div>
+            <div class="about__content grid" style="--gap: 1.25rem;">
+                <p class="about__bio" use:reveal={{ delay: 0 }}>
+                    {$_('home.about.bio1')}
+                </p>
+                <p class="about__bio" use:reveal={{ delay: 100 }}>
+                    {$_('home.about.bio2')}
+                </p>
+                <p class="about__bio" use:reveal={{ delay: 200 }}>
+                    {$_('home.about.bio3')}
+                </p>
+            </div>
         </div>
     </section>
 
@@ -312,9 +315,34 @@
         justify-content: space-between;
     }
 
+    .about__body {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 2.5rem;
+        align-items: start;
+    }
+
+    .about__photo {
+        width: 200px;
+        aspect-ratio: 3 / 4;
+        border-radius: 0.75rem;
+        background-color: hsl(var(--clr-dark-primary));
+        flex-shrink: 0;
+    }
+
     .about__bio {
         color: hsl(var(--clr-dark-secondary));
         line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+        .about__body {
+            grid-template-columns: 1fr;
+        }
+        .about__photo {
+            width: 140px;
+            aspect-ratio: 1;
+        }
     }
 
     /* ── Section header with title + link row ── */
