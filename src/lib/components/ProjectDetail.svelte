@@ -23,37 +23,73 @@
     let { title, tagline, year, status, role, team, stack, logo, backHref = "/projects", backLabel = undefined, demoUrl, githubUrl, children }: Props = $props();
 
     const resolvedBackLabel = $derived(backLabel ?? $_('detail.back_projects'));
+
+    // Measure the sticky header so the sidebar can stack cleanly below it.
+    const NAV_PX = 64; // fixed nav ~4rem
+    let headerEl: HTMLElement | null = $state(null);
+    let sidebarTopPx = $state(NAV_PX);
+
+    $effect(() => {
+        if (!headerEl) return;
+        const update = () => { sidebarTopPx = NAV_PX + headerEl!.offsetHeight + 16; };
+        const ro = new ResizeObserver(update);
+        ro.observe(headerEl);
+        update();
+        return () => ro.disconnect();
+    });
 </script>
 
 <div class="project-detail">
-    <!-- Header row -->
-    <div class="project-header container__small">
+    <!-- Full-width sticky header -->
+    <div class="project-header container__small" bind:this={headerEl}>
         <button class="back-btn" onclick={() => goto(backHref)}>
             <ArrowLeft size={14} />
             <span>{resolvedBackLabel}</span>
         </button>
 
-        <div class="title-row">
-            <div class="title-row__left">
-                {#if logo}
-                    <img src={logo} alt="{title} logo" class="inline-logo" />
-                {/if}
-                <h1 class="project-name">{title}</h1>
+        <div class="title-area">
+            <div class="title-left">
+                <div class="name-row">
+                    {#if logo}
+                        <img src={logo} alt="{title} logo" class="inline-logo" />
+                    {/if}
+                    <h1 class="project-name">{title}</h1>
+                </div>
+                <p class="project-tagline">{tagline}</p>
             </div>
-            <div class="title-row__meta">
-                <span class="badge">{year}</span>
-                <span class="badge badge--status">{status}</span>
+            <div class="title-right">
+                <div class="badges">
+                    <span class="badge">{year}</span>
+                    <span class="badge badge--status">{status}</span>
+                </div>
+                {#if demoUrl || githubUrl}
+                <div class="project-links">
+                    <div class="links-row">
+                        {#if demoUrl}
+                        <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="link-btn link-btn--primary">
+                            {$_('detail.live_demo')} <ArrowUpRight size={13} />
+                        </a>
+                        {/if}
+                        {#if githubUrl}
+                        <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="link-btn">
+                            GitHub <ArrowUpRight size={13} />
+                        </a>
+                        {/if}
+                    </div>
+                    {#if demoUrl}
+                    <span class="demo-note">{$_('detail.demo_note')}</span>
+                    {/if}
+                </div>
+                {/if}
             </div>
         </div>
-
-        <p class="project-tagline">{tagline}</p>
     </div>
 
-    <div class="separator container__small"></div>
+    <div class="divider container__small"></div>
 
-    <!-- Two-column layout -->
+    <!-- Two-column body -->
     <div class="project-body container__small">
-        <aside class="sidebar">
+        <aside class="sidebar" style="top: {sidebarTopPx}px">
             <div class="sidebar__section">
                 <p class="sidebar__label">{$_('detail.role')}</p>
                 <ul>
@@ -82,28 +118,6 @@
                 <p class="sidebar__label">{$_('detail.timeline')}</p>
                 <p>{year} — {status}</p>
             </div>
-            {#if demoUrl || githubUrl}
-            <div class="sidebar__section">
-                <p class="sidebar__label">{$_('detail.links')}</p>
-                <ul class="links-list">
-                    {#if demoUrl}
-                    <li>
-                        <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                            {$_('detail.live_demo')} <ArrowUpRight size={12} />
-                        </a>
-                        <span class="demo-note">{$_('detail.demo_note')}</span>
-                    </li>
-                    {/if}
-                    {#if githubUrl}
-                    <li>
-                        <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                            GitHub <ArrowUpRight size={12} />
-                        </a>
-                    </li>
-                    {/if}
-                </ul>
-            </div>
-            {/if}
         </aside>
 
         <main class="main-content">
@@ -115,14 +129,22 @@
 <style>
     .project-detail {
         display: grid;
-        gap: 2.5rem;
+        gap: 2rem;
         padding-bottom: 6rem;
     }
 
+    /* ── Sticky header ── */
+
     .project-header {
+        position: sticky;
+        top: 4rem;
+        z-index: 10;
         margin-inline: auto;
         display: grid;
-        gap: 1rem;
+        gap: 1.5rem;
+        padding-block: 1.25rem;
+        background-color: hsl(var(--bg-body) / 0.92);
+        backdrop-filter: blur(10px);
     }
 
     .back-btn {
@@ -140,15 +162,28 @@
         color: hsl(var(--clr-dark-primary));
     }
 
-    .title-row {
+    .title-area {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 1rem;
-        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 2rem;
     }
 
-    .title-row__left {
+    .title-left {
+        display: grid;
+        gap: 0.75rem;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .title-right {
+        display: grid;
+        gap: 1rem;
+        justify-items: end;
+        flex-shrink: 0;
+    }
+
+    .name-row {
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -170,11 +205,10 @@
         line-height: 1.1;
     }
 
-    .title-row__meta {
+    .badges {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        flex-shrink: 0;
     }
 
     .badge {
@@ -200,11 +234,68 @@
         max-width: 60ch;
     }
 
-    .separator {
+    /* ── Link buttons ── */
+
+    .project-links {
+        display: grid;
+        gap: 0.4rem;
+    }
+
+    .links-row {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        border: 1px solid hsl(var(--clr-light-fournary));
+        background-color: hsl(var(--clr-light-primary));
+        color: hsl(var(--clr-dark-secondary));
+        text-decoration: none;
+        transition: border-color 120ms ease, color 120ms ease, background-color 120ms ease;
+        width: fit-content;
+    }
+
+    .link-btn:hover {
+        border-color: hsl(var(--clr-dark-ternary));
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-secondary));
+    }
+
+    .link-btn--primary {
+        background-color: hsl(var(--clr-dark-primary));
+        color: hsl(var(--clr-light-primary));
+        border-color: hsl(var(--clr-dark-primary));
+    }
+
+    .link-btn--primary:hover {
+        background-color: hsl(var(--clr-dark-secondary));
+        border-color: hsl(var(--clr-dark-secondary));
+        color: hsl(var(--clr-light-primary));
+    }
+
+    .demo-note {
+        font-size: 0.75rem;
+        color: hsl(var(--clr-dark-ternary));
+        font-style: italic;
+    }
+
+    /* ── Divider ── */
+
+    .divider {
         margin-inline: auto;
         height: 1px;
         background-color: hsl(var(--clr-light-fournary));
     }
+
+    /* ── Two-column body ── */
 
     .project-body {
         margin-inline: auto;
@@ -218,7 +309,6 @@
         display: grid;
         gap: 2rem;
         position: sticky;
-        top: 5rem;
     }
 
     .sidebar__section {
@@ -246,47 +336,16 @@
         line-height: 1.5;
     }
 
-    .links-list {
-        display: grid;
-        gap: 0.5rem;
-        list-style: none;
-        padding: 0;
-    }
-
-    .links-list li {
-        display: grid;
-        gap: 0.15rem;
-    }
-
-    .sidebar-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.2rem;
-        font-size: 0.9rem;
-        color: hsl(var(--clr-dark-secondary));
-        text-decoration: underline;
-        text-decoration-color: hsl(var(--clr-light-fournary));
-        text-underline-offset: 3px;
-        transition: color 120ms ease;
-        width: fit-content;
-    }
-
-    .sidebar-link:hover {
-        color: hsl(var(--clr-dark-primary));
-    }
-
-    .demo-note {
-        font-size: 0.75rem;
-        color: hsl(var(--clr-dark-ternary));
-        font-style: italic;
-    }
-
     .main-content {
         display: grid;
         gap: 3rem;
     }
 
     @media (max-width: 768px) {
+        .project-header {
+            position: static;
+        }
+
         .project-body {
             grid-template-columns: 1fr;
             gap: 2rem;
