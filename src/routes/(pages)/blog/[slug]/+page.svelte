@@ -2,6 +2,7 @@
     import { ArrowLeft } from "lucide-svelte";
     import { _, locale } from "svelte-i18n";
     import type { PageData } from "./$types";
+    import SeriesNav from "$lib/components/SeriesNav.svelte";
 
     let { data }: { data: PageData } = $props();
 
@@ -35,9 +36,25 @@
             </div>
         </header>
 
+        {#if data.seriesEntries && data.metadata.series}
+            <SeriesNav
+                series={data.metadata.series}
+                currentSlug={data.metadata.slug}
+                entries={data.seriesEntries}
+            />
+        {/if}
+
         <div class="prose">
             <PostContent />
         </div>
+
+        {#if data.seriesEntries && data.metadata.series}
+            <SeriesNav
+                series={data.metadata.series}
+                currentSlug={data.metadata.slug}
+                entries={data.seriesEntries}
+            />
+        {/if}
     </article>
 </div>
 
