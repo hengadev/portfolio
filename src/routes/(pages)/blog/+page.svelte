@@ -37,6 +37,9 @@
                             {#each post.tags as tag}
                                 <span class="tag">{tag}</span>
                             {/each}
+                            {#if post.series}
+                                <span class="tag tag--series">{post.series} · Part {post.seriesOrder}</span>
+                            {/if}
                         </div>
                     </a>
                 </li>
@@ -147,5 +150,10 @@
         border: 1px solid hsl(var(--clr-light-fournary));
         border-radius: 999px;
         padding: 0.15rem 0.55rem;
+    }
+
+    .tag--series {
+        background-color: hsl(var(--clr-light-ternary));
+        font-weight: 600;
     }
 </style>
