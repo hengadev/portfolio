@@ -84,7 +84,9 @@
             <h2 class="section__title">{$_('home.about.title')}</h2>
         </div>
         <div class="about__body">
-            <div class="about__photo" use:reveal></div>
+            <div class="about__photo" use:reveal>
+                <img src="/toji_locks.jpg" alt="Profile photo placeholder" />
+            </div>
             <div class="about__content grid" style="--gap: 1.25rem;">
                 <p class="about__bio" use:reveal={{ delay: 0 }}>
                     {$_('home.about.bio1')}
@@ -326,8 +328,15 @@
         width: 200px;
         aspect-ratio: 3 / 4;
         border-radius: 0.75rem;
-        background-color: hsl(var(--clr-dark-primary));
         flex-shrink: 0;
+        overflow: hidden;
+    }
+
+    .about__photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
     }
 
     .about__bio {
