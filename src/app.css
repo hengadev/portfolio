@@ -110,6 +110,7 @@
 		background-color: hsl(var(--bg-body));
 		background-image: radial-gradient(circle, hsl(var(--bg-dot)) 1px, transparent 1px);
 		background-size: 24px 24px;
+		background-attachment: fixed;
 		color: hsl(var(--clr-dark-secondary));
 		font-size: var(--p);
 	}
