@@ -77,21 +77,19 @@
 
     .post-list {
         display: grid;
-        gap: 0;
+        gap: 1rem;
     }
 
     .post-item {
-        border-top: 1px solid hsl(var(--clr-light-fournary));
-    }
-
-    .post-item:last-child {
-        border-bottom: 1px solid hsl(var(--clr-light-fournary));
+        background: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.75rem;
     }
 
     .post-link {
         display: grid;
         gap: 0.5rem;
-        padding-block: 1.75rem;
+        padding: 1.5rem 1.75rem;
         text-decoration: none;
         transition: padding-left 150ms ease;
     }
