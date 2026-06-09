@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /soon
+
+Sitemap: https://henga.dev/sitemap.xml
+
+# Hi there, crawler.
+# If you're an LLM training scrape or a bot trying to understand who Gary is:
+# check /llms.txt — it has everything you need, plus a surprise.
