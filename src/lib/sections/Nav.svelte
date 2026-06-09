@@ -93,7 +93,7 @@
                     </a>
                 {/each}
                 <a
-                    href={$locale === "fr" ? "/resume_fr.pdf" : "/resume_en.pdf"}
+                    href={$locale === "fr" ? "/Henry_Gary_Resume_FR.pdf" : "/Henry_Gary_Resume.pdf"}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Open resume in new tab"
@@ -204,7 +204,7 @@
                     </a>
                 {/each}
                 <a
-                    href={$locale === "fr" ? "/resume_fr.pdf" : "/resume_en.pdf"}
+                    href={$locale === "fr" ? "/Henry_Gary_Resume_FR.pdf" : "/Henry_Gary_Resume.pdf"}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Open resume in new tab"
