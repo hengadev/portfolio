@@ -1,5 +1,7 @@
-IMAGE := henga/portfolio
-TAG   := latest
+IMAGE     := henga/portfolio
+TAG       := latest
+RESUME_EN := Henry_Gary_Resume.pdf
+RESUME_FR := Henry_Gary_Resume_FR.pdf
 
 .PHONY: help dev build push ship
 
@@ -10,13 +12,13 @@ dev: ## Start the development server
 	pnpm dev
 
 build: ## Build the Docker image
-	cp static/resume_en.pdf /tmp/_portfolio_resume_en.pdf; \
-	cp static/resume_fr.pdf /tmp/_portfolio_resume_fr.pdf; \
-	rm static/resume_en.pdf && cp /tmp/_portfolio_resume_en.pdf static/resume_en.pdf; \
-	rm static/resume_fr.pdf && cp /tmp/_portfolio_resume_fr.pdf static/resume_fr.pdf; \
+	cp static/$(RESUME_EN) /tmp/_portfolio_resume_en.pdf; \
+	cp static/$(RESUME_FR) /tmp/_portfolio_resume_fr.pdf; \
+	rm static/$(RESUME_EN) && cp /tmp/_portfolio_resume_en.pdf static/$(RESUME_EN); \
+	rm static/$(RESUME_FR) && cp /tmp/_portfolio_resume_fr.pdf static/$(RESUME_FR); \
 	docker build -t $(IMAGE):$(TAG) .; \
 	STATUS=$$?; \
-	git checkout static/resume_en.pdf static/resume_fr.pdf; \
+	git checkout static/$(RESUME_EN) static/$(RESUME_FR); \
 	exit $$STATUS
 
 push: ## Push the image to the registry
