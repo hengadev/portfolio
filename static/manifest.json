@@ -1,0 +1,22 @@
+{
+  "name": "Gary Henry — henga.dev",
+  "short_name": "henga.dev",
+  "description": "Freelance full-stack developer based in Paris. Backend-first: Go + SvelteKit.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f9fc",
+  "theme_color": "#f9f9fc",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}
