@@ -39,6 +39,7 @@
             <div class="brand">
                 <a href="/" class="brand-name">henga.dev</a>
                 <p class="brand-tagline">{$_("footer.tagline")}</p>
+                <p class="brand-no-tracking">{$_("footer.no_tracking")}</p>
                 <div class="brand-contact">
                     <p class="col-label">{$_("footer.contact_label")}</p>
                     <a href="/contact" class="contact-link">
@@ -130,6 +131,13 @@
         color: hsl(var(--clr-dark-ternary));
         line-height: 1.6;
         max-width: 28ch;
+    }
+
+    .brand-no-tracking {
+        font-size: 0.75rem;
+        color: hsl(var(--clr-dark-ternary));
+        opacity: 0.6;
+        margin-top: -0.25rem;
     }
 
     .brand-contact {
