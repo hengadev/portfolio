@@ -94,8 +94,9 @@
                 {/each}
                 <a
                     href={$locale === "fr" ? "/resume_fr.pdf" : "/resume_en.pdf"}
-                    download
-                    aria-label="Download resume"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open resume in new tab"
                     class="icon-link"
                     data-tooltip={$locale === "fr" ? "CV" : "Resume"}
                 >
@@ -204,8 +205,9 @@
                 {/each}
                 <a
                     href={$locale === "fr" ? "/resume_fr.pdf" : "/resume_en.pdf"}
-                    download
-                    aria-label="Download resume"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open resume in new tab"
                     class="icon-link"
                     onclick={closeMenu}
                 >
