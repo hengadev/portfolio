@@ -14,6 +14,13 @@
     }
 </script>
 
+<svelte:head>
+	<title>Blog — Gary Henry</title>
+	<meta name="description" content="Writing on Go, distributed systems, and software craft." />
+	<meta property="og:title" content="Blog — Gary Henry" />
+	<meta property="og:description" content="Writing on Go, distributed systems, and software craft." />
+</svelte:head>
+
 <div class="page container__small">
     <header class="page__header">
         <h1 class="page__title">{$_('blog.title')}</h1>

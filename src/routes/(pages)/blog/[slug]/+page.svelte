@@ -17,6 +17,14 @@
     }
 </script>
 
+<svelte:head>
+	<title>{data.metadata.title} — Gary Henry</title>
+	<meta name="description" content={data.metadata.description} />
+	<meta property="og:title" content="{data.metadata.title} — Gary Henry" />
+	<meta property="og:description" content={data.metadata.description} />
+	<meta property="og:type" content="article" />
+</svelte:head>
+
 <div class="page container__small">
     <a href="/blog" class="back-link flex" style="--gap: 0.375rem; align-items: center;">
         <ArrowLeft size={16} /> {$_('blog.back')}

@@ -37,8 +37,16 @@
             href: "/projects/encx",
         },
         ];
+
     });
 </script>
+
+<svelte:head>
+	<title>Projects — Gary Henry</title>
+	<meta name="description" content="A collection of things I've built — from platforms to libraries. Cluo, Leviosa, Germinal, ENCX." />
+	<meta property="og:title" content="Projects — Gary Henry" />
+	<meta property="og:description" content="A collection of things I've built — from platforms to libraries." />
+</svelte:head>
 
 <div class="page container__small">
     <header class="page__header">

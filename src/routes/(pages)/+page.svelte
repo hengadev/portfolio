@@ -62,6 +62,28 @@
     });
 </script>
 
+<svelte:head>
+	<title>Gary Henry — Freelance Developer</title>
+	<meta name="description" content="I turn your problems into software solutions — backend-first freelance developer based in Paris. Go, SvelteKit, PostgreSQL." />
+	<meta property="og:title" content="Gary Henry — Freelance Developer" />
+	<meta property="og:description" content="I turn your problems into software solutions — backend-first freelance developer based in Paris. Go, SvelteKit, PostgreSQL." />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Gary Henry",
+		"url": "https://henga.dev",
+		"jobTitle": "Freelance Full-Stack Developer",
+		"description": "Backend-first freelance developer based in Paris. Go + SvelteKit.",
+		"address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Paris",
+			"addressCountry": "FR"
+		},
+		"email": "henry.gary@hotmail.com",
+		"knowsAbout": ["Go", "TypeScript", "SvelteKit", "PostgreSQL", "Docker", "Distributed Systems", "Cryptography"]
+	})}</script>`}
+</svelte:head>
+
 <div class="page">
     <section class="section hero container__small">
         <h1 class="hero__title">{$_('home.hero.title')}</h1>

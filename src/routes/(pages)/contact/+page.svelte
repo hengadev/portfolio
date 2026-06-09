@@ -7,6 +7,13 @@
     let loading = $state(false);
 </script>
 
+<svelte:head>
+	<title>Contact — Gary Henry</title>
+	<meta name="description" content="Have a project in mind or want to collaborate? Send Gary a message." />
+	<meta property="og:title" content="Contact — Gary Henry" />
+	<meta property="og:description" content="Have a project in mind or want to collaborate? Send Gary a message." />
+</svelte:head>
+
 <div class="page container__small">
     {#if form?.success}
         <div class="result">
