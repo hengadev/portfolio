@@ -23,6 +23,22 @@
 	<meta property="og:title" content="{data.metadata.title} — Gary Henry" />
 	<meta property="og:description" content={data.metadata.description} />
 	<meta property="og:type" content="article" />
+	<meta property="og:image" content="https://henga.dev/toji_locks.jpg" />
+	<meta name="twitter:image" content="https://henga.dev/toji_locks.jpg" />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": data.metadata.title,
+		"description": data.metadata.description,
+		"datePublished": data.metadata.date,
+		"author": {
+			"@type": "Person",
+			"name": "Gary Henry",
+			"url": "https://henga.dev"
+		},
+		"url": `https://henga.dev/blog/${data.metadata.slug}`,
+		"keywords": data.metadata.tags.join(", ")
+	})}</script>`}
 </svelte:head>
 
 <div class="page container__small">
