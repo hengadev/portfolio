@@ -37,6 +37,27 @@
       "link": "View all",
       "subtitle": "Writing on Go, distributed systems, and software craft."
     },
+    "process": {
+      "title": "How I work",
+      "subtitle": "A straightforward process from first conversation to production delivery.",
+      "step1": {
+        "title": "Discovery call",
+        "description": "We talk about your problem, your users, and what success looks like. No commitment — just a conversation to see if we're a good fit."
+      },
+      "step2": {
+        "title": "Written spec / proposal",
+        "description": "I write up a clear scope document with deliverables, milestones, and timeline. You know exactly what you're getting before any code is written."
+      },
+      "step3": {
+        "title": "Build in milestones",
+        "description": "The project is broken into meaningful milestones. You see progress at every stage, give feedback early, and nothing comes as a surprise."
+      },
+      "step4": {
+        "title": "Handoff + docs",
+        "description": "You get a working system in production, plus the documentation and knowledge transfer to own it going forward."
+      },
+      "pricing": "I work on fixed-scope projects with a clear deliverable."
+    },
     "cta": {
       "title": "Looking to Collaborate?",
       "desc": "Open to freelance projects and open-source collaboration.\nIf you have something interesting to build, reach out.",

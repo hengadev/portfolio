@@ -127,6 +127,46 @@
         </div>
     </section>
 
+    <section class="section process container__small" use:reveal>
+        <div class="section__header">
+            <h2 class="section__title">{$_('home.process.title')}</h2>
+            <p class="section__subtitle">{$_('home.process.subtitle')}</p>
+        </div>
+        <div class="process__steps">
+            <div class="process__step" use:reveal={{ delay: 0 }}>
+                <span class="process__number">01</span>
+                <div class="process__step-content">
+                    <h3 class="process__step-title">{$_('home.process.step1.title')}</h3>
+                    <p class="process__step-desc">{$_('home.process.step1.description')}</p>
+                </div>
+            </div>
+            <div class="process__step" use:reveal={{ delay: 80 }}>
+                <span class="process__number">02</span>
+                <div class="process__step-content">
+                    <h3 class="process__step-title">{$_('home.process.step2.title')}</h3>
+                    <p class="process__step-desc">{$_('home.process.step2.description')}</p>
+                </div>
+            </div>
+            <div class="process__step" use:reveal={{ delay: 160 }}>
+                <span class="process__number">03</span>
+                <div class="process__step-content">
+                    <h3 class="process__step-title">{$_('home.process.step3.title')}</h3>
+                    <p class="process__step-desc">{$_('home.process.step3.description')}</p>
+                </div>
+            </div>
+            <div class="process__step" use:reveal={{ delay: 240 }}>
+                <span class="process__number">04</span>
+                <div class="process__step-content">
+                    <h3 class="process__step-title">{$_('home.process.step4.title')}</h3>
+                    <p class="process__step-desc">{$_('home.process.step4.description')}</p>
+                </div>
+            </div>
+        </div>
+        <p class="process__pricing" use:reveal={{ delay: 320 }}>
+            {$_('home.process.pricing')}
+        </p>
+    </section>
+
     <section class="section projects">
         <div class="section__header section__header--row container__small" use:reveal>
             <div class="section__header-top">
@@ -417,6 +457,87 @@
         .about__photo {
             width: 140px;
             aspect-ratio: 1;
+        }
+    }
+
+    /* ── Process ── */
+    .process {
+        margin-inline: auto;
+        display: grid;
+        gap: 2rem;
+    }
+
+    .process__steps {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .process__step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1.5rem;
+        align-items: start;
+        padding: 1.5rem;
+        background-color: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.75rem;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+
+    .process__step:hover {
+        border-color: hsl(var(--clr-dark-ternary));
+        box-shadow: 0 4px 16px hsl(0 0% 0% / 0.06);
+    }
+
+    .process__number {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: hsl(var(--clr-dark-ternary));
+        background-color: hsl(var(--clr-light-secondary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 999px;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .process__step-content {
+        display: grid;
+        gap: 0.375rem;
+    }
+
+    .process__step-title {
+        font-size: var(--h3);
+        font-weight: 600;
+        color: hsl(var(--clr-dark-primary));
+        line-height: 1.3;
+    }
+
+    .process__step-desc {
+        font-size: 0.9rem;
+        color: hsl(var(--clr-dark-ternary));
+        line-height: 1.6;
+    }
+
+    .process__pricing {
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-secondary));
+        background-color: hsl(var(--clr-light-secondary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.75rem;
+        padding: 1rem 1.5rem;
+        margin-top: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+        .process__step {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
         }
     }
 

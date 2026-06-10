@@ -37,6 +37,27 @@
       "link": "Voir tout",
       "subtitle": "Articles sur Go, les systèmes distribués et l'artisanat logiciel."
     },
+    "process": {
+      "title": "Comment je travaille",
+      "subtitle": "Un processus simple, de la première conversation jusqu'au déploiement en production.",
+      "step1": {
+        "title": "Appel découverte",
+        "description": "On discute de votre problème, de vos utilisateurs et de ce que signifie le succès. Sans engagement — juste une conversation pour voir si nous sommes faits pour travailler ensemble."
+      },
+      "step2": {
+        "title": "Cahier des charges / proposition",
+        "description": "Je rédige un document clair avec le périmètre, les livrables, les jalons et le calendrier. Vous savez exactement ce que vous obtenez avant qu'une seule ligne de code soit écrite."
+      },
+      "step3": {
+        "title": "Développement par étapes",
+        "description": "Le projet est découpé en jalons significatifs. Vous voyez la progression à chaque étape, donnez vos retours tôt, et rien ne vous surprend."
+      },
+      "step4": {
+        "title": "Livraison + documentation",
+        "description": "Vous recevez un système fonctionnel en production, accompagné de la documentation et du transfert de connaissances pour en prendre ownership."
+      },
+      "pricing": "Je travaille en forfait sur des projets à périmètre défini avec un livrable clair."
+    },
     "cta": {
       "title": "Envie de collaborer ?",
       "desc": "Ouvert aux projets freelance et à la collaboration open-source.\nSi vous avez quelque chose d'intéressant à construire, contactez-moi.",
