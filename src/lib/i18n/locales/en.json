@@ -56,7 +56,8 @@
         "title": "Handoff + docs",
         "description": "You get a working system in production, plus the documentation and knowledge transfer to own it going forward."
       },
-      "pricing": "I work on fixed-scope projects with a clear deliverable."
+      "pricing": "I work on fixed-scope projects with a clear deliverable.",
+      "pricing_label": "How I charge"
     },
     "testimonials": {
       "title": "Testimonials",

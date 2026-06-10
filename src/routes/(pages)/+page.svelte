@@ -163,9 +163,7 @@
                 </div>
             </div>
         </div>
-        <p class="process__pricing" use:reveal={{ delay: 320 }}>
-            {$_('home.process.pricing')}
-        </p>
+
     </section>
 
     <section class="section projects">
@@ -476,75 +474,85 @@
 
     .process__steps {
         display: grid;
+        grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
     }
 
     .process__step {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 1.5rem;
-        align-items: start;
-        padding: 1.5rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 1.75rem 1.5rem;
         background-color: hsl(var(--clr-light-primary));
         border: 1px solid hsl(var(--clr-light-fournary));
+        border-top: 2px solid hsl(var(--clr-dark-primary));
         border-radius: 0.75rem;
-        transition: border-color 150ms ease, box-shadow 150ms ease;
+        transition: box-shadow 200ms ease, transform 200ms ease;
+    }
+
+    .process__step:not(:last-child)::after {
+        content: '→';
+        position: absolute;
+        right: -0.85rem;
+        top: 1.6rem;
+        font-size: 0.9rem;
+        color: hsl(var(--clr-light-fournary));
+        z-index: 1;
+        pointer-events: none;
     }
 
     .process__step:hover {
-        border-color: hsl(var(--clr-dark-ternary));
-        box-shadow: 0 4px 16px hsl(0 0% 0% / 0.06);
+        box-shadow: 0 8px 28px hsl(0 0% 0% / 0.08);
+        transform: translateY(-2px);
     }
 
     .process__number {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: hsl(var(--clr-dark-ternary));
-        background-color: hsl(var(--clr-light-secondary));
-        border: 1px solid hsl(var(--clr-light-fournary));
-        border-radius: 999px;
-        width: 2.5rem;
-        height: 2.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: hsl(var(--clr-dark-primary));
+        background: none;
+        border: none;
+        border-radius: 0;
+        width: auto;
+        height: auto;
+        display: block;
+        line-height: 1;
     }
 
     .process__step-content {
         display: grid;
-        gap: 0.375rem;
+        gap: 0.5rem;
+        flex: 1;
     }
 
     .process__step-title {
-        font-size: var(--h3);
+        font-size: 1rem;
         font-weight: 600;
         color: hsl(var(--clr-dark-primary));
         line-height: 1.3;
     }
 
     .process__step-desc {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         color: hsl(var(--clr-dark-ternary));
-        line-height: 1.6;
+        line-height: 1.65;
     }
 
-    .process__pricing {
-        text-align: center;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: hsl(var(--clr-dark-secondary));
-        background-color: hsl(var(--clr-light-secondary));
-        border: 1px solid hsl(var(--clr-light-fournary));
-        border-radius: 0.75rem;
-        padding: 1rem 1.5rem;
-        margin-top: 0.5rem;
+
+    @media (max-width: 900px) {
+        .process__steps {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .process__step::after {
+            display: none;
+        }
     }
 
-    @media (max-width: 600px) {
-        .process__step {
+    @media (max-width: 520px) {
+        .process__steps {
             grid-template-columns: 1fr;
-            gap: 0.75rem;
         }
     }
 

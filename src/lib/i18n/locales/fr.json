@@ -56,7 +56,8 @@
         "title": "Livraison + documentation",
         "description": "Vous recevez un système fonctionnel en production, accompagné de la documentation et du transfert de connaissances pour en prendre ownership."
       },
-      "pricing": "Je travaille en forfait sur des projets à périmètre défini avec un livrable clair."
+      "pricing": "Je travaille en forfait sur des projets à périmètre défini avec un livrable clair.",
+      "pricing_label": "Comment je facture"
     },
     "testimonials": {
       "title": "Témoignages",
