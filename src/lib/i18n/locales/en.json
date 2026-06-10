@@ -20,7 +20,7 @@
       "link": "More about me",
       "bio1": "I'm a freelance full-stack developer with a strong backend focus. I build web applications and tools — mostly with Go on the server and SvelteKit on the frontend — and I care about systems that are fast, simple, and correct.",
       "bio2": "My main stack is Go and Svelte. I reach for Python or Rust when the problem calls for it. I'm comfortable with the tooling that gets a vision to production — Docker, PostgreSQL, Ansible, Terraform — and I self-host wherever it makes sense, both for privacy and to keep costs down. AI-augmented development is part of how I work — I use it to move faster on well-scoped problems, not to replace the judgment behind them.",
-      "bio3": "If you're a solo founder or a small team with a problem to solve, I can own the whole thing — from the first conversation where we nail down the spec, through design and build, to a production deployment you can rely on. You won't be handed off to a junior dev or left with a half-finished prototype. I studied mathematics through graduate coursework, which probably explains my pull toward things like consensus algorithms and encryption. Outside of work, I tinker with electronics and play electric guitar."
+      "bio3": "If you're a solo founder or a small team with a problem to solve, I can own the whole thing — from the first conversation where we nail down the spec, through design and build, to a production deployment you can rely on. You won't be handed off to a junior dev or left with a half-finished prototype."
     },
     "projects": {
       "title": "Projects",
