@@ -129,7 +129,7 @@
     </section>
 
     <section class="section process container__small" use:reveal>
-        <div class="section__header">
+        <div class="section__header process__header">
             <h2 class="section__title">{$_('home.process.title')}</h2>
             <p class="section__subtitle">{$_('home.process.subtitle')}</p>
         </div>
@@ -461,6 +461,10 @@
             width: 140px;
             aspect-ratio: 1;
         }
+    }
+
+    .process__header {
+        margin-inline: 0;
     }
 
     /* ── Process ── */
