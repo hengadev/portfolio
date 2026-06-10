@@ -58,6 +58,10 @@
       },
       "pricing": "I work on fixed-scope projects with a clear deliverable."
     },
+    "testimonials": {
+      "title": "Testimonials",
+      "placeholder": "What clients say will appear here."
+    },
     "cta": {
       "title": "Looking to Collaborate?",
       "desc": "Open to freelance projects and open-source collaboration.\nIf you have something interesting to build, reach out.",

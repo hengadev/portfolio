@@ -58,6 +58,10 @@
       },
       "pricing": "Je travaille en forfait sur des projets à périmètre défini avec un livrable clair."
     },
+    "testimonials": {
+      "title": "Témoignages",
+      "placeholder": "Ce que disent les clients apparaîtra ici."
+    },
     "cta": {
       "title": "Envie de collaborer ?",
       "desc": "Ouvert aux projets freelance et à la collaboration open-source.\nSi vous avez quelque chose d'intéressant à construire, contactez-moi.",

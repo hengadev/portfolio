@@ -1,6 +1,7 @@
 <script lang="ts">
     import Cards from "$lib/components/Cards.svelte";
     import Card from "$lib/components/Card.svelte";
+    import Testimonials from "$lib/sections/Testimonials.svelte";
     import { _, locale } from "svelte-i18n";
     import { ArrowRight } from "lucide-svelte";
     import { reveal } from "$lib/actions/reveal";
@@ -179,6 +180,8 @@
         </div>
         <Cards cards={projects} />
     </section>
+
+    <Testimonials />
 
     <section class="section experiments container__small">
         <div class="section__header section__header--row" use:reveal>
