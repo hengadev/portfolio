@@ -65,16 +65,16 @@
 
 <svelte:head>
 	<title>Gary Henry — Freelance Developer</title>
-	<meta name="description" content="I turn your problems into software solutions — backend-first freelance developer based in Paris. Go, SvelteKit, PostgreSQL." />
+	<meta name="description" content="You bring the problem. I handle the rest — design, build, and ship. Full-stack freelance developer based in Paris. Go, SvelteKit, PostgreSQL." />
 	<meta property="og:title" content="Gary Henry — Freelance Developer" />
-	<meta property="og:description" content="I turn your problems into software solutions — backend-first freelance developer based in Paris. Go, SvelteKit, PostgreSQL." />
+	<meta property="og:description" content="You bring the problem. I handle the rest — design, build, and ship. Full-stack freelance developer based in Paris. Go, SvelteKit, PostgreSQL." />
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		"@context": "https://schema.org",
 		"@type": "Person",
 		"name": "Gary Henry",
 		"url": "https://henga.dev",
 		"jobTitle": "Freelance Full-Stack Developer",
-		"description": "Backend-first freelance developer based in Paris. Go + SvelteKit.",
+		"description": "Full-stack freelance developer based in Paris. Go + SvelteKit.",
 		"address": {
 			"@type": "PostalAddress",
 			"addressLocality": "Paris",
