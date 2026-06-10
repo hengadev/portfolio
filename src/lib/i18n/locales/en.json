@@ -63,9 +63,9 @@
       "placeholder": "What clients say will appear here."
     },
     "cta": {
-      "title": "Looking to Collaborate?",
-      "desc": "Open to freelance projects and open-source collaboration.\nIf you have something interesting to build, reach out.",
-      "btn": "Get in touch"
+      "title": "Got a project?",
+      "desc": "Bring me your problem and I'll take it from spec to production.\nNo handoffs, no half-finished prototypes — just a working system.",
+      "btn": "Let's talk"
     }
   },
   "projects": {

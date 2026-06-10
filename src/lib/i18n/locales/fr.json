@@ -63,9 +63,9 @@
       "placeholder": "Ce que disent les clients apparaîtra ici."
     },
     "cta": {
-      "title": "Envie de collaborer ?",
-      "desc": "Ouvert aux projets freelance et à la collaboration open-source.\nSi vous avez quelque chose d'intéressant à construire, contactez-moi.",
-      "btn": "Me contacter"
+      "title": "Vous avez un projet ?",
+      "desc": "Exposez-moi votre problème et je m'en charge du cahier des charges jusqu'à la production.\nPas de passage de relais, pas de prototype à moitié fini — juste un système qui fonctionne.",
+      "btn": "Parlons-en"
     }
   },
   "projects": {
