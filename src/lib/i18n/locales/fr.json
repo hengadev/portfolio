@@ -61,7 +61,11 @@
     },
     "testimonials": {
       "title": "Témoignages",
-      "placeholder": "Ce que disent les clients apparaîtra ici."
+      "placeholder": "Ce que disent les clients apparaîtra ici.",
+      "livio_quote": "Gary a pris ownership de toute la plateforme dès le premier jour. Le système de réservation, les flux partenaires, les paiements — tout a été livré dans les délais et exactement selon le cahier des charges. Je n'ai rien eu à relancer.",
+      "livio_role": "Fondateur, Leviosa",
+      "serge_quote": "Ce que j'ai obtenu n'était pas juste un outil — c'était un système construit autour de ma façon de travailler. La gestion des dossiers, le portail client, la chaîne documentaire — ça a remplacé trois flux de travail distincts. Gary a compris le problème avant d'écrire une seule ligne.",
+      "serge_role": "Détective privé, Cluo"
     },
     "cta": {
       "title": "Vous avez un projet ?",

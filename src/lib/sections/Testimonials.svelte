@@ -1,21 +1,28 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
     import { reveal } from "$lib/actions/reveal";
-    import { Quote } from "lucide-svelte";
 
     type Testimonial = {
-        quote: string;
+        quoteKey: string;
         author: string;
-        context?: string;
+        roleKey: string;
+        avatar?: string;
     };
 
-    /**
-     * Hardcoded testimonial array. To add a real testimonial,
-     * append an object: { quote: "...", author: "...", context: "..." }
-     */
-    const testimonials: Testimonial[] = [];
+    const testimonials: Testimonial[] = [
+        {
+            quoteKey: "home.testimonials.livio_quote",
+            author: "Livio",
+            roleKey: "home.testimonials.livio_role",
+        },
+        {
+            quoteKey: "home.testimonials.serge_quote",
+            author: "Serge",
+            roleKey: "home.testimonials.serge_role",
+        },
+    ];
 
-    let isEmpty = $derived(testimonials.length === 0);
+
 </script>
 
 <section class="section testimonials container__small" use:reveal>
@@ -23,31 +30,32 @@
         <h2 class="section__title">{$_('home.testimonials.title')}</h2>
     </div>
 
-    {#if isEmpty}
-        <div class="testimonials__placeholder">
-            <Quote size={28} class="testimonials__placeholder-icon" />
-            <p class="testimonials__placeholder-text">
-                {$_('home.testimonials.placeholder')}
-            </p>
-        </div>
-    {:else}
-        <div class="testimonials__grid">
-            {#each testimonials as testimonial, i}
-                <figure class="testimonial" use:reveal={{ delay: i * 100 }}>
-                    <Quote size={18} class="testimonial__icon" />
+    <div class="testimonials__grid">
+        {#each testimonials as testimonial, i}
+            <figure class="testimonial" use:reveal={{ delay: i * 120 }}>
+                <div class="testimonial__body">
+                    <span class="testimonial__mark">"</span>
                     <blockquote class="testimonial__quote">
-                        {testimonial.quote}
+                        {$_(testimonial.quoteKey)}
                     </blockquote>
-                    <figcaption class="testimonial__author">
-                        <span class="testimonial__name">{testimonial.author}</span>
-                        {#if testimonial.context}
-                            <span class="testimonial__context">{testimonial.context}</span>
+                </div>
+                <figcaption class="testimonial__footer">
+                    <div class="testimonial__avatar" aria-hidden="true">
+                        {#if testimonial.avatar}
+                            <img src={testimonial.avatar} alt={testimonial.author} class="testimonial__avatar-img" />
+                        {:else}
+                            <span class="testimonial__avatar-initial">{testimonial.author[0]}</span>
                         {/if}
-                    </figcaption>
-                </figure>
-            {/each}
-        </div>
-    {/if}
+                    </div>
+                    <div class="testimonial__meta">
+                        <span class="testimonial__name">{testimonial.author}</span>
+                        <span class="testimonial__role">{$_(testimonial.roleKey)}</span>
+                    </div>
+                </figcaption>
+            </figure>
+        {/each}
+
+    </div>
 </section>
 
 <style>
@@ -57,94 +65,109 @@
         gap: 2rem;
     }
 
-    .section__header {
-        margin-bottom: 0;
-    }
-
     .section__title {
         font-size: var(--h2);
         font-weight: 600;
         color: hsl(var(--clr-dark-primary));
     }
 
-    /* ── Placeholder state ── */
-    .testimonials__placeholder {
-        display: grid;
-        place-items: center;
-        gap: 1rem;
-        padding: 3rem 2rem;
-        border: 2px dashed hsl(var(--clr-light-fournary));
-        border-radius: 0.75rem;
-        background-color: hsl(var(--clr-light-secondary));
-    }
-
-    :global(.testimonials__placeholder-icon) {
-        color: hsl(var(--clr-dark-ternary));
-        opacity: 0.4;
-    }
-
-    .testimonials__placeholder-text {
-        color: hsl(var(--clr-dark-ternary));
-        text-align: center;
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    /* ── Testimonial cards ── */
     .testimonials__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
     }
 
     .testimonial {
-        display: grid;
-        gap: 0.75rem;
-        padding: 1.75rem;
+        width: clamp(280px, 40%, 360px);
+    }
+
+    /* ── Card ── */
+    .testimonial {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 2rem;
         background-color: hsl(var(--clr-light-primary));
         border: 1px solid hsl(var(--clr-light-fournary));
-        border-radius: 0.75rem;
-        transition: border-color 150ms ease, box-shadow 150ms ease;
+        border-radius: 1rem;
+        box-shadow: 0 2px 8px hsl(0 0% 0% / 0.04);
+        transition: box-shadow 200ms ease, border-color 200ms ease;
     }
 
     .testimonial:hover {
-        border-color: hsl(var(--clr-dark-ternary));
-        box-shadow: 0 4px 16px hsl(0 0% 0% / 0.06);
+        box-shadow: 0 6px 24px hsl(0 0% 0% / 0.08);
     }
 
-    :global(.testimonial__icon) {
-        color: hsl(var(--clr-dark-ternary));
-        opacity: 0.35;
+    /* ── Quote body ── */
+    .testimonial__body {
+        flex: 1;
+    }
+
+    .testimonial__mark {
+        display: block;
+        font-size: 4rem;
+        line-height: 0.6;
+        margin-bottom: 0.75rem;
+        color: hsl(var(--clr-accent));
+        font-family: Georgia, serif;
+        user-select: none;
     }
 
     .testimonial__quote {
         font-size: 0.95rem;
         color: hsl(var(--clr-dark-secondary));
-        line-height: 1.7;
+        line-height: 1.75;
         font-style: italic;
     }
 
-    .testimonial__author {
+    /* ── Author footer ── */
+    .testimonial__footer {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+    }
+
+    .testimonial__avatar {
+        flex-shrink: 0;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 50%;
+        background-color: hsl(var(--clr-light-ternary));
+        border: 2px solid hsl(var(--clr-light-fournary));
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .testimonial__avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .testimonial__avatar-initial {
+        font-size: 1rem;
+        font-weight: 600;
+        color: hsl(var(--clr-dark-ternary));
+        text-transform: uppercase;
+    }
+
+    .testimonial__meta {
         display: flex;
         flex-direction: column;
         gap: 0.125rem;
-        margin-top: 0.25rem;
     }
 
     .testimonial__name {
-        font-size: 0.85rem;
+        font-size: 0.875rem;
         font-weight: 600;
         color: hsl(var(--clr-dark-primary));
     }
 
-    .testimonial__context {
+    .testimonial__role {
         font-size: 0.8rem;
         color: hsl(var(--clr-dark-ternary));
-    }
-
-    @media (max-width: 600px) {
-        .testimonials__grid {
-            grid-template-columns: 1fr;
-        }
     }
 </style>
