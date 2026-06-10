@@ -86,6 +86,10 @@
 
 <div class="page">
     <section class="section hero container__small">
+        <span class="hero__availability" use:reveal>
+            <span class="availability__dot"></span>
+            {$_('home.hero.availability')}
+        </span>
         <h1 class="hero__title">{$_('home.hero.title')}</h1>
         <p class="hero__subtitle">
             {$_('home.hero.subtitle')}
@@ -217,14 +221,17 @@
     }
 
     @media (prefers-reduced-motion: no-preference) {
-        .hero__title {
+        .hero__availability {
             animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
         }
+        .hero__title {
+            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 75ms both;
+        }
         .hero__subtitle {
-            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
         }
         .badges {
-            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+            animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 225ms both;
         }
         .hero__ctas {
             animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
@@ -257,6 +264,43 @@
         padding-top: 2rem;
         text-align: center;
         justify-items: center;
+    }
+
+    .hero__availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-secondary));
+        background-color: hsl(145 60% 92%);
+        border: 1px solid hsl(145 50% 80%);
+        border-radius: 999px;
+        padding: 0.3rem 0.85rem;
+    }
+
+    :global([data-theme="dark"]) .hero__availability {
+        background-color: hsl(145 30% 15%);
+        border-color: hsl(145 40% 25%);
+        color: hsl(145 50% 72%);
+    }
+
+    :global([data-theme="dark"]) .availability__dot {
+        background-color: hsl(145 70% 55%);
+    }
+
+    .availability__dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: hsl(145 70% 40%);
+        flex-shrink: 0;
+        animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
     }
 
     .hero__title {

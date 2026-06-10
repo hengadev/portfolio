@@ -9,10 +9,11 @@
   },
   "home": {
     "hero": {
-      "title": "Un nouvel élan pour votre entreprise.",
-      "subtitle": "Je transforme vos problèmes en solutions logicielles — un workflow augmenté par l'IA pour aller vite, le recul pour aller juste.",
+      "title": "Je construis tout de A à Z.",
+      "subtitle": "Vous apportez le problème. Je m'occupe du reste — conception, développement et livraison.",
       "cta_primary": "Travaillons ensemble",
-      "cta_secondary": "Voir les projets"
+      "cta_secondary": "Voir les projets",
+      "availability": "Disponible pour de nouveaux projets"
     },
     "about": {
       "title": "À propos",

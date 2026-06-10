@@ -9,10 +9,11 @@
   },
   "home": {
     "hero": {
-      "title": "A new build for your business.",
-      "subtitle": "I turn your problems into software solutions — an AI-augmented workflow to move fast, the perspective to get it right.",
+      "title": "I build the full thing.",
+      "subtitle": "You bring the problem. I handle the rest — design, build, and ship.",
       "cta_primary": "Let's collaborate",
-      "cta_secondary": "View Projects"
+      "cta_secondary": "View Projects",
+      "availability": "Available for new projects"
     },
     "about": {
       "title": "About me",
