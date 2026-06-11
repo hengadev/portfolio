@@ -5,6 +5,8 @@
 	import { isLoading, locale } from "svelte-i18n";
 	import { page } from "$app/stores";
 
+	let { children } = $props();
+
 	$effect(() => {
 		if ($locale) {
 			document.documentElement.lang = $locale;
@@ -34,5 +36,5 @@
 </svelte:head>
 
 {#if !$isLoading}
-	<slot></slot>
+	{@render children()}
 {/if}
