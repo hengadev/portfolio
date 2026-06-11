@@ -39,25 +39,29 @@
             <h2 class="section__title">{$_('home.testimonials.title')}</h2>
         </div>
 
-        <div class="testimonial-card">
-            <span class="testimonial__mark">&ldquo;</span>
-            <blockquote class="testimonial__quote">
-                {$_(testimonials[current].quoteKey)}
-            </blockquote>
+        <div class="testimonial-stack">
+            {#each testimonials as testimonial, i}
+                <div class="testimonial-card" class:active={i === current}>
+                    <span class="testimonial__mark">&ldquo;</span>
+                    <blockquote class="testimonial__quote">
+                        {$_(testimonial.quoteKey)}
+                    </blockquote>
 
-            <div class="testimonial__attr">
-                <div class="testimonial__avatar" aria-hidden="true">
-                    {#if testimonials[current].avatar}
-                        <img src={testimonials[current].avatar} alt={testimonials[current].author} class="testimonial__avatar-img" />
-                    {:else}
-                        <span class="testimonial__avatar-initial">{testimonials[current].author[0]}</span>
-                    {/if}
+                    <div class="testimonial__attr">
+                        <div class="testimonial__avatar" aria-hidden="true">
+                            {#if testimonial.avatar}
+                                <img src={testimonial.avatar} alt={testimonial.author} class="testimonial__avatar-img" />
+                            {:else}
+                                <span class="testimonial__avatar-initial">{testimonial.author[0]}</span>
+                            {/if}
+                        </div>
+                        <div class="testimonial__meta">
+                            <span class="testimonial__name">{testimonial.author}</span>
+                            <span class="testimonial__role">{$_(testimonial.roleKey)}</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial__meta">
-                    <span class="testimonial__name">{testimonials[current].author}</span>
-                    <span class="testimonial__role">{$_(testimonials[current].roleKey)}</span>
-                </div>
-            </div>
+            {/each}
         </div>
 
         {#if testimonials.length > 1}
@@ -98,6 +102,10 @@
         color: hsl(var(--clr-dark-primary));
     }
 
+    .testimonial-stack {
+        display: grid;
+    }
+
     .testimonial-card {
         display: flex;
         flex-direction: column;
@@ -108,6 +116,12 @@
         border: 1px solid hsl(var(--clr-light-fournary));
         border-radius: 1rem;
         box-shadow: 0 2px 8px hsl(0 0% 0% / 0.04);
+        grid-area: 1 / 1;
+        visibility: hidden;
+    }
+
+    .testimonial-card.active {
+        visibility: visible;
     }
 
     .testimonial__mark {
