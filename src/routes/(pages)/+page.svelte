@@ -5,6 +5,7 @@
     import { _, locale } from "svelte-i18n";
     import { ArrowRight } from "lucide-svelte";
     import { reveal } from "$lib/actions/reveal";
+    import { socials } from "$lib/constants/socials";
     import type { PageData } from "./$types";
 
     let { data }: { data: PageData } = $props();
@@ -103,6 +104,23 @@
         <div class="hero__ctas flex" style="--gap: 1rem; justify-content: center;">
             <a href="/contact" class="cta-primary">{$_('home.hero.cta_primary')}</a>
             <a href="/projects" class="cta-secondary">{$_('home.hero.cta_secondary')}</a>
+        </div>
+        <div class="hero__socials">
+            {#each socials as { icon: Icon, href, label }, i}
+                <a
+                    {href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    class="social-link"
+                >
+                    <Icon size={20} />
+                    <span>{label}</span>
+                </a>
+                {#if i < socials.length - 1}
+                    <span class="social-sep" aria-hidden="true">·</span>
+                {/if}
+            {/each}
         </div>
     </section>
 
@@ -375,6 +393,47 @@
 
     .hero__ctas {
         margin-top: 1rem;
+    }
+
+    .hero__socials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .hero__socials .social-link,
+    .about__socials .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: hsl(var(--clr-dark-secondary));
+        text-decoration: none;
+        padding: 0.3rem 0.55rem;
+        border-radius: 0.375rem;
+        border: 1px solid hsl(var(--clr-light-fournary));
+        transition:
+            color 150ms ease,
+            border-color 150ms ease,
+            background-color 150ms ease;
+    }
+
+    .hero__socials .social-link:hover,
+    .about__socials .social-link:hover {
+        color: hsl(var(--clr-dark-primary));
+        border-color: hsl(var(--clr-dark-ternary));
+        background-color: hsl(var(--clr-light-secondary));
+    }
+
+    .social-sep {
+        color: hsl(var(--clr-light-fournary));
+        font-size: 1.25rem;
+        line-height: 1;
+        user-select: none;
     }
 
     .cta-primary {
