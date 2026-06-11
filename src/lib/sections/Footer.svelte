@@ -33,34 +33,37 @@
     const year = new Date().getFullYear();
 </script>
 
-<footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__grid">
-            <!-- Left: signoff + tagline -->
-            <div class="footer__brand">
-                <p class="footer__close">Yours,</p>
-                <p class="footer__sign">&mdash; Gary</p>
-                <p class="footer__tagline">{$_("footer.tagline")}</p>
-                <p class="footer__no-tracking">{$_("footer.no_tracking")}</p>
-
-                <div class="footer__socials">
+<footer>
+    <div class="footer-inner container__small">
+        <div class="footer-grid">
+            <div class="brand">
+                <a href="/" class="brand-name">henga.dev</a>
+                <p class="brand-tagline">{$_("footer.tagline")}</p>
+                <p class="brand-no-tracking">{$_("footer.no_tracking")}</p>
+                <div class="brand-contact">
+                    <p class="col-label">{$_("footer.contact_label")}</p>
+                    <a href="/contact" class="contact-link">
+                        {$_("nav.contact")}
+                    </a>
+                </div>
+                <div class="brand-socials">
                     {#each socials as { icon: Icon, href, label }}
                         <a
                             {href}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={label}
-                            class="footer__icon"
+                            class="social-link"
+                            data-tooltip={label}
                         >
-                            <Icon size={15} />
+                            <Icon size={16} />
                         </a>
                     {/each}
                 </div>
             </div>
 
-            <!-- Middle: navigation -->
-            <div class="footer__col">
-                <p class="footer__label">{$_("footer.nav_label")}</p>
+            <div class="footer-col">
+                <p class="col-label">{$_("footer.nav_label")}</p>
                 <nav>
                     {#each navLinks as { key, href }}
                         <a {href}>{$_(key)}</a>
@@ -68,13 +71,8 @@
                 </nav>
             </div>
 
-            <!-- Right: contact + legal -->
-            <div class="footer__col">
-                <p class="footer__label">{$_("footer.contact_label")}</p>
-                <a href="/contact" class="footer__contact-link">
-                    {$_("nav.contact")}
-                </a>
-                <p class="footer__label" style="margin-top: var(--space-md)">{$_("footer.legal_label")}</p>
+            <div class="footer-col">
+                <p class="col-label">{$_("footer.legal_label")}</p>
                 <nav>
                     {#each legalLinks as { key, href }}
                         <a {href}>{$_(key)}</a>
@@ -83,154 +81,180 @@
             </div>
         </div>
 
-        <div class="footer__bottom">
-            <p class="footer__copy">&copy; {year} henga.dev</p>
+        <div class="footer-bottom">
+            <p class="copyright">© {year} henga.dev</p>
         </div>
     </div>
 </footer>
 
 <style>
-    .footer {
-        background-color: var(--c-paper-2);
-        border-top: 1px solid var(--c-rule);
-        margin-top: var(--space-3xl);
+    footer {
+        background-color: hsl(var(--clr-light-secondary));
+        border-top: 1px solid hsl(var(--clr-stroke));
+        margin-top: 8rem;
     }
 
-    .footer__inner {
-        max-width: 72rem;
-        width: 90%;
+    .footer-inner {
         margin-inline: auto;
-        padding-block: var(--space-2xl) var(--space-lg);
+        padding-block: 3rem 1.75rem;
     }
 
-    .footer__grid {
+    .footer-grid {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr;
-        gap: var(--space-2xl);
-        padding-bottom: var(--space-xl);
-        border-bottom: 1px solid var(--c-rule);
+        gap: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid hsl(var(--clr-stroke));
     }
 
-    /* ── Brand column ── */
-    .footer__brand {
+    .brand {
         display: flex;
         flex-direction: column;
-        gap: var(--space-sm);
+        gap: 1rem;
     }
 
-    .footer__close {
-        font-size: var(--text-lg);
-        color: var(--c-ink);
-        line-height: 1.4;
-    }
-
-    .footer__sign {
+    .brand-name {
+        font-size: 0.9375rem;
         font-weight: 600;
-        font-size: var(--text-md);
-        color: var(--c-ink);
-        margin-top: calc(-1 * var(--space-xs));
+        color: hsl(var(--clr-dark-primary));
+        text-decoration: none;
+        width: fit-content;
+        transition: opacity 150ms ease;
     }
 
-    .footer__tagline {
-        font-size: var(--text-sm);
-        color: var(--c-neutral);
+    .brand-name:hover {
+        opacity: 0.75;
+    }
+
+    .brand-tagline {
+        font-size: 0.8125rem;
+        color: hsl(var(--clr-dark-ternary));
         line-height: 1.6;
         max-width: 28ch;
-        margin-top: var(--space-xs);
     }
 
-    .footer__no-tracking {
-        font-size: var(--text-xs);
-        color: var(--c-neutral);
+    .brand-no-tracking {
+        font-size: 0.75rem;
+        color: hsl(var(--clr-dark-ternary));
         opacity: 0.6;
-        margin-top: calc(-1 * var(--space-2xs));
+        margin-top: -0.25rem;
     }
 
-    .footer__socials {
-        display: flex;
-        gap: 2px;
-        margin-top: var(--space-xs);
-    }
-
-    .footer__icon {
-        display: grid;
-        place-content: center;
-        padding: var(--space-2xs);
-        border-radius: 0.25rem;
-        color: var(--c-neutral);
-        text-decoration: none;
-        transition:
-            color var(--dur-short) var(--ease-out),
-            background-color var(--dur-short) var(--ease-out);
-    }
-
-    .footer__icon:hover {
-        color: var(--c-ink);
-        background-color: var(--c-paper);
-    }
-
-    .footer__icon:focus-visible {
-        outline: 2px solid var(--c-focus);
-        outline-offset: 1px;
-    }
-
-    /* ── Link columns ── */
-    .footer__col {
+    .brand-contact {
         display: flex;
         flex-direction: column;
-        gap: var(--space-xs);
+        gap: 0.4rem;
+        margin-top: 0.25rem;
     }
 
-    .footer__label {
-        font-size: var(--text-xs);
+    .contact-link {
+        font-size: 0.8125rem;
+        color: hsl(var(--clr-dark-secondary));
+        text-decoration: none;
+        width: fit-content;
+        transition: color 150ms ease;
+    }
+
+    .contact-link:hover {
+        color: hsl(var(--clr-dark-primary));
+    }
+
+    .brand-socials {
+        display: flex;
+        gap: 0.25rem;
+        margin-top: 0.25rem;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .col-label {
+        font-size: 0.6875rem;
         font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--c-neutral);
-        opacity: 0.7;
+        color: hsl(var(--clr-dark-ternary));
+        opacity: 0.55;
     }
 
-    .footer__col nav {
+    nav {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.65rem;
     }
 
-    .footer__col nav a,
-    .footer__contact-link {
-        font-size: var(--text-sm);
-        color: var(--c-neutral);
+    nav a {
+        font-size: 0.8125rem;
+        color: hsl(var(--clr-dark-secondary));
         text-decoration: none;
         width: fit-content;
-        transition: color var(--dur-short) var(--ease-out);
+        transition: color 150ms ease;
     }
 
-    .footer__col nav a:hover,
-    .footer__contact-link:hover {
-        color: var(--c-ink);
+    nav a:hover {
+        color: hsl(var(--clr-dark-primary));
     }
 
-    .footer__col nav a:focus-visible,
-    .footer__contact-link:focus-visible {
-        outline: 2px solid var(--c-focus);
-        outline-offset: 2px;
-        border-radius: 2px;
+    .social-link {
+        position: relative;
+        display: grid;
+        place-content: center;
+        padding: 0.35rem;
+        border-radius: 0.375rem;
+        color: hsl(var(--clr-dark-ternary));
+        text-decoration: none;
+        transition:
+            color 150ms ease,
+            background-color 150ms ease;
     }
 
-    /* ── Bottom ── */
-    .footer__bottom {
-        padding-top: var(--space-lg);
+    .social-link:hover {
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-ternary));
     }
 
-    .footer__copy {
-        font-size: var(--text-xs);
-        color: var(--c-rule);
+    .social-link::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: calc(100% + 0.5rem);
+        left: 50%;
+        translate: -50% 4px;
+        white-space: nowrap;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-ternary));
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        pointer-events: none;
+        opacity: 0;
+        transition:
+            opacity 150ms ease,
+            translate 150ms ease;
+    }
+
+    .social-link:hover::after {
+        opacity: 1;
+        translate: -50% 0;
+    }
+
+    .footer-bottom {
+        padding-top: 1.5rem;
+    }
+
+    .copyright {
+        font-size: 0.75rem;
+        color: hsl(var(--clr-dark-ternary));
+        opacity: 0.55;
     }
 
     @media (max-width: 640px) {
-        .footer__grid {
+        .footer-grid {
             grid-template-columns: 1fr;
-            gap: var(--space-xl);
+            gap: 2.5rem;
         }
     }
 </style>
