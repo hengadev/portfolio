@@ -33,14 +33,14 @@
 	--clr-grey-700: 0 1% 11%;
 
 	--bg-body: 240 14% 98%;
-	--bg-dot: 0 0% 80%;
+	--bg-dot: 30 8% 89%;
 }
 
 [data-theme="dark"] {
 	color-scheme: dark;
 
 	--bg-body: 222 18% 10%;
-	--bg-dot: 222 15% 18%;
+	--bg-dot: 225 12% 20%;
 
 	--clr-light-primary: 222 18% 12%;
 	--clr-light-secondary: 222 15% 17%;
