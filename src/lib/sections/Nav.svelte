@@ -63,28 +63,16 @@
         </nav>
 
         <div class="nav-right">
-            <div class="desktop-social social-links">
-                {#each socials as { icon: Icon, href, label }}
-                    <a
-                        {href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={label}
-                        class="icon-link"
-                        data-tooltip={label}
-                    >
-                        <Icon size={20} />
-                    </a>
-                {/each}
+            <div class="desktop-actions">
                 <a
                     href={$locale === "fr" ? "/Henry_Gary_Resume_FR.pdf" : "/Henry_Gary_Resume.pdf"}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Open resume in new tab"
-                    class="icon-link"
-                    data-tooltip={$locale === "fr" ? "CV" : "Resume"}
+                    class="resume-link"
                 >
-                    <FileDown size={20} />
+                    <FileDown size={16} />
+                    <span>{$locale === "fr" ? "CV" : "Resume"}</span>
                 </a>
                 <div class="lang-separator" aria-hidden="true"></div>
                 <button
@@ -314,11 +302,34 @@
         align-items: center;
     }
 
-    /* ── Social icons ── */
-    .social-links {
+    /* ── Desktop actions ── */
+    .desktop-actions {
         display: flex;
         align-items: center;
         gap: 0.125rem;
+    }
+
+    .resume-link {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: hsl(var(--clr-dark-secondary));
+        text-decoration: none;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.375rem;
+        transition:
+            color 150ms ease,
+            border-color 150ms ease,
+            background-color 150ms ease;
+    }
+
+    .resume-link:hover {
+        color: hsl(var(--clr-dark-primary));
+        border-color: hsl(var(--clr-dark-ternary));
+        background-color: hsl(var(--clr-light-secondary));
     }
 
     .lang-separator {
@@ -633,7 +644,7 @@
     /* ── Responsive ── */
     @media (max-width: 768px) {
         .desktop-nav,
-        .desktop-social {
+        .desktop-actions {
             display: none;
         }
 
