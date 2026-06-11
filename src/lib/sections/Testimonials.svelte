@@ -1,5 +1,6 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
+    import { onMount } from "svelte";
 
     type Testimonial = {
         quoteKey: string;
@@ -21,12 +22,15 @@
         },
     ];
 
-    /* T3 — pick the first quote; rotate it */
     let current = $state(0);
 
-    function next() {
-        current = (current + 1) % testimonials.length;
-    }
+    onMount(() => {
+        const interval = setInterval(() => {
+            current = (current + 1) % testimonials.length;
+        }, 8000);
+
+        return () => clearInterval(interval);
+    });
 </script>
 
 <section class="section testimonial-section">
@@ -60,7 +64,7 @@
 <style>
     .testimonial-section {
         margin-inline: auto;
-        max-width: 60rem;
+        max-width: 72rem;
         width: 90%;
         padding-block: var(--space-3xl);
     }
@@ -73,7 +77,6 @@
 
     .testimonial__mark {
         display: block;
-        font-family: var(--font-display);
         font-size: clamp(3rem, 6vw, 5rem);
         line-height: 0.8;
         color: var(--c-accent);
@@ -82,7 +85,6 @@
     }
 
     .testimonial__quote {
-        font-family: var(--font-display);
         font-size: clamp(1.15rem, 2.2vw, 1.5rem);
         font-style: italic;
         font-weight: 400;
@@ -130,7 +132,6 @@
         align-items: center;
         justify-content: center;
         gap: var(--space-xs);
-        font-family: var(--font-body);
     }
 
     .testimonial__name {

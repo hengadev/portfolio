@@ -269,7 +269,7 @@
     }
 
     .section {
-        max-width: 60rem;
+        max-width: 72rem;
         width: 90%;
         margin-inline: auto;
     }
@@ -287,7 +287,7 @@
     .section__title {
         font-family: var(--font-display);
         font-size: var(--text-xl);
-        font-weight: 400;
+        font-weight: 600;
         font-style: normal;
         color: var(--c-ink);
     }
@@ -386,7 +386,7 @@
     .hero__title {
         font-family: var(--font-display);
         font-size: var(--text-display);
-        font-weight: 400;
+        font-weight: 600;
         font-style: normal;
         color: var(--c-ink);
         line-height: 1.05;
@@ -564,7 +564,7 @@
     .process__step-title {
         font-family: var(--font-display);
         font-size: var(--text-md);
-        font-weight: 400;
+        font-weight: 600;
         font-style: normal;
         color: var(--c-ink);
         margin-bottom: var(--space-2xs);
@@ -694,7 +694,7 @@
         gap: var(--space-2xs);
         font-family: var(--font-display);
         font-size: var(--text-lg);
-        font-weight: 400;
+        font-weight: 600;
         font-style: normal;
         color: var(--c-ink);
         line-height: 1.3;
@@ -750,7 +750,7 @@
     .cta__title {
         font-family: var(--font-display);
         font-size: var(--text-2xl);
-        font-weight: 400;
+        font-weight: 600;
         font-style: normal;
         color: var(--c-ink);
         line-height: 1.15;

@@ -15,15 +15,13 @@
     import { theme, toggleTheme } from "$lib/theme/store";
     import { browser } from "$app/environment";
 
-    /* ── N8 links — only the inner destinations, not home ── */
-    const termLinks = [
+    const navLinks = [
         { key: "nav.projects", href: "/projects" },
         { key: "nav.experiments", href: "/experiments" },
         { key: "nav.blog", href: "/blog" },
         { key: "nav.contact", href: "/contact" },
     ];
 
-    /* ── Mobile nav — keeps home ── */
     const mobileLinks = [
         { key: "nav.home", href: "/" },
         { key: "nav.projects", href: "/projects" },
@@ -70,46 +68,67 @@
     });
 </script>
 
-<!-- ── Desktop: N8 terminal command ── -->
-<header class="nav-term" aria-label="Main navigation">
-    <div class="nav-term__inner">
-        <a href="/" class="nav-term__wordmark" aria-label="Home">
-            <span class="nav-term__path">{pathSlug}</span>
+<header class="nav-bar" aria-label="Main navigation">
+    <div class="nav-inner">
+        <!-- Left: wordmark -->
+        <a href="/" class="wordmark" aria-label="Home">
+            <span class="wordmark__path">{pathSlug}</span><span class="caret" aria-hidden="true">▮</span>
         </a>
 
-        <pre class="nav-term__line" aria-label="Navigation links"><span class="prompt">&gt;</span> henga
-{#each termLinks as { key, href }}
-    <a href={href} class:active={isActive(href)}>{$_(key)}</a>
-{/each}<span class="caret" aria-hidden="true">▮</span></pre>
+        <!-- Center: nav links -->
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                {#each navLinks as { key, href }}
+                    <li>
+                        <a href={href} class:active={isActive(href)}>{$_(key)}</a>
+                    </li>
+                {/each}
+            </ul>
+        </nav>
 
-        <div class="nav-term__controls">
-            <a
-                href={$locale === "fr" ? "/Henry_Gary_Resume_FR.pdf" : "/Henry_Gary_Resume.pdf"}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open resume"
-                class="ctrl-btn"
-            >
-                <FileDown size={15} />
-            </a>
-            <button
-                class="ctrl-btn"
-                onclick={toggleTheme}
-                aria-label={$theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            >
-                {#if $theme === "dark"}
-                    <Sun size={15} />
-                {:else}
-                    <Moon size={15} />
-                {/if}
-            </button>
-            <button
-                class="ctrl-btn"
-                onclick={toggleLocale}
-                aria-label={$locale === "fr" ? "Switch to English" : "Passer en français"}
-            >
-                {$locale === "fr" ? "EN" : "FR"}
-            </button>
+        <!-- Right: socials + controls -->
+        <div class="nav-right">
+            <div class="desktop-socials">
+                {#each socials as { icon: Icon, href, label }}
+                    <a
+                        {href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        class="icon-link"
+                    >
+                        <Icon size={18} />
+                    </a>
+                {/each}
+                <a
+                    href={$locale === "fr" ? "/Henry_Gary_Resume_FR.pdf" : "/Henry_Gary_Resume.pdf"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open resume"
+                    class="icon-link"
+                >
+                    <FileDown size={18} />
+                </a>
+                <div class="nav-sep" aria-hidden="true"></div>
+                <button
+                    class="ctrl-btn"
+                    onclick={toggleTheme}
+                    aria-label={$theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                >
+                    {#if $theme === "dark"}
+                        <Sun size={15} />
+                    {:else}
+                        <Moon size={15} />
+                    {/if}
+                </button>
+                <button
+                    class="ctrl-btn"
+                    onclick={toggleLocale}
+                    aria-label={$locale === "fr" ? "Switch to English" : "Passer en français"}
+                >
+                    {$locale === "fr" ? "EN" : "FR"}
+                </button>
+            </div>
 
             <button
                 class="burger-btn"
@@ -128,7 +147,7 @@
     </div>
 </header>
 
-<!-- ── Overlay ── -->
+<!-- Overlay -->
 <div
     class="mobile-overlay"
     class:visible={menuOpen}
@@ -137,7 +156,7 @@
     aria-hidden="true"
 ></div>
 
-<!-- ── Mobile drawer ── -->
+<!-- Mobile drawer -->
 <aside
     id="mobile-drawer"
     class="mobile-drawer"
@@ -221,95 +240,56 @@
 </aside>
 
 <style>
-    /* ── N8 Terminal header ── */
-    .nav-term {
+    /* ── Header bar ── */
+    .nav-bar {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         z-index: var(--z-sticky);
-        padding-block: var(--space-sm) var(--space-sm);
+        padding-block: var(--space-sm);
         border-bottom: 1px solid var(--c-rule);
         background-color: var(--c-paper);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
 
-    :global([data-theme="dark"]) .nav-term {
+    :global([data-theme="dark"]) .nav-bar {
         background-color: var(--c-paper-glass);
     }
 
-    .nav-term__inner {
+    .nav-inner {
         max-width: 72rem;
         width: 90%;
         margin-inline: auto;
-        display: flex;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
         align-items: center;
-        gap: var(--space-sm);
     }
 
-    /* ── Wordmark (terminal path) ── */
-    .nav-term__wordmark {
+    /* ── Wordmark ── */
+    .wordmark {
         text-decoration: none;
+        display: flex;
+        align-items: center;
         flex-shrink: 0;
     }
 
-    .nav-term__wordmark:focus-visible {
+    .wordmark:focus-visible {
         outline: 2px solid var(--c-focus);
         outline-offset: 3px;
         border-radius: 2px;
     }
 
-    .nav-term__path {
+    .wordmark__path {
         font-family: var(--font-outlier);
         font-size: var(--text-sm);
         color: var(--c-ink);
-    }
-
-    /* ── Prompt line ── */
-    .nav-term__line {
-        font-family: var(--font-outlier);
-        font-size: var(--text-sm);
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 0.6ch;
-        flex-wrap: wrap;
-        white-space: pre;
-        color: var(--c-neutral);
-    }
-
-    .prompt {
-        color: var(--c-accent);
-        padding-right: 0.2ch;
-    }
-
-    .nav-term__line :global(a) {
-        color: var(--c-neutral);
-        text-decoration: none;
-        transition: color var(--dur-short) var(--ease-out);
-        position: relative;
-    }
-
-    .nav-term__line :global(a):hover {
-        color: var(--c-ink);
-    }
-
-    .nav-term__line :global(a):focus-visible {
-        outline: 2px solid var(--c-focus);
-        outline-offset: 2px;
-        border-radius: 2px;
-    }
-
-    .nav-term__line :global(a).active {
-        color: var(--c-ink);
-        text-decoration: underline;
-        text-underline-offset: 2px;
     }
 
     .caret {
         display: inline-block;
-        width: 1ch;
+        width: 0.8ch;
         color: var(--c-accent);
         animation: blink 1.05s steps(2) infinite;
     }
@@ -329,21 +309,73 @@
         }
     }
 
-    /* ── Controls (right side) ── */
-    .nav-term__controls {
-        margin-left: auto;
+    /* ── Center nav links ── */
+    .desktop-nav {
+        justify-self: center;
+    }
+
+    .nav-links {
         display: flex;
         align-items: center;
         gap: var(--space-2xs);
+    }
+
+    .nav-links a {
+        display: block;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        font-family: var(--font-body);
+        color: var(--c-neutral);
+        text-decoration: none;
+        padding: var(--space-2xs) var(--space-xs);
+        border-radius: 0.25rem;
+        transition:
+            color var(--dur-short) var(--ease-out),
+            background-color var(--dur-short) var(--ease-out);
+    }
+
+    .nav-links a:hover {
+        color: var(--c-ink);
+        background-color: var(--c-paper-2);
+    }
+
+    .nav-links a:focus-visible {
+        outline: 2px solid var(--c-focus);
+        outline-offset: 1px;
+    }
+
+    .nav-links a.active {
+        color: var(--c-ink);
+        font-weight: 600;
+    }
+
+    /* ── Right side ── */
+    .nav-right {
+        justify-self: end;
+        display: flex;
+        align-items: center;
+    }
+
+    .desktop-socials {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .nav-sep {
+        width: 1px;
+        height: 1.1rem;
+        background-color: var(--c-rule);
+        margin-inline: var(--space-2xs);
         flex-shrink: 0;
     }
 
     .ctrl-btn {
         display: grid;
         place-content: center;
-        width: 1.875rem;
-        height: 1.875rem;
-        font-size: 0.75rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.7rem;
         font-weight: 600;
         font-family: var(--font-body);
         letter-spacing: 0.05em;
@@ -365,6 +397,28 @@
     }
 
     .ctrl-btn:focus-visible {
+        outline: 2px solid var(--c-focus);
+        outline-offset: 1px;
+    }
+
+    .icon-link {
+        display: grid;
+        place-content: center;
+        padding: var(--space-2xs);
+        border-radius: 0.25rem;
+        color: var(--c-neutral);
+        text-decoration: none;
+        transition:
+            color var(--dur-short) var(--ease-out),
+            background-color var(--dur-short) var(--ease-out);
+    }
+
+    .icon-link:hover {
+        color: var(--c-ink);
+        background-color: var(--c-paper-2);
+    }
+
+    .icon-link:focus-visible {
         outline: 2px solid var(--c-focus);
         outline-offset: 1px;
     }
@@ -429,7 +483,6 @@
         inset: 0;
         z-index: calc(var(--z-sticky) - 1);
         background-color: var(--c-ink);
-        opacity: 0.4;
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
         opacity: 0;
@@ -438,7 +491,7 @@
     }
 
     .mobile-overlay.visible {
-        opacity: 1;
+        opacity: 0.4;
         pointer-events: auto;
     }
 
@@ -540,7 +593,7 @@
         font-family: var(--font-body);
         color: var(--c-neutral);
         text-decoration: none;
-        padding: var(--space-sm) var(--space-sm);
+        padding: var(--space-sm);
         border-radius: 0.375rem;
         transition:
             color var(--dur-short) var(--ease-out),
@@ -587,26 +640,10 @@
         gap: var(--space-xs);
     }
 
-    .icon-link {
-        display: grid;
-        place-content: center;
-        padding: var(--space-2xs);
-        border-radius: 0.25rem;
-        color: var(--c-neutral);
-        text-decoration: none;
-        transition:
-            color var(--dur-short) var(--ease-out),
-            background-color var(--dur-short) var(--ease-out);
-    }
-
-    .icon-link:hover {
-        color: var(--c-ink);
-        background-color: var(--c-paper-2);
-    }
-
     /* ── Responsive ── */
     @media (max-width: 768px) {
-        .nav-term__line {
+        .desktop-nav,
+        .desktop-socials {
             display: none;
         }
 

@@ -2,7 +2,7 @@
  * Pre-emit critique: P5 H4 E5 S4 R5 V5
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&family=Geist+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Geist+Mono&display=swap");
 
 @import "tailwindcss";
 
@@ -56,7 +56,7 @@
 	--bg-dot: 30 8% 89%;
 
 	/* ── Font families ── */
-	--font-display: "Instrument Serif", Georgia, serif;
+	--font-display: "Inter", system-ui, sans-serif;
 	--font-body: "Inter", system-ui, sans-serif;
 	--font-outlier: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
 
