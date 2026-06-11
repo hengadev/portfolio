@@ -502,14 +502,13 @@
 
     .about__body {
         display: grid;
-        grid-template-columns: 200px 1fr;
+        grid-template-columns: 360px 1fr;
         gap: 2.5rem;
-        align-items: start;
+        align-items: stretch;
     }
 
     .about__photo {
-        width: 200px;
-        aspect-ratio: 3 / 4;
+        width: 360px;
         border-radius: 0.75rem;
         flex-shrink: 0;
         overflow: hidden;
