@@ -142,6 +142,23 @@
                 <p class="about__bio" use:reveal={{ delay: 200 }}>
                     {$_('home.about.bio3')}
                 </p>
+                <div class="about__socials" use:reveal={{ delay: 300 }}>
+                    {#each socials as { icon: Icon, href, label }, i}
+                        <a
+                            {href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={label}
+                            class="social-link"
+                        >
+                            <Icon size={18} />
+                            <span>{label}</span>
+                        </a>
+                        {#if i < socials.length - 1}
+                            <span class="social-sep" aria-hidden="true">·</span>
+                        {/if}
+                    {/each}
+                </div>
             </div>
         </div>
     </section>
@@ -508,6 +525,14 @@
     .about__bio {
         color: hsl(var(--clr-dark-secondary));
         line-height: 1.7;
+    }
+
+    .about__socials {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
     }
 
     @media (max-width: 600px) {
