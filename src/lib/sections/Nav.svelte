@@ -410,9 +410,9 @@
     .icon-link::after {
         content: attr(data-tooltip);
         position: absolute;
-        top: calc(100% + 0.5rem);
+        bottom: calc(100% + 0.5rem);
         left: 50%;
-        translate: -50% -4px;
+        translate: -50% 4px;
         white-space: nowrap;
         font-size: 0.75rem;
         font-weight: 500;
