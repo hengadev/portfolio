@@ -543,7 +543,7 @@
         left: calc(3.5rem / 2);
         top: 0;
         bottom: 0;
-        width: 1.5px;
+        width: 2px;
         background-color: var(--c-rule);
         transform: translateX(-50%);
     }
