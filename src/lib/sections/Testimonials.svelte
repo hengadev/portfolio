@@ -33,121 +33,175 @@
     });
 </script>
 
-<section class="section testimonial-section">
-    <div class="testimonial-inner">
-        <span class="testimonial__mark">&ldquo;</span>
-        <blockquote class="testimonial__quote">
-            {$_(testimonials[current].quoteKey)}
-        </blockquote>
+<section class="section testimonials">
+    <div class="testimonials__inner">
+        <div class="section__header">
+            <h2 class="section__title">{$_('home.testimonials.title')}</h2>
+        </div>
 
-        {#if testimonials.length > 1}
-            <div class="testimonial__nav">
-                {#each testimonials as _, i}
-                    <button
-                        class="dot"
-                        class:active={i === current}
-                        onclick={() => (current = i)}
-                        aria-label="Show testimonial {i + 1}"
-                    ></button>
-                {/each}
+        <div class="testimonial-card">
+            <span class="testimonial__mark">&ldquo;</span>
+            <blockquote class="testimonial__quote">
+                {$_(testimonials[current].quoteKey)}
+            </blockquote>
+
+            {#if testimonials.length > 1}
+                <div class="testimonial__nav">
+                    {#each testimonials as _, i}
+                        <button
+                            class="dot"
+                            class:active={i === current}
+                            onclick={() => (current = i)}
+                            aria-label="Show testimonial {i + 1}"
+                        ></button>
+                    {/each}
+                </div>
+            {/if}
+
+            <div class="testimonial__attr">
+                <div class="testimonial__avatar" aria-hidden="true">
+                    {#if testimonials[current].avatar}
+                        <img src={testimonials[current].avatar} alt={testimonials[current].author} class="testimonial__avatar-img" />
+                    {:else}
+                        <span class="testimonial__avatar-initial">{testimonials[current].author[0]}</span>
+                    {/if}
+                </div>
+                <div class="testimonial__meta">
+                    <span class="testimonial__name">{testimonials[current].author}</span>
+                    <span class="testimonial__role">{$_(testimonials[current].roleKey)}</span>
+                </div>
             </div>
-        {/if}
-
-        <div class="testimonial__attr">
-            <span class="testimonial__name">{testimonials[current].author}</span>
-            <span class="testimonial__sep">&mdash;</span>
-            <span class="testimonial__role">{$_(testimonials[current].roleKey)}</span>
         </div>
     </div>
 </section>
 
 <style>
-    .testimonial-section {
+    .testimonials {
         margin-inline: auto;
-        max-width: 72rem;
-        width: 90%;
-        padding-block: var(--space-3xl);
+        display: grid;
+        gap: 2rem;
     }
 
-    .testimonial-inner {
+    .testimonials__inner {
         max-width: 52ch;
         margin-inline: auto;
         text-align: center;
+    }
+
+    .section__header {
+        margin-bottom: 2rem;
+    }
+
+    .section__title {
+        font-size: var(--h2);
+        font-weight: 600;
+        color: hsl(var(--clr-dark-primary));
+    }
+
+    .testimonial-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
     }
 
     .testimonial__mark {
         display: block;
         font-size: clamp(3rem, 6vw, 5rem);
         line-height: 0.8;
-        color: var(--c-accent);
+        color: hsl(var(--clr-accent));
+        font-family: Georgia, serif;
         user-select: none;
-        margin-bottom: var(--space-md);
     }
 
     .testimonial__quote {
         font-size: clamp(1.15rem, 2.2vw, 1.5rem);
         font-style: italic;
         font-weight: 400;
-        color: var(--c-ink);
+        color: hsl(var(--clr-dark-secondary));
         line-height: 1.55;
     }
 
     .testimonial__nav {
         display: flex;
         justify-content: center;
-        gap: var(--space-xs);
-        margin-top: var(--space-xl);
+        gap: 0.75rem;
+        margin-top: 0.5rem;
     }
 
     .dot {
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        border: 1px solid var(--c-rule);
+        border: 1px solid hsl(var(--clr-light-fournary));
         background: transparent;
         cursor: pointer;
         padding: 0;
-        transition:
-            background-color var(--dur-short) var(--ease-out),
-            border-color var(--dur-short) var(--ease-out);
+        transition: background-color 150ms ease, border-color 150ms ease;
     }
 
     .dot:hover {
-        border-color: var(--c-neutral);
+        border-color: hsl(var(--clr-dark-ternary));
     }
 
     .dot.active {
-        background-color: var(--c-accent);
-        border-color: var(--c-accent);
+        background-color: hsl(var(--clr-accent));
+        border-color: hsl(var(--clr-accent));
     }
 
     .dot:focus-visible {
-        outline: 2px solid var(--c-focus);
+        outline: 2px solid hsl(var(--clr-accent));
         outline-offset: 2px;
     }
 
     .testimonial__attr {
-        margin-top: var(--space-md);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: var(--space-xs);
+        gap: 0.875rem;
     }
 
-    .testimonial__name {
-        font-size: var(--text-sm);
+    .testimonial__avatar {
+        flex-shrink: 0;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 50%;
+        background-color: hsl(var(--clr-light-ternary));
+        border: 2px solid hsl(var(--clr-light-fournary));
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .testimonial__avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .testimonial__avatar-initial {
+        font-size: 1rem;
         font-weight: 600;
-        color: var(--c-ink);
-        letter-spacing: 0.06em;
+        color: hsl(var(--clr-dark-ternary));
         text-transform: uppercase;
     }
 
-    .testimonial__sep {
-        color: var(--c-rule);
+    .testimonial__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+        text-align: left;
+    }
+
+    .testimonial__name {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: hsl(var(--clr-dark-primary));
     }
 
     .testimonial__role {
-        font-size: var(--text-sm);
-        color: var(--c-neutral);
+        font-size: 0.8rem;
+        color: hsl(var(--clr-dark-ternary));
     }
 </style>
