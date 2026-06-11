@@ -250,7 +250,7 @@
         left: 0;
         right: 0;
         z-index: 9999;
-        padding-block: 1.25rem;
+        padding-block: 0.75rem;
         background-color: hsl(var(--clr-light-primary) / 0.85);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
