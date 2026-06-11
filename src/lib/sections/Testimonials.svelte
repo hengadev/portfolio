@@ -103,6 +103,11 @@
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
+        padding: 2.5rem 2rem;
+        background-color: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 1rem;
+        box-shadow: 0 2px 8px hsl(0 0% 0% / 0.04);
     }
 
     .testimonial__mark {
