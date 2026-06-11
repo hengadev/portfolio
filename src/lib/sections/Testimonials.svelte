@@ -45,19 +45,6 @@
                 {$_(testimonials[current].quoteKey)}
             </blockquote>
 
-            {#if testimonials.length > 1}
-                <div class="testimonial__nav">
-                    {#each testimonials as _, i}
-                        <button
-                            class="dot"
-                            class:active={i === current}
-                            onclick={() => (current = i)}
-                            aria-label="Show testimonial {i + 1}"
-                        ></button>
-                    {/each}
-                </div>
-            {/if}
-
             <div class="testimonial__attr">
                 <div class="testimonial__avatar" aria-hidden="true">
                     {#if testimonials[current].avatar}
@@ -72,6 +59,19 @@
                 </div>
             </div>
         </div>
+
+        {#if testimonials.length > 1}
+            <div class="testimonial__nav">
+                {#each testimonials as _, i}
+                    <button
+                        class="dot"
+                        class:active={i === current}
+                        onclick={() => (current = i)}
+                        aria-label="Show testimonial {i + 1}"
+                    ></button>
+                {/each}
+            </div>
+        {/if}
     </div>
 </section>
 
@@ -135,10 +135,10 @@
     }
 
     .dot {
-        width: 8px;
-        height: 8px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
-        border: 1px solid hsl(var(--clr-light-fournary));
+        border: 1.5px solid hsl(var(--clr-light-fournary));
         background: transparent;
         cursor: pointer;
         padding: 0;
