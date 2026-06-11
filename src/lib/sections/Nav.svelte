@@ -3,16 +3,13 @@
     import { _, locale } from "svelte-i18n";
     import { toggleLocale } from "$lib/i18n/toggle";
     import {
-        Github,
-        Twitter,
-        Linkedin,
-        Instagram,
         FileDown,
         Sun,
         Moon,
         Menu,
         X,
     } from "lucide-svelte";
+    import { socials } from "$lib/constants/socials";
     import { theme, toggleTheme } from "$lib/theme/store";
     import { browser } from "$app/environment";
 
@@ -24,20 +21,7 @@
         { key: "nav.contact", href: "/contact" },
     ];
 
-    const socials = [
-        { icon: Github, href: "https://github.com/hengadev", label: "GitHub" },
-        { icon: Twitter, href: "https://x.com/0xH3N64", label: "X" },
-        {
-            icon: Linkedin,
-            href: "https://linkedin.com/in/garyhenryml",
-            label: "LinkedIn",
-        },
-        {
-            icon: Instagram,
-            href: "https://www.instagram.com/itshenga/",
-            label: "Instagram",
-        },
-    ];
+
 
     let pathSlug = $derived(`~${$page.url.pathname}`);
     let currentPath = $derived($page.url.pathname);
