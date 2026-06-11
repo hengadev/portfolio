@@ -251,6 +251,63 @@
         opacity: 0.55;
     }
 
+    /* ---- Light-mode override: dark footer with white text ---- */
+    :global(:root:not([data-theme="dark"])) footer {
+        background-color: hsl(222 18% 12%);
+        border-top-color: hsl(222 15% 17%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .brand-name {
+        color: hsl(0 0% 92%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .brand-tagline,
+    :global(:root:not([data-theme="dark"])) footer .brand-no-tracking {
+        color: hsl(0 0% 60%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .contact-link {
+        color: hsl(0 0% 78%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .contact-link:hover {
+        color: hsl(0 0% 92%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .col-label {
+        color: hsl(0 0% 60%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer nav a {
+        color: hsl(0 0% 78%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer nav a:hover {
+        color: hsl(0 0% 92%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .social-link {
+        color: hsl(0 0% 60%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .social-link:hover {
+        color: hsl(0 0% 92%);
+        background-color: hsl(222 12% 22%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .social-link::after {
+        color: hsl(0 0% 92%);
+        background-color: hsl(222 12% 22%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .copyright {
+        color: hsl(0 0% 60%);
+    }
+
+    :global(:root:not([data-theme="dark"])) footer .footer-grid {
+        border-bottom-color: hsl(222 15% 17%);
+    }
+
     @media (max-width: 640px) {
         .footer-grid {
             grid-template-columns: 1fr;
