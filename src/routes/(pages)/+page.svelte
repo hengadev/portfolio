@@ -505,11 +505,11 @@
     }
 
     .process__number {
-        width: 3rem;
-        height: 3rem;
+        width: 3.5rem;
+        height: 3.5rem;
         display: grid;
         place-content: center;
-        font-size: 0.875rem;
+        font-size: 1rem;
         font-weight: 700;
         font-variant-numeric: tabular-nums;
         color: hsl(var(--clr-accent));
@@ -530,32 +530,32 @@
     }
 
     .process__step-title {
-        font-size: 1rem;
+        font-size: 1.125rem;
         font-weight: 600;
         color: hsl(var(--clr-dark-primary));
         line-height: 1.3;
     }
 
     .process__step-desc {
-        font-size: 0.875rem;
+        font-size: 1rem;
         color: hsl(var(--clr-dark-ternary));
         line-height: 1.65;
     }
 
     @media (max-width: 520px) {
         .process__step {
-            grid-template-columns: 2.5rem 1fr;
+            grid-template-columns: 3rem 1fr;
             gap: 0 1rem;
         }
 
         .process__step::before {
-            left: calc(2.5rem / 2);
+            left: calc(3rem / 2);
         }
 
         .process__number {
-            width: 2.5rem;
-            height: 2.5rem;
-            font-size: 0.75rem;
+            width: 3rem;
+            height: 3rem;
+            font-size: 0.875rem;
         }
     }
 
