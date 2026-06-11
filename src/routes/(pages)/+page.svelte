@@ -123,7 +123,7 @@
         </div>
     </section>
 
-    <!-- ─── 3.0 PROCESS — numbered grid ─── -->
+    <!-- ─── 3.0 PROCESS — numbered timeline ─── -->
     <section class="section process">
         <div class="process__header">
             <span class="stage-num">3.0</span>
@@ -131,26 +131,38 @@
         </div>
         <p class="process__subtitle">{$_('home.process.subtitle')}</p>
 
-        <ol class="process__grid">
-            <li class="process__card">
+        <ol class="process__timeline">
+            <li class="process__step">
                 <span class="process__number" aria-hidden="true">01</span>
-                <h3 class="process__step-title">{$_('home.process.step1.title')}</h3>
-                <p class="process__step-desc">{$_('home.process.step1.description')}</p>
+                <div class="process__rule"></div>
+                <div class="process__step-content">
+                    <h3 class="process__step-title">{$_('home.process.step1.title')}</h3>
+                    <p class="process__step-desc">{$_('home.process.step1.description')}</p>
+                </div>
             </li>
-            <li class="process__card">
+            <li class="process__step">
                 <span class="process__number" aria-hidden="true">02</span>
-                <h3 class="process__step-title">{$_('home.process.step2.title')}</h3>
-                <p class="process__step-desc">{$_('home.process.step2.description')}</p>
+                <div class="process__rule"></div>
+                <div class="process__step-content">
+                    <h3 class="process__step-title">{$_('home.process.step2.title')}</h3>
+                    <p class="process__step-desc">{$_('home.process.step2.description')}</p>
+                </div>
             </li>
-            <li class="process__card">
+            <li class="process__step">
                 <span class="process__number" aria-hidden="true">03</span>
-                <h3 class="process__step-title">{$_('home.process.step3.title')}</h3>
-                <p class="process__step-desc">{$_('home.process.step3.description')}</p>
+                <div class="process__rule"></div>
+                <div class="process__step-content">
+                    <h3 class="process__step-title">{$_('home.process.step3.title')}</h3>
+                    <p class="process__step-desc">{$_('home.process.step3.description')}</p>
+                </div>
             </li>
-            <li class="process__card">
+            <li class="process__step">
                 <span class="process__number" aria-hidden="true">04</span>
-                <h3 class="process__step-title">{$_('home.process.step4.title')}</h3>
-                <p class="process__step-desc">{$_('home.process.step4.description')}</p>
+                <div class="process__rule"></div>
+                <div class="process__step-content">
+                    <h3 class="process__step-title">{$_('home.process.step4.title')}</h3>
+                    <p class="process__step-desc">{$_('home.process.step4.description')}</p>
+                </div>
             </li>
         </ol>
     </section>
@@ -488,7 +500,7 @@
     }
 
     /* ────────────────────────────────────
-       3.0 Process — numbered grid cards
+       3.0 Process — vertical numbered timeline
        ──────────────────────────────────── */
     .process {
         padding-block: var(--space-3xl);
@@ -508,45 +520,53 @@
         margin-bottom: var(--space-xl);
     }
 
-    .process__grid {
+    .process__timeline {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-md);
+        gap: 0;
         list-style: none;
         padding: 0;
         margin: 0;
     }
 
-    .process__card {
-        position: relative;
-        padding: var(--space-lg) var(--space-lg) var(--space-xl);
-        border: 1px solid var(--c-rule);
-        border-radius: 0.5rem;
-        overflow: hidden;
-        transition:
-            border-color var(--dur-short) var(--ease-out),
-            background-color var(--dur-short) var(--ease-out);
-    }
-
-    .process__card:hover {
-        border-color: var(--c-neutral);
-        background-color: var(--c-paper-2);
+    .process__step {
+        display: grid;
+        grid-template-columns: 3.5rem 1px 1fr;
+        gap: 0 var(--space-md);
+        align-items: start;
     }
 
     .process__number {
-        display: block;
+        width: 3rem;
+        height: 3rem;
+        display: grid;
+        place-content: center;
         font-family: var(--font-body);
-        font-size: clamp(3.5rem, 6vw, 5rem);
-        font-weight: 800;
+        font-size: var(--text-sm);
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        color: var(--c-accent);
+        background-color: var(--c-paper);
+        border: 1.5px solid var(--c-accent);
+        border-radius: 50%;
         line-height: 1;
-        letter-spacing: -0.03em;
-        color: var(--c-ink);
-        opacity: 0.07;
-        position: absolute;
-        top: var(--space-md);
-        right: var(--space-lg);
-        pointer-events: none;
-        user-select: none;
+        justify-self: end;
+        position: relative;
+        z-index: 1;
+    }
+
+    .process__rule {
+        width: 1px;
+        background-color: var(--c-rule);
+        min-height: 100%;
+        justify-self: center;
+    }
+
+    .process__step:last-child .process__rule {
+        background-color: transparent;
+    }
+
+    .process__step-content {
+        padding-block: var(--space-xs) var(--space-xl);
     }
 
     .process__step-title {
@@ -555,20 +575,25 @@
         font-weight: 600;
         font-style: normal;
         color: var(--c-ink);
-        margin-bottom: var(--space-xs);
-        position: relative;
+        margin-bottom: var(--space-2xs);
     }
 
     .process__step-desc {
         font-size: var(--text-sm);
         color: var(--c-neutral);
         line-height: 1.65;
-        position: relative;
     }
 
-    @media (max-width: 640px) {
-        .process__grid {
-            grid-template-columns: 1fr;
+    @media (max-width: 520px) {
+        .process__step {
+            grid-template-columns: 2.5rem 1px 1fr;
+            gap: 0 var(--space-sm);
+        }
+
+        .process__number {
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: var(--text-xs);
         }
     }
 
