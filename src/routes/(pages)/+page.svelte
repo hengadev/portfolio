@@ -348,6 +348,7 @@
         font-weight: 600;
         color: hsl(var(--clr-dark-primary));
         line-height: 1.2;
+        max-width: 18ch;
     }
 
     .hero__subtitle {
