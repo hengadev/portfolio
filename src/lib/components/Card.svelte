@@ -1,6 +1,5 @@
 <script lang="ts">
     import { ArrowUpRight } from "lucide-svelte";
-    import { goto } from "$app/navigation";
     import { _ } from "svelte-i18n";
     import { reveal } from "$lib/actions/reveal";
 
@@ -16,7 +15,7 @@
     let { title, description, tags, type, href, logo, delay = 0 }: Props = $props();
 </script>
 
-<article class="card" role="button" tabindex="0" use:reveal={{ delay }} onclick={() => goto(href)} onkeydown={(e) => e.key === "Enter" && goto(href)}>
+<a href={href} class="card" use:reveal={{ delay }}>
     <div class="card__top">
         <div class="card__title-row">
             {#if logo}
@@ -43,7 +42,7 @@
             {$_('card.view_project')} <ArrowUpRight size={14} />
         </span>
     </div>
-</article>
+</a>
 
 <style>
     .card {
