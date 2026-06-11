@@ -1,6 +1,5 @@
 <script lang="ts">
     import { _ } from "svelte-i18n";
-    import { reveal } from "$lib/actions/reveal";
 
     type Testimonial = {
         quoteKey: string;
@@ -22,152 +21,132 @@
         },
     ];
 
+    /* T3 — pick the first quote; rotate it */
+    let current = $state(0);
 
+    function next() {
+        current = (current + 1) % testimonials.length;
+    }
 </script>
 
-<section class="section testimonials container__small" use:reveal>
-    <div class="section__header">
-        <h2 class="section__title">{$_('home.testimonials.title')}</h2>
-    </div>
+<section class="section testimonial-section">
+    <div class="testimonial-inner">
+        <span class="testimonial__mark">&ldquo;</span>
+        <blockquote class="testimonial__quote">
+            {$_(testimonials[current].quoteKey)}
+        </blockquote>
 
-    <div class="testimonials__grid">
-        {#each testimonials as testimonial, i}
-            <figure class="testimonial" use:reveal={{ delay: i * 120 }}>
-                <div class="testimonial__body">
-                    <span class="testimonial__mark">"</span>
-                    <blockquote class="testimonial__quote">
-                        {$_(testimonial.quoteKey)}
-                    </blockquote>
-                </div>
-                <figcaption class="testimonial__footer">
-                    <div class="testimonial__avatar" aria-hidden="true">
-                        {#if testimonial.avatar}
-                            <img src={testimonial.avatar} alt={testimonial.author} class="testimonial__avatar-img" />
-                        {:else}
-                            <span class="testimonial__avatar-initial">{testimonial.author[0]}</span>
-                        {/if}
-                    </div>
-                    <div class="testimonial__meta">
-                        <span class="testimonial__name">{testimonial.author}</span>
-                        <span class="testimonial__role">{$_(testimonial.roleKey)}</span>
-                    </div>
-                </figcaption>
-            </figure>
-        {/each}
+        {#if testimonials.length > 1}
+            <div class="testimonial__nav">
+                {#each testimonials as _, i}
+                    <button
+                        class="dot"
+                        class:active={i === current}
+                        onclick={() => (current = i)}
+                        aria-label="Show testimonial {i + 1}"
+                    ></button>
+                {/each}
+            </div>
+        {/if}
 
+        <div class="testimonial__attr">
+            <span class="testimonial__name">{testimonials[current].author}</span>
+            <span class="testimonial__sep">&mdash;</span>
+            <span class="testimonial__role">{$_(testimonials[current].roleKey)}</span>
+        </div>
     </div>
 </section>
 
 <style>
-    .testimonials {
+    .testimonial-section {
         margin-inline: auto;
-        display: grid;
-        gap: 2rem;
+        max-width: 60rem;
+        width: 90%;
+        padding-block: var(--space-3xl);
     }
 
-    .section__title {
-        font-size: var(--h2);
-        font-weight: 600;
-        color: hsl(var(--clr-dark-primary));
-    }
-
-    .testimonials__grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.25rem;
-    }
-
-    .testimonial {
-        width: clamp(280px, 40%, 360px);
-    }
-
-    /* ── Card ── */
-    .testimonial {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 1.5rem;
-        padding: 2rem;
-        background-color: hsl(var(--clr-light-primary));
-        border: 1px solid hsl(var(--clr-light-fournary));
-        border-radius: 1rem;
-        box-shadow: 0 2px 8px hsl(0 0% 0% / 0.04);
-        transition: box-shadow 200ms ease, border-color 200ms ease;
-    }
-
-    .testimonial:hover {
-        box-shadow: 0 6px 24px hsl(0 0% 0% / 0.08);
-    }
-
-    /* ── Quote body ── */
-    .testimonial__body {
-        flex: 1;
+    .testimonial-inner {
+        max-width: 52ch;
+        margin-inline: auto;
+        text-align: center;
     }
 
     .testimonial__mark {
         display: block;
-        font-size: 4rem;
-        line-height: 0.6;
-        margin-bottom: 0.75rem;
-        color: hsl(var(--clr-accent));
-        font-family: Georgia, serif;
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 6vw, 5rem);
+        line-height: 0.8;
+        color: var(--c-accent);
         user-select: none;
+        margin-bottom: var(--space-md);
     }
 
     .testimonial__quote {
-        font-size: 0.95rem;
-        color: hsl(var(--clr-dark-secondary));
-        line-height: 1.75;
+        font-family: var(--font-display);
+        font-size: clamp(1.15rem, 2.2vw, 1.5rem);
         font-style: italic;
+        font-weight: 400;
+        color: var(--c-ink);
+        line-height: 1.55;
     }
 
-    /* ── Author footer ── */
-    .testimonial__footer {
+    .testimonial__nav {
         display: flex;
-        align-items: center;
-        gap: 0.875rem;
+        justify-content: center;
+        gap: var(--space-xs);
+        margin-top: var(--space-xl);
     }
 
-    .testimonial__avatar {
-        flex-shrink: 0;
-        width: 2.75rem;
-        height: 2.75rem;
+    .dot {
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
-        background-color: hsl(var(--clr-light-ternary));
-        border: 2px solid hsl(var(--clr-light-fournary));
-        overflow: hidden;
+        border: 1px solid var(--c-rule);
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+        transition:
+            background-color var(--dur-short) var(--ease-out),
+            border-color var(--dur-short) var(--ease-out);
+    }
+
+    .dot:hover {
+        border-color: var(--c-neutral);
+    }
+
+    .dot.active {
+        background-color: var(--c-accent);
+        border-color: var(--c-accent);
+    }
+
+    .dot:focus-visible {
+        outline: 2px solid var(--c-focus);
+        outline-offset: 2px;
+    }
+
+    .testimonial__attr {
+        margin-top: var(--space-md);
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    .testimonial__avatar-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .testimonial__avatar-initial {
-        font-size: 1rem;
-        font-weight: 600;
-        color: hsl(var(--clr-dark-ternary));
-        text-transform: uppercase;
-    }
-
-    .testimonial__meta {
-        display: flex;
-        flex-direction: column;
-        gap: 0.125rem;
+        gap: var(--space-xs);
+        font-family: var(--font-body);
     }
 
     .testimonial__name {
-        font-size: 0.875rem;
+        font-size: var(--text-sm);
         font-weight: 600;
-        color: hsl(var(--clr-dark-primary));
+        color: var(--c-ink);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .testimonial__sep {
+        color: var(--c-rule);
     }
 
     .testimonial__role {
-        font-size: 0.8rem;
-        color: hsl(var(--clr-dark-ternary));
+        font-size: var(--text-sm);
+        color: var(--c-neutral);
     }
 </style>

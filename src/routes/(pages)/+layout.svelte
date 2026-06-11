@@ -13,7 +13,7 @@
 
 <style>
     .space-y {
-        --padding-top: 12rem;
+        --padding-top: 4.5rem;
         padding-top: var(--padding-top);
         padding-bottom: 1rem;
         min-height: calc(100vh - var(--padding-top));
