@@ -530,9 +530,30 @@
 
     .process__step {
         display: grid;
-        grid-template-columns: 3.5rem 1px 1fr;
+        grid-template-columns: 3.5rem 1fr;
         gap: 0 var(--space-md);
         align-items: start;
+        position: relative;
+    }
+
+    /* Vertical connector line — runs through center of number column */
+    .process__step::before {
+        content: '';
+        position: absolute;
+        left: calc(3.5rem / 2);
+        top: 0;
+        bottom: 0;
+        width: 1.5px;
+        background-color: var(--c-rule);
+        transform: translateX(-50%);
+    }
+
+    .process__step:last-child::before {
+        display: none;
+    }
+
+    .process__rule {
+        display: none;
     }
 
     .process__number {
@@ -549,20 +570,9 @@
         border: 1.5px solid var(--c-accent);
         border-radius: 50%;
         line-height: 1;
-        justify-self: end;
+        justify-self: center;
         position: relative;
         z-index: 1;
-    }
-
-    .process__rule {
-        width: 1px;
-        background-color: var(--c-rule);
-        min-height: 100%;
-        justify-self: center;
-    }
-
-    .process__step:last-child .process__rule {
-        background-color: transparent;
     }
 
     .process__step-content {
@@ -586,8 +596,12 @@
 
     @media (max-width: 520px) {
         .process__step {
-            grid-template-columns: 2.5rem 1px 1fr;
+            grid-template-columns: 2.5rem 1fr;
             gap: 0 var(--space-sm);
+        }
+
+        .process__step::before {
+            left: calc(2.5rem / 2);
         }
 
         .process__number {
