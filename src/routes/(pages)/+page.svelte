@@ -289,6 +289,12 @@
         padding-bottom: 6rem;
     }
 
+    @media (max-width: 768px) {
+        .page {
+            gap: 5rem;
+        }
+    }
+
     /* ── Hero entrance ── */
     @keyframes fade-up {
         from { opacity: 0; transform: translateY(20px); }
