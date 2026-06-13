@@ -293,6 +293,17 @@
         .page {
             gap: 5rem;
         }
+
+        .hero__ctas {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+            text-align: center;
+            padding: 0.6rem 1.25rem;
+        }
     }
 
     /* ── Hero entrance ── */
