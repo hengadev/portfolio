@@ -547,6 +547,7 @@
         .about__photo {
             width: 140px;
             aspect-ratio: 1;
+            justify-self: center;
         }
     }
 
