@@ -1,5 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import { getPosts } from "$lib/server/blog";
+// import { getPosts } from "$lib/server/blog";
 
 const SITE = "https://henga.dev";
 
@@ -12,24 +12,24 @@ const STATIC_ROUTES = [
     { path: "/projects/germinal", priority: "0.7", changefreq: "monthly" },
     { path: "/projects/encx",     priority: "0.7", changefreq: "monthly" },
     { path: "/experiments",       priority: "0.6", changefreq: "monthly" },
-    { path: "/blog",              priority: "0.8", changefreq: "weekly"  },
+    // { path: "/blog",              priority: "0.8", changefreq: "weekly"  },
     { path: "/contact",           priority: "0.7", changefreq: "yearly"  },
 ];
 
 export const GET: RequestHandler = async () => {
-    const posts = await getPosts();
+    // const posts = await getPosts();
 
     const staticUrls = STATIC_ROUTES.map(
         ({ path, priority, changefreq }) =>
             `  <url>\n    <loc>${SITE}${path}</loc>\n    <priority>${priority}</priority>\n    <changefreq>${changefreq}</changefreq>\n  </url>`
     );
 
-    const postUrls = posts.map(
-        ({ slug, date }) =>
-            `  <url>\n    <loc>${SITE}/blog/${slug}</loc>\n    <lastmod>${date}</lastmod>\n    <priority>0.6</priority>\n    <changefreq>yearly</changefreq>\n  </url>`
-    );
+    // const postUrls = posts.map(
+    //     ({ slug, date }) =>
+    //         `  <url>\n    <loc>${SITE}/blog/${slug}</loc>\n    <lastmod>${date}</lastmod>\n    <priority>0.6</priority>\n    <changefreq>yearly</changefreq>\n  </url>`
+    // );
 
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...staticUrls, ...postUrls].join("\n")}\n</urlset>`;
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticUrls.join("\n")}\n</urlset>`;
 
     return new Response(sitemap, {
         headers: {

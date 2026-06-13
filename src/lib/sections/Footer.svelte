@@ -6,7 +6,7 @@
         { key: "nav.home", href: "/" },
         { key: "nav.projects", href: "/projects" },
         { key: "nav.experiments", href: "/experiments" },
-        { key: "nav.blog", href: "/blog" },
+        // { key: "nav.blog", href: "/blog" },
         { key: "nav.contact", href: "/contact" },
     ];
 
