@@ -5,7 +5,7 @@ export const socials = [
     { icon: Twitter, href: "https://x.com/0xH3N64", label: "X" },
     {
         icon: Linkedin,
-        href: "https://linkedin.com/in/garyhenryml",
+        href: "https://linkedin.com/in/gary-henry",
         label: "LinkedIn",
     },
     {
