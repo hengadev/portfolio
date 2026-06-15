@@ -130,7 +130,7 @@
         </div>
         <div class="about__body">
             <div class="about__photo" use:reveal>
-                <img src="/toji_locks.jpg" alt="Gary Henry at Tōji temple locks" />
+                <img src="/banner_linkedin.jpeg" alt="Gary Henry" />
             </div>
             <div class="about__content grid" style="--gap: 1.25rem;">
                 <p class="about__bio" use:reveal={{ delay: 0 }}>
