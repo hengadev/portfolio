@@ -248,6 +248,7 @@
     "tagline": "Freelance Developer",
     "resume": "Resume",
     "portfolio": "Portfolio",
-    "contact": "Contact"
+    "contact": "Contact",
+    "saveContact": "Save Contact"
   }
 }

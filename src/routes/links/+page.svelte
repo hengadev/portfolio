@@ -1,6 +1,6 @@
 <script lang="ts">
     import { _, locale } from "svelte-i18n";
-    import { FileDown, ArrowUpRight, MessageCircle, Sun, Moon, Github, Linkedin, Twitter, Instagram } from "lucide-svelte";
+    import { FileDown, ArrowUpRight, MessageCircle, Sun, Moon, Github, Linkedin, Twitter, Instagram, UserPlus } from "lucide-svelte";
     import { reveal } from "$lib/actions/reveal";
     import { theme, toggleTheme } from "$lib/theme/store";
 
@@ -16,6 +16,19 @@
             ? "https://henga.dev/Henry_Gary_Resume_FR.pdf"
             : "https://henga.dev/Henry_Gary_Resume.pdf"
     );
+
+    const vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "FN:Gary Henry",
+        "N:Henry;Gary;;;",
+        "TITLE:Freelance Developer",
+        "EMAIL;TYPE=INTERNET:henry.gary@hotmail.com",
+        "URL:https://henga.dev",
+        "URL:https://linkedin.com/in/gary-henry",
+        "END:VCARD",
+    ].join("\n");
+    const vcardHref = `data:text/vcard;charset=utf-8,${encodeURIComponent(vcard)}`;
 </script>
 
 <svelte:head>
@@ -52,7 +65,11 @@
     </div>
 
     <div class="actions" use:reveal={{ delay: 150 }}>
-        <a href={resumeHref} target="_blank" rel="noopener noreferrer" class="cta-primary action">
+        <a href={vcardHref} download="Gary-Henry.vcf" class="cta-primary action">
+            <UserPlus size={18} />
+            {$_("links.saveContact")}
+        </a>
+        <a href={resumeHref} target="_blank" rel="noopener noreferrer" class="cta-secondary action">
             <FileDown size={18} />
             {$_("links.resume")}
         </a>
