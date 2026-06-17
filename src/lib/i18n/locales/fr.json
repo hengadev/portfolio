@@ -243,5 +243,11 @@
     "legal_label": "Légal",
     "mentions": "Mentions légales",
     "privacy": "Politique de confidentialité"
+  },
+  "links": {
+    "tagline": "Développeur Freelance",
+    "resume": "CV",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
   }
 }

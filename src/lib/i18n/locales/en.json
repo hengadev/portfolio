@@ -243,5 +243,11 @@
     "legal_label": "Legal",
     "mentions": "Legal notice",
     "privacy": "Privacy policy"
+  },
+  "links": {
+    "tagline": "Freelance Developer",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
   }
 }

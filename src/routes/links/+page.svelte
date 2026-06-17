@@ -1,0 +1,207 @@
+<script lang="ts">
+    import { _, locale } from "svelte-i18n";
+    import { FileDown, ArrowUpRight, MessageCircle, Sun, Moon, Github, Linkedin, Twitter, Instagram } from "lucide-svelte";
+    import { reveal } from "$lib/actions/reveal";
+    import { theme, toggleTheme } from "$lib/theme/store";
+
+    const orderedSocials = [
+        { icon: Github, href: "https://github.com/hengadev", label: "GitHub" },
+        { icon: Linkedin, href: "https://linkedin.com/in/gary-henry", label: "LinkedIn" },
+        { icon: Twitter, href: "https://x.com/0xH3N64", label: "X" },
+        { icon: Instagram, href: "https://www.instagram.com/itshenga/", label: "Instagram" },
+    ];
+
+    let resumeHref = $derived(
+        $locale === "fr"
+            ? "https://henga.dev/Henry_Gary_Resume_FR.pdf"
+            : "https://henga.dev/Henry_Gary_Resume.pdf"
+    );
+</script>
+
+<svelte:head>
+    <title>Gary Henry — Links</title>
+    <meta name="description" content="Gary Henry — Freelance Developer. Resume, portfolio, and social links." />
+    <meta name="robots" content="noindex, follow" />
+</svelte:head>
+
+<button
+    class="theme-toggle"
+    onclick={toggleTheme}
+    aria-label={$theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+>
+    {#if $theme === "dark"}
+        <Sun size={16} />
+    {:else}
+        <Moon size={16} />
+    {/if}
+</button>
+
+<div class="links-page container__small">
+    <div class="profile" use:reveal>
+        <img class="avatar" src="/banner_linkedin.jpeg" alt="Gary Henry" />
+        <h1 class="name">Gary Henry</h1>
+        <p class="tagline">{$_("links.tagline")}</p>
+    </div>
+
+    <div class="socials" use:reveal={{ delay: 75 }}>
+        {#each orderedSocials as { icon: Icon, href, label }}
+            <a {href} target="_blank" rel="noopener noreferrer" aria-label={label} class="social-icon">
+                <Icon size={20} />
+            </a>
+        {/each}
+    </div>
+
+    <div class="actions" use:reveal={{ delay: 150 }}>
+        <a href={resumeHref} target="_blank" rel="noopener noreferrer" class="cta-primary action">
+            <FileDown size={18} />
+            {$_("links.resume")}
+        </a>
+        <a href="https://henga.dev" class="cta-secondary action">
+            <ArrowUpRight size={18} />
+            {$_("links.portfolio")}
+        </a>
+        <a href="https://henga.dev/contact" class="cta-secondary action">
+            <MessageCircle size={18} />
+            {$_("links.contact")}
+        </a>
+    </div>
+</div>
+
+<style>
+    .theme-toggle {
+        position: fixed;
+        top: 1.25rem;
+        right: 1.25rem;
+        display: grid;
+        place-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        color: hsl(var(--clr-dark-secondary));
+        background: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.375rem;
+        transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+        z-index: 10;
+    }
+
+    .theme-toggle:hover {
+        color: hsl(var(--clr-dark-primary));
+        border-color: hsl(var(--clr-accent));
+        background-color: hsl(var(--clr-light-secondary));
+    }
+
+    .links-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        justify-content: center;
+        gap: 2.5rem;
+        padding-block: 4rem;
+        margin-inline: auto;
+        max-width: 420px;
+    }
+
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .avatar {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid hsl(var(--clr-light-fournary));
+        margin-bottom: 0.75rem;
+    }
+
+    .name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: hsl(var(--clr-dark-primary));
+    }
+
+    .tagline {
+        font-size: 0.9375rem;
+        color: hsl(var(--clr-dark-secondary));
+    }
+
+    .socials {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .social-icon {
+        display: grid;
+        place-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: hsl(var(--clr-dark-secondary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 50%;
+        transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+    }
+
+    .social-icon:hover,
+    .social-icon:focus-visible {
+        color: hsl(var(--clr-dark-primary));
+        border-color: hsl(var(--clr-accent));
+        background-color: hsl(var(--clr-light-secondary));
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: var(--p);
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.375rem;
+        transition: background-color 150ms ease, border-color 150ms ease;
+    }
+
+    .action.cta-primary {
+        color: hsl(var(--clr-light-primary));
+        background-color: hsl(var(--clr-dark-primary));
+    }
+
+    .action.cta-primary:hover,
+    .action.cta-primary:focus-visible {
+        background-color: hsl(var(--clr-dark-secondary));
+        outline: 2px solid hsl(var(--clr-accent));
+        outline-offset: 2px;
+    }
+
+    .action.cta-secondary {
+        color: hsl(var(--clr-dark-primary));
+        background-color: hsl(var(--clr-light-primary));
+        border: 2px solid hsl(var(--clr-light-fournary));
+    }
+
+    .action.cta-secondary:hover,
+    .action.cta-secondary:focus-visible {
+        border-color: hsl(var(--clr-accent));
+        background-color: hsl(var(--clr-light-secondary));
+        outline: none;
+    }
+
+    @media (max-width: 768px) {
+        .links-page {
+            padding-block: 3rem;
+        }
+    }
+</style>
