@@ -54,6 +54,7 @@
         <img class="avatar" src="/banner_linkedin.jpeg" alt="Gary Henry" />
         <h1 class="name">Gary Henry</h1>
         <p class="tagline">{$_("links.tagline")}</p>
+        <span class="status-badge">{$_("links.status")}</span>
     </div>
 
     <div class="socials" use:reveal={{ delay: 75 }}>
@@ -145,6 +146,27 @@
     .tagline {
         font-size: 0.9375rem;
         color: hsl(var(--clr-dark-secondary));
+    }
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.8125rem;
+        color: hsl(var(--clr-dark-secondary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 999px;
+        padding: 0.3rem 0.75rem;
+        margin-top: 0.25rem;
+    }
+
+    .status-badge::before {
+        content: "";
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        background: hsl(var(--clr-accent));
+        flex-shrink: 0;
     }
 
     .socials {
