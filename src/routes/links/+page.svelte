@@ -3,6 +3,7 @@
     import { FileDown, ArrowUpRight, MessageCircle, Sun, Moon, Github, Linkedin, Twitter, Instagram, UserPlus, Share2, Check } from "lucide-svelte";
     import { reveal } from "$lib/actions/reveal";
     import { theme, toggleTheme } from "$lib/theme/store";
+    import { toggleLocale } from "$lib/i18n/toggle";
 
     const orderedSocials = [
         { icon: Github, href: "https://github.com/hengadev", label: "GitHub" },
@@ -54,17 +55,26 @@
     <meta name="robots" content="noindex, follow" />
 </svelte:head>
 
-<button
-    class="theme-toggle"
-    onclick={toggleTheme}
-    aria-label={$theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
->
-    {#if $theme === "dark"}
-        <Sun size={16} />
-    {:else}
-        <Moon size={16} />
-    {/if}
-</button>
+<div class="top-controls">
+    <button
+        class="lang-toggle"
+        onclick={toggleLocale}
+        aria-label={$locale === "fr" ? "Switch to English" : "Passer en français"}
+    >
+        {$locale === "fr" ? "EN" : "FR"}
+    </button>
+    <button
+        class="theme-toggle"
+        onclick={toggleTheme}
+        aria-label={$theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+    >
+        {#if $theme === "dark"}
+            <Sun size={16} />
+        {:else}
+            <Moon size={16} />
+        {/if}
+    </button>
+</div>
 
 <button class="share-toggle" onclick={share} aria-label={$_("links.share")}>
     {#if copied}
@@ -114,10 +124,16 @@
 </div>
 
 <style>
-    .theme-toggle {
+    .top-controls {
         position: fixed;
         top: 1.25rem;
         right: 1.25rem;
+        display: flex;
+        gap: 0.5rem;
+        z-index: 10;
+    }
+
+    .theme-toggle {
         display: grid;
         place-content: center;
         width: 2.25rem;
@@ -127,10 +143,30 @@
         border: 1px solid hsl(var(--clr-light-fournary));
         border-radius: 0.375rem;
         transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
-        z-index: 10;
     }
 
     .theme-toggle:hover {
+        color: hsl(var(--clr-dark-primary));
+        border-color: hsl(var(--clr-accent));
+        background-color: hsl(var(--clr-light-secondary));
+    }
+
+    .lang-toggle {
+        display: grid;
+        place-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: hsl(var(--clr-dark-secondary));
+        background: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.375rem;
+        transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+    }
+
+    .lang-toggle:hover {
         color: hsl(var(--clr-dark-primary));
         border-color: hsl(var(--clr-accent));
         background-color: hsl(var(--clr-light-secondary));
