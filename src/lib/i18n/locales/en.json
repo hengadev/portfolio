@@ -250,6 +250,8 @@
     "resume": "Resume",
     "portfolio": "Portfolio",
     "contact": "Contact",
-    "saveContact": "Save Contact"
+    "saveContact": "Save Contact",
+    "share": "Share",
+    "copied": "Link copied!"
   }
 }

@@ -250,6 +250,8 @@
     "resume": "CV",
     "portfolio": "Portfolio",
     "contact": "Contact",
-    "saveContact": "Enregistrer le contact"
+    "saveContact": "Enregistrer le contact",
+    "share": "Partager",
+    "copied": "Lien copié !"
   }
 }

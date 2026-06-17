@@ -1,6 +1,6 @@
 <script lang="ts">
     import { _, locale } from "svelte-i18n";
-    import { FileDown, ArrowUpRight, MessageCircle, Sun, Moon, Github, Linkedin, Twitter, Instagram, UserPlus } from "lucide-svelte";
+    import { FileDown, ArrowUpRight, MessageCircle, Sun, Moon, Github, Linkedin, Twitter, Instagram, UserPlus, Share2, Check } from "lucide-svelte";
     import { reveal } from "$lib/actions/reveal";
     import { theme, toggleTheme } from "$lib/theme/store";
 
@@ -29,6 +29,23 @@
         "END:VCARD",
     ].join("\n");
     const vcardHref = `data:text/vcard;charset=utf-8,${encodeURIComponent(vcard)}`;
+
+    let copied = $state(false);
+
+    async function share() {
+        const url = "https://links.henga.dev";
+        if (navigator.share) {
+            try {
+                await navigator.share({ title: "Gary Henry", url });
+            } catch {
+                // user dismissed the share sheet
+            }
+            return;
+        }
+        await navigator.clipboard.writeText(url);
+        copied = true;
+        setTimeout(() => (copied = false), 2000);
+    }
 </script>
 
 <svelte:head>
@@ -48,6 +65,17 @@
         <Moon size={16} />
     {/if}
 </button>
+
+<button class="share-toggle" onclick={share} aria-label={$_("links.share")}>
+    {#if copied}
+        <Check size={16} />
+    {:else}
+        <Share2 size={16} />
+    {/if}
+</button>
+{#if copied}
+    <span class="copied-toast">{$_("links.copied")}</span>
+{/if}
 
 <div class="links-page container__small">
     <div class="profile" use:reveal>
@@ -106,6 +134,41 @@
         color: hsl(var(--clr-dark-primary));
         border-color: hsl(var(--clr-accent));
         background-color: hsl(var(--clr-light-secondary));
+    }
+
+    .share-toggle {
+        position: fixed;
+        top: 1.25rem;
+        left: 1.25rem;
+        display: grid;
+        place-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        color: hsl(var(--clr-dark-secondary));
+        background: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.375rem;
+        transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+        z-index: 10;
+    }
+
+    .share-toggle:hover {
+        color: hsl(var(--clr-dark-primary));
+        border-color: hsl(var(--clr-accent));
+        background-color: hsl(var(--clr-light-secondary));
+    }
+
+    .copied-toast {
+        position: fixed;
+        top: 1.5rem;
+        left: 3.75rem;
+        font-size: 0.8125rem;
+        color: hsl(var(--clr-dark-primary));
+        background: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.375rem;
+        padding: 0.375rem 0.625rem;
+        z-index: 10;
     }
 
     .links-page {
