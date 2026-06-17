@@ -250,13 +250,21 @@
     .status-badge {
         display: inline-flex;
         align-items: center;
-        gap: 0.4rem;
+        gap: 0.5rem;
         font-size: 0.8125rem;
+        font-weight: 500;
         color: hsl(var(--clr-dark-secondary));
-        border: 1px solid hsl(var(--clr-light-fournary));
+        background-color: hsl(145 60% 92%);
+        border: 1px solid hsl(145 50% 80%);
         border-radius: 999px;
-        padding: 0.3rem 0.75rem;
+        padding: 0.3rem 0.85rem;
         margin-top: 0.25rem;
+    }
+
+    :global([data-theme="dark"]) .status-badge {
+        background-color: hsl(145 30% 15%);
+        border-color: hsl(145 40% 25%);
+        color: hsl(145 50% 72%);
     }
 
     .status-badge::before {
@@ -264,8 +272,18 @@
         width: 0.4rem;
         height: 0.4rem;
         border-radius: 50%;
-        background: hsl(var(--clr-accent));
+        background: hsl(145 70% 40%);
         flex-shrink: 0;
+        animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    :global([data-theme="dark"]) .status-badge::before {
+        background: hsl(145 70% 55%);
+    }
+
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
     }
 
     .socials {
