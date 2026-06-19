@@ -89,7 +89,7 @@
 
 <div class="links-page container__small">
     <div class="profile" use:reveal>
-        <img class="avatar" src="/banner_linkedin.jpeg" alt="Gary Henry" />
+        <img class="avatar" src="/profile.jpg" alt="Gary Henry" />
         <h1 class="name">Gary Henry</h1>
         <p class="tagline">{$_("links.tagline")}</p>
         <span class="status-badge">{$_("links.status")}</span>
