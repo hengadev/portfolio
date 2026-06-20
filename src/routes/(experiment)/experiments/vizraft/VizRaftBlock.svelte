@@ -2,7 +2,7 @@
 <script lang="ts">
     import { _, locale } from "svelte-i18n";
     import ProjectDetail from "$lib/components/ProjectDetail.svelte";
-    import ProjectBento from "$lib/components/ProjectBento.svelte";
+    // import ProjectBento from "$lib/components/ProjectBento.svelte";
 </script>
 
 {#key $locale}
@@ -23,7 +23,7 @@
         <p>{$_('vizraft.overview_2')}</p>
     </section>
 
-    <ProjectBento gradient="linear-gradient(135deg, hsl(220 80% 30%), hsl(270 60% 45%))" />
+    <!-- <ProjectBento gradient="linear-gradient(135deg, hsl(220 80% 30%), hsl(270 60% 45%))" /> -->
 
     <section class="story-section">
         <h2 class="section-title">{$_('detail.learned')}</h2>

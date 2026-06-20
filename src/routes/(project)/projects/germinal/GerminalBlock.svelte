@@ -3,7 +3,7 @@
     import { _, locale } from "svelte-i18n";
     import { ArrowUpRight } from "lucide-svelte";
     import ProjectDetail from "$lib/components/ProjectDetail.svelte";
-    import ProjectBento from "$lib/components/ProjectBento.svelte";
+    // import ProjectBento from "$lib/components/ProjectBento.svelte";
 
     const DEMO_ROLES = [
         {
@@ -49,7 +49,7 @@
         <p>{$_('germinal.overview_2')}</p>
     </section>
 
-    <ProjectBento gradient="linear-gradient(135deg, hsl(20 80% 40%), hsl(359 70% 50%))" />
+    <!-- <ProjectBento gradient="linear-gradient(135deg, hsl(20 80% 40%), hsl(359 70% 50%))" /> -->
 
     <section class="story-section">
         <h2 class="section-title">{$_('detail.highlights')}</h2>
