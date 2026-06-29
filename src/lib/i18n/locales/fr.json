@@ -139,12 +139,12 @@
     "no_login_required": "Aucune connexion requise"
   },
   "cluo": {
-    "overview_1": "Conçu pour remplacer les flux de travail d'investigation manuelle. Les agents de terrain utilisent une application desktop Wails + SvelteKit pour la gestion des dossiers, capturent des preuves sur une PWA mobile et les transmettent en toute sécurité aux clients via un portail dédié — le tout piloté par une seule API Go.",
-    "overview_2": "La chaîne documentaire légale (Devis → Mandat → Contrat → Facture) est automatisée sous forme de machine à états avec génération de PDF par document.",
+    "overview_1": "Conçu pour remplacer les processus d'enquête manuels. Les agents de terrain utilisent une application desktop Wails + SvelteKit pour la gestion des dossiers, capturent des preuves sur une PWA mobile et les transmettent en toute sécurité aux clients via un portail dédié — le tout piloté par une seule API Go.",
+    "overview_2": "La chaîne documentaire légale (Devis → Mandat → Contrat → Facture) est automatisée sous la forme d'une machine à états, avec génération d'un PDF par document.",
     "highlight_1_label": "4 applications, un seul backend :",
-    "highlight_1_body": "API Go, desktop Wails, PWA mobile et portail client partagent un seul backend hexagonal avec interfaces de port.",
+    "highlight_1_body": "API Go, desktop Wails, PWA mobile et portail client partagent un seul backend hexagonal avec des interfaces de port.",
     "highlight_2_label": "Pipeline IA :",
-    "highlight_2_body": "transcrit les enregistrements audio terrain, extrait des données structurées (personnes, chronologies, faits) et pré-remplit l'éditeur de rapport.",
+    "highlight_2_body": "transcrit les enregistrements audio de terrain, extrait des données structurées (personnes, chronologies, faits) et pré-remplit l'éditeur de rapport.",
     "highlight_3_label": "Automatisation de la chaîne légale :",
     "highlight_3_body": "Devis → Mandat → Contrat → Facture modélisé en machine à états avec génération et envoi de PDF par document.",
     "highlight_4_label": "Authentification par lien magique :",
