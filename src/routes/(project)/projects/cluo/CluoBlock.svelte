@@ -8,7 +8,7 @@
 {#key $locale}
 <ProjectDetail
     title="Cluo"
-    tagline="Multi-surface case management ecosystem for private investigators — desktop app, mobile PWA, and client portal."
+    tagline={$_('projects.cluo')}
     year="2026"
     status="Active"
     role={["Full-Stack Developer", "System Designer", "DevOps Engineer"]}

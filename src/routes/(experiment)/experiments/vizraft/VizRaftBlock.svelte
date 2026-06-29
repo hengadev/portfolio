@@ -8,7 +8,7 @@
 {#key $locale}
 <ProjectDetail
     title="VizRaft"
-    tagline="Implementing the Raft consensus algorithm from scratch in Go — watch leader elections, log replication, and network partitions unfold in real time."
+    tagline={$_('experiments.vizraft')}
     year="2026"
     status="Active"
     role={["Systems Engineer"]}

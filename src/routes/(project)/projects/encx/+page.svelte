@@ -7,7 +7,7 @@
 {#key $locale}
 <ProjectDetail
     title="ENCX"
-    tagline="Encryption and hashing module powering the secure data pipeline inside Cluo."
+    tagline={$_('projects.encx')}
     year="2026"
     status="Active"
     role={["Backend Developer"]}
