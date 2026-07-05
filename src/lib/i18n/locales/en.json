@@ -27,6 +27,10 @@
       "link": "View all",
       "subtitle": "A selection of freelance work."
     },
+    "activity": {
+      "title": "GitHub Activity",
+      "subtitle": "What I've been shipping, day to day."
+    },
     "experiments": {
       "title": "Experiments",
       "link": "View all",

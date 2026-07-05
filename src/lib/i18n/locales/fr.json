@@ -27,6 +27,10 @@
       "link": "Voir tout",
       "subtitle": "Une sélection de travaux freelance."
     },
+    "activity": {
+      "title": "Activité GitHub",
+      "subtitle": "Ce que je livre, au jour le jour."
+    },
     "experiments": {
       "title": "Explorations",
       "link": "Voir tout",
