@@ -163,6 +163,18 @@
         </div>
     </section>
 
+    <section class="section activity container__small" use:reveal>
+        <div class="section__header">
+            <h2 class="section__title">{$_('home.activity.title')}</h2>
+            <p class="section__subtitle">{$_('home.activity.subtitle')}</p>
+        </div>
+        <div class="activity__chart" role="img" aria-label="Gary Henry's GitHub contribution graph">
+            {#if data.githubActivitySvg}
+                {@html data.githubActivitySvg}
+            {/if}
+        </div>
+    </section>
+
     <section class="section process container__small" use:reveal>
         <div class="section__header process__header">
             <h2 class="section__title">{$_('home.process.title')}</h2>
@@ -560,6 +572,28 @@
             aspect-ratio: 1;
             justify-self: center;
         }
+    }
+
+    /* ── Activity ── */
+    .activity {
+        margin-inline: auto;
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .activity__chart {
+        background-color: hsl(var(--clr-light-primary));
+        border: 1px solid hsl(var(--clr-light-fournary));
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        overflow-x: auto;
+    }
+
+    .activity__chart :global(svg) {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin-inline: auto;
     }
 
     .process__header {
