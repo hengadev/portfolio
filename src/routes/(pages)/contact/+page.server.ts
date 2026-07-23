@@ -22,7 +22,7 @@ export const actions: Actions = {
 
         const { error } = await resend.emails.send({
             from: env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev",
-            to: "henry.gary@hotmail.com",
+            to: "contact@henga.dev",
             replyTo: email,
             subject: `Portfolio contact — ${name}`,
             text: `Name: ${name}\nEmail: ${email}\n\n${message}`,

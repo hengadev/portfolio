@@ -24,7 +24,7 @@
         "FN:Gary Henry",
         "N:Henry;Gary;;;",
         "TITLE:Freelance Developer",
-        "EMAIL;TYPE=INTERNET:henry.gary@hotmail.com",
+        "EMAIL;TYPE=INTERNET:contact@henga.dev",
         "URL:https://henga.dev",
         "URL:https://linkedin.com/in/gary-henry",
         "END:VCARD",

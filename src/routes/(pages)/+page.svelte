@@ -81,7 +81,7 @@
 			"addressLocality": "Paris",
 			"addressCountry": "FR"
 		},
-		"email": "henry.gary@hotmail.com",
+		"email": "contact@henga.dev",
 		"knowsAbout": ["Go", "TypeScript", "SvelteKit", "PostgreSQL", "Docker", "Distributed Systems", "Cryptography"]
 	})}</script>`}
 </svelte:head>
